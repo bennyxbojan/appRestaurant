@@ -6,7 +6,13 @@ const bodyParser = require('body-parser');
 
 
 // Establish a connection with the Mongo Database
-const mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
+const mongoDB = ("mongodb+srv://"+
+                 process.env.USERNAME+
+                 ":"
+                 +process.env.PASSWORD+
+                 "@"+process.env.HOST+
+                 "/"
+                 +process.env.DATABASE);
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
 const app = express();
