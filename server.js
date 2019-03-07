@@ -4,21 +4,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+
+// Establish a connection with the Mongo Database
 const mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
-//console.log(mongo_url)
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
 const app = express();
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// Load routes
 const catalogRouter = require("./routes/catalog");
-
-
-
-// http://expressjs.com/en/starter/static-files.html
-app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
