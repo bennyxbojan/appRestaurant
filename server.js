@@ -20,14 +20,14 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // Load routes
-const catalogRouter = require("./routes/catalog");
+const apiRouter = require("./routes/api");
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
-  response.json({"message":"Hello"});
+  response.json({"message":"Visit /api/book"});
 });
 
-app.use("/api/book", catalogRouter);
+app.use("/api/book", apiRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {

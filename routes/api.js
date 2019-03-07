@@ -38,8 +38,8 @@ router.put("/:bookId", function(req, res) {
 
 //DELETE
 router.delete("/:bookId", function(req, res){
-  Book.findById(req.params.bookId, (err, book) => {
-    book.remove(err => {
+  Book.findById(req.params.bookId, function(err, book) {
+    book.remove(function(err){
         if(err){
           res.status(500).send(err);
         }
@@ -48,6 +48,5 @@ router.delete("/:bookId", function(req, res){
         }
     });
   });
-  
 });
 module.exports = router;
