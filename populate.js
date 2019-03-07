@@ -19,13 +19,26 @@ var BookInstance = require('./models/bookinstance')
 
 //var mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/"+process.env.DATABASE
 
-const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-midgh.mongodb.net/test"
+//const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-midgh.mongodb.net/test"
+
+const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/"+process.env.DATABASE+"?ssl=true&replicaSet=infsci2560-spring19-shard-0&authSource=admin&retryWrites=true"
+
+
+mongodb://librarian:<password>@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/test?ssl=true&replicaSet=infsci2560-spring19-shard-0&authSource=admin&retryWrites=true
+
+const mongo_options = {
+  //useNewUrlParser: true,
+  retryWrites: true, 
+  authSource: "admin",
+  ssl: true,
+  replicaSet: "infsci2560-spring19-shard-0",
+}
 
 
 var mongoose = require('mongoose');
 //var mongoDB = userArgs[0];
 console.log(mongoDB);
-mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
+mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
