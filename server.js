@@ -1,8 +1,10 @@
-// server.js
-// where your node app starts
 
 // init project
 const express = require('express');
+const mongoose = require('mongoose');
+const mongo_url = "mongodb+srv://librarian:<password>@infsci2560-spring19-midgh.mongodb.net/test?retryWrites=true"
+
+
 const app = express();
 
 // we've started you off with Express, 
