@@ -6,20 +6,20 @@ const Book = require("../models/book");
 
 router.get("/", function(req,res){
   
-  Book.find({},)
-  .exec(function (err, book_list){
+  Book.find({}, function (err, book_list){
     res.json(book_list);
   });
 });
 
 router.get("/:bookId", function(req, res){
-  Book.findByID(req.params.bookId, function(err, book) {
+  Book.findById(req.params.bookId, function(err, book) {
     res.json(book)
   });
 });
 
 router.post('/', function(req, res){
   let book = new Book(req.body);
+  console.log(req.body);
   book.save();
   res.status(201).send(book);
 });
