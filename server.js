@@ -20,7 +20,7 @@ app.get('/', function(request, response) {
   response.json({"message":"Hello"});
 });
 
-app.use("/catalog", catalogRouter);
+app.use("/api/books", catalogRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
