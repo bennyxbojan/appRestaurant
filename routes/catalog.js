@@ -5,15 +5,14 @@ const router = express.Router()
 //import data models
 const Book = require("../models/book");
 
-// READ
+// RETREIVE all books
 router.get("/", function(req,res){
-  
   Book.find({}, function (err, book_list){
     res.json(book_list);
   });
 });
 
-// READ
+// RETRIEVE a specific book
 router.get("/:bookId", function(req, res){
   Book.findById(req.params.bookId, function(err, book) {
     res.json(book)
