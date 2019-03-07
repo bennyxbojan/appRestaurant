@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 
-console.log('This script populates some test books, authors, genres and bookinstances to your database. Specified database as argument - e.g.: populatedb mongodb+srv://cooluser:coolpassword@cluster0-mbdj7.mongodb.net/local_library?retryWrites=true');
+//console.log('This script populates some test books, authors, genres and bookinstances to your database.');
 
 // Get arguments passed on command line
 var userArgs = process.argv.slice(2);
@@ -17,8 +17,13 @@ var Genre = require('./models/genre')
 var BookInstance = require('./models/bookinstance')
 
 
+//var mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/"+process.env.DATABASE
+
+const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-midgh.mongodb.net/test"
+
+
 var mongoose = require('mongoose');
-var mongoDB = userArgs[0];
+//var mongoDB = userArgs[0];
 console.log(mongoDB);
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 mongoose.Promise = global.Promise;
