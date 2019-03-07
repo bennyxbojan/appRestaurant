@@ -2,8 +2,9 @@
 // init project
 const express = require('express');
 const mongoose = require('mongoose');
-const mongo_url = "mongodb+srv://librarian:<password>@infsci2560-spring19-midgh.mongodb.net/test?retryWrites=true"
-
+const mongo_url = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
+//console.log(mongo_url)
+mongoose.connect(mongo_url, {useNewUrlParser: true, retryWrites: true});
 
 const app = express();
 
