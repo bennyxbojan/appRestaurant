@@ -1,4 +1,5 @@
 dependencies:
+  async: 2.6.2
   express: 4.16.4
   mongoose: 5.4.17
 packages:
@@ -21,6 +22,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-fNEiL2+AZt6AlAw/29Cr0UDe4sRAHCpEHh54WMz+Bb7QfNcFw4h3loofyJpLeQs4Yx7yuqu/2dLgM5hKOs6HlQ==
+  /async/2.6.2:
+    dependencies:
+      lodash: 4.17.11
+    dev: false
+    resolution:
+      integrity: sha512-H1qVYh1MYhEEFLsP97cVKqCGo7KfCyTt6uEWqsTBr9SO84oK9Uwbyd/yCW+6rKJLHksBNUVWZDAjfS+Ccx0Bbg==
   /bluebird/3.5.1:
     dev: false
     resolution:
@@ -512,5 +519,6 @@ registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
+  async: ^2.6.2
   express: ^4.16.4
   mongoose: 5.4.17
