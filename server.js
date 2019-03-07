@@ -1,25 +1,10 @@
 
 // init project
 const express = require('express');
-// const mongoose = require('mongoose');
-// const mongo_url = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
-// //console.log(mongo_url)
-// mongoose.connect(mongo_url, {useNewUrlParser: true, retryWrites: true});
-
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://librarian:hZg5af1x6S8UuVcL@infsci2560-spring19-midgh.mongodb.net/test?retryWrites=true";
-const client = new MongoClient(uri, { useNewUrlParser: true });
-client.connect(err => {
-  if (err){
-    console.log("Error");
-    console.log(err);
-  }
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
-
+const mongoose = require('mongoose');
+const mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
+//console.log(mongo_url)
+mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
 const app = express();
 
@@ -31,7 +16,7 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get('/', function(request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+  response.
 });
 
 // listen for requests :)

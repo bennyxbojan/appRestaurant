@@ -2,14 +2,7 @@
 
 //console.log('This script populates some test books, authors, genres and bookinstances to your database.');
 
-// Get arguments passed on command line
-var userArgs = process.argv.slice(2);
-/*
-if (!userArgs[0].startsWith('mongodb')) {
-    console.log('ERROR: You need to specify a valid mongodb URL as the first argument');
-    return
-}
-*/
+
 var async = require('async')
 var Book = require('./models/book')
 var Author = require('./models/author')
@@ -17,29 +10,13 @@ var Genre = require('./models/genre')
 var BookInstance = require('./models/bookinstance')
 
 
-//var mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/"+process.env.DATABASE
 
-//const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-midgh.mongodb.net/test"
-
-//const mongoDB = "mongodb://"+process.env.USERNAME+":"+process.env.PASSWORD+"@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/"+process.env.DATABASE+"?ssl=true&replicaSet=infsci2560-spring19-shard-0&authSource=admin&retryWrites=true"
+const mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE
 
 
-//mongodb://librarian:<password>@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/test?ssl=true&replicaSet=infsci2560-spring19-shard-0&authSource=admin&retryWrites=true
-
-const mongoDB = "mongodb://librarian:hZg5af1x6S8UuVcL@infsci2560-spring19-shard-00-00-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-01-midgh.mongodb.net:27017,infsci2560-spring19-shard-00-02-midgh.mongodb.net:27017/local_library?ssl=true&replicaSet=infsci2560-spring19-shard-0"
-
-// const mongo_options = {
-//   //useNewUrlParser: true,
-//   retryWrites: true, 
-//   authSource: "admin",
-//   ssl: true,
-//   replicaSet: "infsci2560-spring19-shard-0"
-// }
 
 
 var mongoose = require('mongoose');
-//var mongoDB = userArgs[0];
-console.log(mongoDB);
 mongoose.connect(mongoDB, { useNewUrlParser: true });
 mongoose.Promise = global.Promise;
 var db = mongoose.connection;
