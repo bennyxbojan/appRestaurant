@@ -2,11 +2,16 @@
 // init project
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
+
 const mongoDB = "mongodb+srv://"+process.env.USERNAME+":"+process.env.PASSWORD+"@"+process.env.HOST+"/"+process.env.DATABASE;
 //console.log(mongo_url)
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
 const app = express();
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 const catalogRouter = require("./routes/catalog");
 
@@ -20,7 +25,7 @@ app.get('/', function(request, response) {
   response.json({"message":"Hello"});
 });
 
-app.use("/api/books", catalogRouter);
+app.use("/api/book", catalogRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
