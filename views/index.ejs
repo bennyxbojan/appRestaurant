@@ -13,17 +13,21 @@
     
   </head>
   <body>
-      <h1>
-        I have some book
-      </h1>
-      <p>
-        I see that it is a <%= day %>. 
-        <% if (day === favorite_day) {-%>
-          <%= day %> is my favorite day!
-        <% } else { -%>
-          <%= day %> is a meh day. I prefer <%= favorite_day %>.
-        <% } -%>
-      </p>
+    <h1>
+      Book Browser
+    </h1>
+    <% if (books) { %>
+      <p>There are <%= books.length %> book in the database.</p>
+    <% } else { %>
+      <p>There are no books in the database.</p>
+    <% } %>
+
+    <dl>
+      <% books.forEach(function(book){ %>
+        <dt>Title: <%= book.title %></dt>
+        <dd>Author: <%= book.author %></dd>
+      <% }); %>
+    </dl>
 
     <footer>
       Made with <a href="https://glitch.com">Glitch</a>!

@@ -19,14 +19,15 @@ const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// set the view engine
+app.set("view engine", "ejs")
+app.set("views", __dirname + "/views/");
+
 // Load routes
 const apiRouter = require("./routes/api");
+const indexRouter = require("./routes/index");
 
-// http://expressjs.com/en/starter/basic-routing.html
-app.get('/', function(request, response) {
-  response.json({"message":"Visit /api/book"});
-});
-
+app.use("/", indexRouter);
 app.use("/api/book", apiRouter);
 
 // listen for requests :)
