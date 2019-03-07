@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 
 const BookInstanceSchema = new Schema(
   {
-    book: {type: Schema.Type.ObjectId, ref: "Book", required: true},
+    book: {type: Schema.Types.ObjectId, ref: "Book", required: true},
     imprint:{type: String, required: true},
     status: {type: String, required: true, enum:["Available", "Loaned"]},
     due_back: {type: Date, default: Date.now}
