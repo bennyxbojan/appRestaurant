@@ -7,36 +7,31 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css">
-    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
   </head>
-  <body>
+  <body class="container">
     <h1>
       Book Browser
     </h1>
     <% if (books) { %>
-      <p>There are <%= books.length %> book in the database.</p>
+    <p>There are <%= books.length %> books in the database.</p>
+    <table class="table">
+      <tbody><tr><th>Title</th><th>Author</th></tr>
+        <% books.forEach(function(book){ %>
+        <tr>
+          <td><%= book.title %></td>
+          <td><%= book.author %></td>
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
     <% } else { %>
-      <p>There are no books in the database.</p>
+    <p>There are no books in the database.</p>
     <% } %>
-
-    <dl>
-      <% books.forEach(function(book){ %>
-        <dt>Title: <%= book.title %></dt>
-        <dd>Author: <%= book.author %></dd>
-      <% }); %>
-    </dl>
-
-    <footer>
-      Made with <a href="https://glitch.com">Glitch</a>!
-    </footer>
-
     <!-- include the Glitch button to show what the webpage is about and
-          to make it easier for folks to view source and remix -->
+to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
     <script src="https://button.glitch.me/button.js"></script>
-
   </body>
 </html>
