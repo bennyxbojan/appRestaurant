@@ -1,10 +1,15 @@
+console.log("In server.js!");
 
 // init project
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-console.log('process.env.USERNAME')
+console.log(process.env.USERNAME);
+console.log(process.env.PASSWORD);
+console.log(process.env.HOST);
+console.log(process.env.DATABASE);
+
 // Establish a connection with the Mongo Database
 // Get the username, password, host, and databse from the .env file
 const mongoDB = ("mongodb+srv://"+
