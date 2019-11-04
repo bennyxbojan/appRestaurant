@@ -24,7 +24,7 @@ console.log("Connection String: "+mongoDB);
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
-/*mongoose.connection.on('connected', function (){
+mongoose.connection.on('connected', function (){
   console.log('Mongoose connected to '+process.env.DATABASE);
 });
 
@@ -35,7 +35,7 @@ mongoose.connection.on('error', function (err){
 mongoose.connection.on('disconnected', function (){
   console.log('Mongoose disconnected.');
 });
-*/
+
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
