@@ -20,6 +20,8 @@ const mongoDB = ("mongodb+srv://"+
                  +process.env.HOST+
                  "/"
                  +process.env.DATABASE);
+console.log("Connection String: "+mongoDB);
+
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
 /*mongoose.connection.on('connected', function (){
