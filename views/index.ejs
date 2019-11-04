@@ -17,7 +17,7 @@
     <% if (books) { %>
     <p>There are <%= books.length %> books in the database.</p>
     <table class="table">
-      <tbody><tr><th>Title</th><th>Author</th></tr>
+      <tbody><tr><th>Title</th><th>Author</th><th>Rating</th></tr>
         <% books.forEach(function(book){ %>
         <tr>
           <td><%= book.title %></td>
