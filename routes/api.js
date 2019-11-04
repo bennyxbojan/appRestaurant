@@ -31,6 +31,8 @@ router.put("/:bookId", function(req, res) {
   Book.findById(req.params.bookId, function(err, book) {
     book.title = req.body.title;
     book.author = req.body.author;
+    book.rating = req.body.title;
+    book.bookId = req.body.bookId;
     book.save();
     res.json(book);
   });
