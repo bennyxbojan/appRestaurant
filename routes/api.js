@@ -32,7 +32,6 @@ router.put("/:bookId", function(req, res) {
     book.title = req.body.title;
     book.author = req.body.author;
     book.rating = req.body.title;
-    book.bookId = req.body.bookId;
     book.save();
     res.json(book);
   });

@@ -5,11 +5,6 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-console.log(process.env.USERNAME);
-console.log(process.env.PASSWORD);
-console.log(process.env.HOST);
-console.log(process.env.DATABASE);
-
 // Establish a connection with the Mongo Database
 // Get the username, password, host, and databse from the .env file
 const mongoDB = ("mongodb+srv://"+
@@ -20,10 +15,11 @@ const mongoDB = ("mongodb+srv://"+
                  +process.env.HOST+
                  "/"
                  +process.env.DATABASE);
-console.log("Connection String: "+mongoDB);
+// console.log("Connection String: "+mongoDB);
 
 mongoose.connect(mongoDB, {useNewUrlParser: true, retryWrites: true});
 
+//debugging 
 mongoose.connection.on('connected', function (){
   console.log('Mongoose connected to '+process.env.DATABASE);
 });
@@ -36,6 +32,7 @@ mongoose.connection.on('disconnected', function (){
   console.log('Mongoose disconnected.');
 });
 
+//start express 
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

@@ -5,8 +5,6 @@ const router = express.Router()
 //import data models
 const Book = require("../models/book");
 
-console.log('In index.js');
-
 // RETRIEVE all books
 router.get("/", function(req,res){
   Book.find({}, function (err, book_list){
