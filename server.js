@@ -1,4 +1,4 @@
-console.log("In server.js!");
+ console.log("In server.js!");
 
 // init project
 const express = require('express');
