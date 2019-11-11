@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router()
 
 //import data models
-const Book = require("../models/book");
+const Book = require("../models/student");
 
 // RETRIEVE all books
 router.get("/", function(req,res){
