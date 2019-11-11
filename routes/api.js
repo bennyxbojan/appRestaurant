@@ -62,14 +62,18 @@ router.post("/", function(req, res) {
       }
     });
 
-    student.save();
+    student.save(function(err) {
+    if (err) {
+      res.status(400).send(err);
+    }
     res.status(201).send(student);
+  })
   }
 });
 
 //UPDATE
-router.put("/:bookId", function(req, res) {
-  Book.findById(req.params.bookId, function(err, book) {
+router.put("/:studentId", function(req, res) {
+  Student.findById(req.params.studentId, function(err, book) {
     book.title = req.body.title;
     book.author = req.body.author;
     book.rating = req.body.title;
