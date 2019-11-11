@@ -22,6 +22,7 @@ router.get("/:studentId", function(req, res){
 //CREATE
 router.post('/', function(req, res){
   let student = new Student(req.body);
+  var gpa = student.gpa;
   student.save();
   res.status(201).send(student);
 });
