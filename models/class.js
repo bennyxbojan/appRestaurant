@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const classSchema = new Schema(
   {
+    classID: {type: String, required: true},
     name: {type: String, required:true}
   }
 );
