@@ -4,6 +4,7 @@ const router = express.Router()
 
 //import data models
 const Student = require("../models/student");
+const Class = require("../models/student");
 
 // RETREIVE all books
 router.get("/", function(req,res){
@@ -23,7 +24,28 @@ router.get("/:studentId", function(req, res){
 router.post('/', function(req, res){
   let student = new Student(req.body);
   var gpa = student.gpa;
-  if ()
+  var courses = student.courses;
+  //check gpa validity
+  if (gpa > 4 | gpa < 0 ){
+    res.status(401).render("error", {
+        message: "Bad Request. Please provide a valid gpa number (0.00-4.00).",
+        status: 400
+  })
+  };
+  //check course validity
+  for (var i = 0; i < courses.length; i++) {
+    Class.find({ courseNum: courses[i] }, function(err, course) {
+      console.log(course);
+      if (err) {
+        res.status(400).send(err);
+      }
+      if(course.length == 0){
+        res.status(400).send({
+          message: "Course Number Not Found! Please input a valid course id."
+        });
+      }
+    });
+  
   student.save();
   res.status(201).send(student);
 });

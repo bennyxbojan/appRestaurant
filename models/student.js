@@ -4,6 +4,7 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema(
   {
+    studentID: {}
     name: {type: String, required: true},
     major: {type: String, required: true},
     gpa: {type: Number, required: false},
