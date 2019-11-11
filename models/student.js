@@ -4,9 +4,10 @@ const Schema = mongoose.Schema;
 
 const studentSchema = new Schema(
   {
-    title: {type: String},
-    author: {type: String},
-    rating: {type: Number}
+    name: {type: String, required: true},
+    major: {type: String, required: true},
+    gpa: {type: Number, required: false},
+    classes: {type: [String], required:false}
   }
 );
 
