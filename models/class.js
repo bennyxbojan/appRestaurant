@@ -4,9 +4,7 @@ const Schema = mongoose.Schema;
 
 const classSchema = new Schema(
   {
-    title: {type: String},
-    author: {type: String},
-    rating: {type: Number}
+    name: {type: String, required:true}
   }
 );
 

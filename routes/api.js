@@ -3,27 +3,27 @@ const express = require('express');
 const router = express.Router()
 
 //import data models
-const Book = require("../models/student");
+const Student = require("../models/student");
 
 // RETREIVE all books
 router.get("/", function(req,res){
-  Book.find({}, function (err, book_list){
-    res.json(book_list);
+  Student.find({}, function (err, allStudents){
+    res.json(allStudents);
   });
 });
 
 // RETRIEVE a specific book
-router.get("/:bookId", function(req, res){
-  Book.findById(req.params.bookId, function(err, book) {
-    res.json(book)
+router.get("/:studentId", function(req, res){
+  Student.findById(req.params.studentId, function(err, student) {
+    res.json(student)
   });
 });
 
 //CREATE
 router.post('/', function(req, res){
-  let book = new Book(req.body);
-  book.save();
-  res.status(201).send(book);
+  let student = new Student(req.body);
+  student.save();
+  res.status(201).send(student);
 });
 
 //UPDATE
