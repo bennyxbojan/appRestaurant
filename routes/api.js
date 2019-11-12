@@ -8,8 +8,8 @@ const Class = require("../models/student");
 
 // RETREIVE all books
 router.get("/", function(req, res) {
-  Student.find({}, function(err, allStudents) {
-    res.json(allStudents);
+  Student.find({}, function (err, student_list){
+    res.render("index", {students:student_list});
   });
 });
 
@@ -48,27 +48,13 @@ router.post("/", function(req, res) {
       status: 400
     });
   }
-  //check course validity
-  for (var i = 0; i < courses.length; i++) {
-    Class.find({ courseNum: courses[i] }, function(err, course) {
-      console.log(course);
-      if (err) {
-        res.status(400).send(err);
-      }
-      if (course.length == 0) {
-        res.status(404).render("error", {
-          message: "Bad Request. Please provide a valid class number."
-        });
-      }
-    });
-
     student.save(function(err) {
     if (err) {
       res.status(400).send(err);
     }
     res.status(201).send(student);
   })
-  }
+  
 });
 
 //UPDATE

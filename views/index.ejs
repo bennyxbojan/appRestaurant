@@ -14,16 +14,14 @@
     <h1>
       CRUDy Student Browser
     </h1>
-    <% if (books) { %>
-    <p>There are <%= books.length %> books in the database.</p>
+    <% if (students) { %>
     <table class="table">
       <tbody><tr><th>Title</th><th>Author</th><th>Rating</th></tr>
-        <% books.forEach(function(book){ %>
+        <% students.forEach(function(student){ %>
         <tr>
-          <td><%= book.title %></td>
-          <td><%= book.author %></td>
-          <td><%= book.rating %></td>
-
+          <td><%= book.name %></td>
+          <td><%= book.major %></td>
+          <td><%= book.gpa %></td>
         </tr>
         <% }); %>
       </tbody>

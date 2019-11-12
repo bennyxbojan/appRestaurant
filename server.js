@@ -45,7 +45,7 @@ app.set("views", __dirname + "/views/");
 const apiRouter = require("./routes/api");
 const indexRouter = require("./routes/index");
 
-app.use("/", indexRouter);
+app.use("/", apiRouter);
 app.use("/api/book", apiRouter);
 
 // listen for requests :)
