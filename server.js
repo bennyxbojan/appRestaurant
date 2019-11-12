@@ -42,11 +42,14 @@ app.set("view engine", "ejs")
 app.set("views", __dirname + "/views/");
 
 // Load routes
-const apiRouter = require("./routes/api");
+const studentRouter = require("./routes/student");
 const indexRouter = require("./routes/index");
+const classRouter = require("./routes/class");
 
-app.use("/", apiRouter);
-app.use("/api/book", apiRouter);
+app.use("/api/", indexRouter);
+app.use("/api/student", studentRouter);
+app.use("/api/class", classRouter);
+
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {

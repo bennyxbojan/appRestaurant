@@ -12,16 +12,16 @@
   </head>
   <body class="container">
     <h1>
-      CRUDy Student Browser
+      CRUDy Classes Browser
     </h1>
-    <% if (students) { %>
+    <% if (classes) { %>
     <table class="table">
-      <tbody><tr><th>Title</th><th>Author</th><th>Rating</th></tr>
-        <% students.forEach(function(student){ %>
+      <tbody><tr><th>CourseID</th><th>Name</th></tr>
+        <% classes.forEach(function(oneClass){ %>
         <tr>
-          <td><%= book.name %></td>
-          <td><%= book.major %></td>
-          <td><%= book.gpa %></td>
+          <td><%= oneClass.classID %></td>
+          <td><%= oneClass.name %></td>
+
         </tr>
         <% }); %>
       </tbody>
