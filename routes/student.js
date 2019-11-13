@@ -41,13 +41,6 @@ router.post("/", function(req, res) {
     }
   });
 
-  //check gpa validity
-  if ((gpa > 4) | (gpa < 0)) {
-    res.status(401).render("error", {
-      message: "Bad Request. Please provide a valid gpa number (0.00-4.00).",
-      status: 400
-    });
-  }
     student.save(function(err) {
     if (err) {
       res.status(400).send(err);

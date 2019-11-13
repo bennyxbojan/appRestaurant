@@ -8,9 +8,13 @@ const studentSchema = new Schema({
   major: { type: String, required: true },
   gpa: {
     type: Number,
-    required: false,
-    min: [0, "GPA cannot be less than 0"],
-    max: [4, "GPA cannot be larger than 4"]
+    validate: {
+      validator: function(v) {
+        return /^[0-4]\.\d\d$/.test(v);
+      },
+      message: props => `${props.value} is not a valid GPA number!`
+    },
+    required: true
   },
   classes: {
     type: mongoose.Schema.Types.ObjectId,
