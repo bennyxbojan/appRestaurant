@@ -17,8 +17,8 @@
       
       <li>Classes:</li>
       <ol>
-      <%  classes.forEach(oneClass=>{ %>
-        <li><em><%= oneClass %></em></li>
+      <%  student.courses.forEach(course=>{ %>
+            <li><%= course.name %></li>
       <%  }) %>
       </ol>
     </ul>

@@ -4,13 +4,38 @@ const router = express.Router();
 
 //import data models
 const Student = require("../models/student");
-const Class = require("../models/student");
+const Class = require("../models/class");
 
-// RETREIVE all books
-router.get("/", function(req, res) {
-  Student.find({}, function (err, student_list){
-    res.render("index", {students:student_list});
-  });
+// RETREIVE all students with an optional query parameter (department/major)
+router.get("/", function(req, res, next) {
+  // if users did not enter a query parameter
+  if (!req.query.major) {
+    Student.find()
+      //print out class names rather than id
+      .populate("classes")
+      .exec(function(err, students) {
+        if (err) {
+          return next(err);
+        }
+        res.status(200).render("student", {
+          students: students
+        });
+      });
+  }
+  //if users did
+  else {
+    Student.find({ major: req.query.major })
+      //print out class names rather than id
+      .populate("classes")
+      .exec(function(err, students) {
+        if (err) {
+          return next(err);
+        }
+        res.render("student", {
+          students: students
+        });
+      });
+  }
 });
 
 // RETRIEVE a specific book
@@ -34,8 +59,7 @@ router.post("/", function(req, res, next) {
           return next(err);
         }
         res.status(201).render("student", {
-          students: student,
-          classes: 
+          students: student
         });
       });
   });
