@@ -46,9 +46,9 @@ const studentRouter = require("./routes/student");
 const indexRouter = require("./routes/index");
 const classRouter = require("./routes/class");
 
-app.use("/api/", indexRouter);
-app.use("/api/student", studentRouter);
-app.use("/api/class", classRouter);
+app.use("/", indexRouter);
+app.use("/student", studentRouter);
+app.use("/class", classRouter);
 
 
 // listen for requests :)

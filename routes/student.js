@@ -10,7 +10,7 @@ const Class = require("../models/class");
 router.get("/", function(req, res, next) {
   // if users did not enter a query parameter
   if (!req.query.major) {
-    Student.find()
+    Student.find({})
       //print out class names rather than id
       .populate("classes")
       .exec(function(err, students) {
@@ -18,7 +18,7 @@ router.get("/", function(req, res, next) {
           return next(err);
         }
         res.status(200).render("student", {
-          students: students
+          student: students
         });
       });
   }
@@ -32,7 +32,7 @@ router.get("/", function(req, res, next) {
           return next(err);
         }
         res.render("student", {
-          students: students
+          student: students
         });
       });
   }

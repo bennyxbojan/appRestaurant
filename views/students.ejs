@@ -14,7 +14,6 @@
     <h1>
       CRUDy Student Browser
     </h1>
-    <% if (students) { %>
     <table class="table">
       <tbody><tr><th>Name</th><th>Major</th><th>GPA</th><th>Classes</th></tr>
         <% students.forEach(function(student){ %>
@@ -27,9 +26,6 @@
         <% }); %>
       </tbody>
     </table>
-    <% } else { %>
-    <p>There are no students in the database.</p>
-    <% } %>
     <!-- include the Glitch button to show what the webpage is about and
 to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>

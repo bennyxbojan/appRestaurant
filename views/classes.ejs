@@ -14,7 +14,6 @@
     <h1>
       CRUDy Classes Browser
     </h1>
-    <% if (classes) { %>
     <table class="table">
       <tbody><tr><th>CourseID</th><th>Name</th></tr>
         <% classes.forEach(function(oneClass){ %>
@@ -26,9 +25,6 @@
         <% }); %>
       </tbody>
     </table>
-    <% } else { %>
-    <p>There are no books in the database.</p>
-    <% } %>
     <!-- include the Glitch button to show what the webpage is about and
 to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>
