@@ -27,16 +27,15 @@ router.post("/", function(req, res, next) {
     if (err) {
       return next(err);
     }
-    console.log("added");
-    Student.findById(student._id)
+    Student.findById(student.studentID)
       .populate("courses")
       .exec(function(err, student) {
         if (err) {
           return next(err);
         }
-        res.status(201);
-        res.render("student", {
-          students: [student]
+        res.status(201).render("student", {
+          students: student,
+          classes: 
         });
       });
   });

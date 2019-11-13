@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Order</title>
+    <link href="../style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>    
+    <h1>
+      Student Information Display
+    </h1>
+    <ul>
+      <li> Name: <em><%= student.name %> </em></li>
+      <li> Id: <em><%= student.id %> </em></li>
+      <li> Major: <em><%= student.major %> </em></li>
+      <li> GPA: <em><%= student.gpa %> </em></li>
+      
+      <li>Classes:</li>
+      <ol>
+      <%  classes.forEach(oneClass=>{ %>
+        <li><em><%= oneClass %></em></li>
+      <%  }) %>
+      </ol>
+    </ul>
+  </body>
+</html>

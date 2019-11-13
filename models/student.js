@@ -3,11 +3,18 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const studentSchema = new Schema({
-  studentID: { type: Number, required: true, unique: true, autoIndex: false },
-  name: { type: String, required: true },
-  major: { type: String, required: true },
+  studentID: {
+    type: Number,
+    required: true,
+    unique: true,
+    autoIndex: false,
+    trim: true
+  },
+  name: { type: String, required: true, trim: true },
+  major: { type: String, required: true, trim: true },
   gpa: {
     type: Number,
+    trim: true,
     validate: {
       validator: function(v) {
         return /^[0-4]\.\d\d$/.test(v);
@@ -17,6 +24,7 @@ const studentSchema = new Schema({
     required: true
   },
   classes: {
+    trim: true,
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "class"
