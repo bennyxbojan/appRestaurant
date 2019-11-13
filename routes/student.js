@@ -21,33 +21,25 @@ router.get("/:studentId", function(req, res) {
 });
 
 //CREATE
-router.post("/", function(req, res) {
-  let student = new Student(req.body);
-  var id = student.studentID;
-  var gpa = student.gpa;
-  var courses = student.courses;
-  //check if student id exist
-  Student.find({ studentID: id }, function(err, student) {
+router.post("/", function(req, res, next) {
+  var student = new Student(req.body);
+  student.save(function(err, student) {
     if (err) {
-      res.status(400).send(err);
+      return next(err);
     }
-    //if there exists the same id
-    if (student.length != 0) {
-      res.status(400).render("error", {
-        message:
-          "Bad Request. This ID is already taken. Please try another one.",
-        status: 400
+    console.log("added");
+    Student.findById(student._id)
+      .populate("courses")
+      .exec(function(err, student) {
+        if (err) {
+          return next(err);
+        }
+        res.status(201);
+        res.render("student", {
+          students: [student]
+        });
       });
-    }
   });
-
-    student.save(function(err) {
-    if (err) {
-      res.status(400).send(err);
-    }
-    res.status(201).send(student);
-  })
-  
 });
 
 //UPDATE
