@@ -18,6 +18,7 @@
       <tbody><tr><th>Name</th><th>Major</th><th>GPA</th><th>Classes</th></tr>
         <% students.forEach(function(student){ %>
         <tr>
+          <td><%= student.studentID %></td>
           <td><%= student.name %></td>
           <td><%= student.major %></td>
           <td><%= student.gpa %></td>

@@ -8,7 +8,13 @@ const studentSchema = new Schema({
     required: true,
     unique: true,
     autoIndex: false,
-    trim: true
+    trim: true,
+    validate: {
+      validator: function(v) {
+        return /\d{,7}/.test(v);
+      },
+      message: props => `${props.value} is not a valid GPA number!`
+    },
   },
   name: { type: String, required: true, trim: true },
   major: { type: String, required: true, trim: true },

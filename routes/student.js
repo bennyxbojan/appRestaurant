@@ -43,19 +43,19 @@ router.post("/", function(req, res, next) {
   var student = new Student(req.body);
   student.save(function(err, student) {
     if (err) {
-      res.status(401).render("error",{
-      message:err,
-      status:401
+      res.status(401).render("error", {
+        message: err,
+        status: 401
+      });
     }
-                             )}
     Student.findById(student.studentID)
-      .populate("courses")
+      .populate("classes")
       .exec(function(err, student) {
         if (err) {
           return next(err);
         }
         res.status(201).render("student", {
-          students: student
+          student: student
         });
       });
   });

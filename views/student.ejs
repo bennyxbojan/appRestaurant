@@ -11,14 +11,14 @@
     </h1>
     <ul>
       <li> Name: <em><%= student.name %> </em></li>
-      <li> Id: <em><%= student.id %> </em></li>
+      <li> Id: <em><%= student.studentID %> </em></li>
       <li> Major: <em><%= student.major %> </em></li>
       <li> GPA: <em><%= student.gpa %> </em></li>
       
       <li>Classes:</li>
       <ol>
-      <%  student.courses.forEach(course=>{ %>
-            <li><%= course.name %></li>
+      <%  student.classes.forEach(oneClass=>{ %>
+            <li><%= oneClass.name %></li>
       <%  }) %>
       </ol>
     </ul>
