@@ -38,20 +38,16 @@ router.get("/", function(req, res, next) {
   }
 });
 
-// RETRIEVE a specific book
-router.get("/:studentId", function(req, res) {
-  Student.findById(req.params.studentId, function(err, student) {
-    res.json(student);
-  });
-});
-
 //CREATE
 router.post("/", function(req, res, next) {
   var student = new Student(req.body);
   student.save(function(err, student) {
     if (err) {
-      return next(err);
+      res.status(401).render("error",{
+      message:err,
+      status:401
     }
+                             )}
     Student.findById(student.studentID)
       .populate("courses")
       .exec(function(err, student) {

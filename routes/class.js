@@ -9,30 +9,31 @@ const Class = require("../models/class");
 router.get("/", function(req, res, next) {
   // if users did not enter a query parameter
   if (!req.query.classID) {
-    Class.find({})
-      //print out class names rather than id
-      .exec(function(err, classes) {
-        if (err) {
-          return next(err);
-        }
-        res.status(200).render("classes", {
-          classes: classes
+    Class.find({}, function(err, classes) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
         });
+      }
+      res.status(200).render("classes", {
+        classes: classes
       });
+    });
   }
   //if users did
   else {
-    Class.find({ major: req.query.c })
-      //print out class names rather than id
-      .populate("classes")
-      .exec(function(err, students) {
-        if (err) {
-          return next(err);
-        }
-        res.render("student", {
-          student: students
+    Class.find({ classID: req.query.classID }, function(err, classes) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
         });
+      }
+      res.render("classes", {
+        classes: classes
       });
+    });
   }
 });
 
