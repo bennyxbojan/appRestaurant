@@ -23,7 +23,7 @@ const studentSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "class"
-  }
+  }]
 });
 
 // Export model

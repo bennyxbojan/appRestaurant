@@ -41,6 +41,7 @@ router.get("/", function(req, res, next) {
 //CREATE
 router.post("/", function(req, res, next) {
   var student = new Student(req.body);
+  console.log(student);
   student.save(function(err, student) {
     if (err) {
       res.status(401).render("error", {
@@ -48,7 +49,7 @@ router.post("/", function(req, res, next) {
         status: 401
       });
     }
-    Student.findById(student.studentID)
+    Student.find({ studentID: student.studentID })
       .populate("classes")
       .exec(function(err, student) {
         if (err) {
