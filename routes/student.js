@@ -35,7 +35,7 @@ router.get("/", function(req, res) {
             status: 404
           });
         }
-        res.render("students", {
+        res.status(200).render("students", {
           students: students
         });
       });
@@ -53,7 +53,7 @@ router.get("/:studentID", function(req, res) {
           status: 404
         });
       } else {
-        res.render("students", {
+        res.status(200).render("students", {
           students: [students]
         });
       }
@@ -61,23 +61,22 @@ router.get("/:studentID", function(req, res) {
 });
 
 // RETRIEVE courses of one target students
-router.get("/:studentID", function(req, res) {
+router.get("/:studentID/classes", function(req, res) {
   Student.findById(req.params.studentID)
     .populate("classes")
-    .exec(function(err, students) {
+    .exec(function(err, student) {
       if (err) {
         res.status(404).render("error", {
           message: err,
           status: 404
         });
       } else {
-        res.render("students", {
-          students: [students]
+        res.status(200).render("classes", {
+          classes:student.classes
         });
       }
     });
 });
-
 
 //DELETE a student by student ID
 router.delete("/:studentId", function(req, res) {
@@ -87,9 +86,9 @@ router.delete("/:studentId", function(req, res) {
   ) {
     student.remove(function(err) {
       if (err) {
-        res.status(500).render("error", {
+        res.status(204).render("error", {
           message: err,
-          status: 500
+          status: 204
         });
       } else {
         //print all student records ==> confirm the record is del
@@ -102,7 +101,7 @@ router.delete("/:studentId", function(req, res) {
                 status: 404
               });
             }
-            res.render("students", {
+            res.status(200).render("students", {
               students: students
             });
           });
@@ -116,9 +115,9 @@ router.post("/", function(req, res, next) {
   var student = new Student(req.body);
   student.save(function(err, student) {
     if (err) {
-      res.status(500).render("error", {
+      res.status(204).render("error", {
         message: err,
-        status: 500
+        status: 204
       });
     }
     Student.find({ studentID: student.studentID })
@@ -145,9 +144,9 @@ router.put("/:studentId", function(req, res) {
     req.body,
     function(err, student) {
       if (err) {
-        res.status(500).render("error", {
+        res.status(204).render("error", {
           message: err,
-          status: 500
+          status: 204
         });
       } else {
         //print this student's records ==> confirm the record is updated
@@ -160,7 +159,7 @@ router.put("/:studentId", function(req, res) {
                 status: 404
               });
             }
-            res.render("students", {
+            res.status(200).render("students", {
               students: students
             });
           });
@@ -173,9 +172,9 @@ router.put("/:studentId", function(req, res) {
 router.delete("/delete/:gpa", function(req, res) {
   Student.deleteMany({ gpa: { $lt: req.params.gpa } }, function(err) {
     if (err) {
-      res.status(400).render("error", {
+      res.status(204).render("error", {
         message: err,
-        status: 400
+        status: 204
       });
     } else {
       Student.find({})
@@ -187,7 +186,7 @@ router.delete("/delete/:gpa", function(req, res) {
               status: 404
             });
           }
-          res.render("students", {
+          res.status(200).render("students", {
             students: students
           });
         });
