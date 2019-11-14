@@ -51,7 +51,8 @@ router.post("/", function(req, res, next) {
     }
     Student.find({ studentID: student.studentID })
       .populate("classes")
-      .exec(function(err, student) {
+      .exec(function(err, s) {
+      console.log(s);
         if (err) {
           res.status(401).render("error", {
             message: err,
@@ -59,7 +60,7 @@ router.post("/", function(req, res, next) {
           });
         }
         res.status(201).render("student", {
-          student: student
+          student: s
         });
       });
   });
