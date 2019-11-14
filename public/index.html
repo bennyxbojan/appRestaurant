@@ -12,7 +12,7 @@
       This is my API documentation page
     </h1>
     <h3>
-      Base URL: https://infsci2560-project3a-feq6.glitch.me/
+      Base URL: https://infsci2560-project3b-feq6.glitch.me/
     </h3>
     <table>
       <th>
@@ -34,14 +34,14 @@
         Status Code
       </th>
       <tr>
-        <td colspan="6"><strong>/students</strong></td>
+        <td colspan="6"><strong>/student</strong></td>
       </tr>
       <tr>
         <td>/</td>
         <td>GET</td>
         <td>Show all students information</td>
         <td>/</td>
-        <td>/</td>
+        <td>https://infsci2560-project3b-feq6.glitch.me/student</td>
         <td>200: Success</td>
       </tr>
       <tr>
@@ -125,14 +125,14 @@
       </tr>
 
       <tr>
-        <td colspan="6"><strong>/classes</strong></td>
+        <td colspan="6"><strong>/class</strong></td>
       </tr>
       <tr>
         <td>/</td>
         <td>GET</td>
         <td>Show all classes information</td>
         <td>/</td>
-        <td>/</td>
+        <td>https://infsci2560-project3b-feq6.glitch.me/class</td>
         <td>200: Success</td>
       </tr>
       <tr>
@@ -152,7 +152,11 @@
           Add a new class record
         </td>
         <td>id</td>
-        <td>https://infsci2560-project3b-feq6.glitch.me/class?classID=PSY2135</td>
+        <td>JSON e.g. <br />
+            {
+    "classID":"INFSCI2500",<br />
+    "name":"Human Information Processing"
+  }</td>
         <td>201: Created; 204: No Content</td>
       </tr>
       <tr>
@@ -163,7 +167,7 @@
         <td>GET</td>
         <td>Show all Json resources</td>
         <td>/</td>
-        <td>/</td>
+        <td>https://infsci2560-project3b-feq6.glitch.me/list</td>
         <td>200: Success</td>
       </tr>
     </table>
