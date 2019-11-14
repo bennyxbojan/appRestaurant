@@ -6,35 +6,36 @@ const router = express.Router();
 const Student = require("../models/student");
 const Class = require("../models/class");
 
-// RETREIVE all students with an optional query parameter (department/major)
-router.get("/", function(req, res, next) {
+
+// RETRIEVE all students with a optional query parameter (major)
+router.get("/", function(req, res) {
   // if users did not enter a query parameter
-  if (!req.query.major) {
-    Student.find({})
-      //print out class names rather than id
-      .populate("classes")
-      .exec(function(err, students) {
-        if (err) {
-          return next(err);
-        }
-        res.status(200).render("student", {
-          student: students
+  if (!req.query.classID) {
+    Class.find({}, function(err, students) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
         });
+      }
+      res.status(200).render("students", {
+        students: students
       });
+    });
   }
   //if users did
   else {
-    Student.find({ major: req.query.major })
-      //print out class names rather than id
-      .populate("classes")
-      .exec(function(err, students) {
-        if (err) {
-          return next(err);
-        }
-        res.render("student", {
-          student: students
+    Class.find({ major: req.query.major }, function(err, students) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
         });
+      }
+      res.render("students", {
+        students: students
       });
+    });
   }
 });
 
@@ -68,7 +69,7 @@ router.post("/", function(req, res, next) {
 
 //UPDATE
 router.put("/:studentId", function(req, res) {
-  Student.findById(req.params.studentId, function(err, book) {
+  Student.find(req.params.studentId, function(err, book) {
     book.title = req.body.title;
     book.author = req.body.author;
     book.rating = req.body.title;

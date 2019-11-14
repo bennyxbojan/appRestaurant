@@ -5,8 +5,8 @@ const router = express.Router();
 //import data models
 const Class = require("../models/class");
 
-// RETRIEVE all classes with a optional query parameter
-router.get("/", function(req, res, next) {
+// RETRIEVE all classes with a optional query parameter (classID)
+router.get("/", function(req, res) {
   // if users did not enter a query parameter
   if (!req.query.classID) {
     Class.find({}, function(err, classes) {
