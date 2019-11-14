@@ -14,23 +14,9 @@
     <h1>
       CRUDy Student Browser
     </h1>
-    <table class="table">
-      <tbody><tr><th>Student ID</th><th>Name</th><th>Major</th><th>GPA</th><th>Classes</th></tr>
-        <% students.forEach(function(student){ %>
-        <tr>
-          <td><%= student.studentID %></td>
-          <td><%= student.name %></td>
-          <td><%= student.major %></td>
-          <td><%= student.gpa %></td>
-          <td><ol>
-      <%  student.classes.forEach(oneClass=>{ %>
-            <li><%= oneClass.name %></li>
-      <%  }) %>
-      </ol></td>
-        </tr>
-        <% }); %>
-      </tbody>
-    </table>
+    <h2>
+      Remove Successfully <a href = "/student">Check t</a>
+    </h2>
     <!-- include the Glitch button to show what the webpage is about and
 to make it easier for folks to view source and remix -->
     <div class="glitchButton" style="position:fixed;top:20px;right:20px;"></div>

@@ -43,6 +43,23 @@ router.get("/", function(req, res) {
   }
 });
 
+//DELETE a student by student ID
+router.delete("/:studentId", function(req, res) {
+  Student.findOneAndRemove({ studentID: req.params.studentId }, function(err, student) {
+    student.remove(function(err) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
+        });
+      } else {
+        res.status(204).send("remove successful")
+      }
+    });
+  });
+});
+
+
 //CREATE
 router.post("/", function(req, res, next) {
   var student = new Student(req.body);
@@ -82,16 +99,4 @@ router.put("/:studentId", function(req, res) {
   });
 });
 
-//DELETE
-router.delete("/:bookId", function(req, res) {
-  Book.findById(req.params.bookId, function(err, book) {
-    book.remove(function(err) {
-      if (err) {
-        res.status(500).send(err);
-      } else {
-        res.status(204).send("removed");
-      }
-    });
-  });
-});
 module.exports = router;
