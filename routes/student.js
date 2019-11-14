@@ -133,7 +133,7 @@ router.put("/:studentId", function(req, res) {
 });
 
 //udpate many -- delete students under a given gpa
-router.put("/udpate/:gpa", function(req, res) {
+router.delete("/delete/:gpa", function(req, res) {
   Student.deleteMany({ gpa: { $lt: req.params.gpa } }, function(err) {
     if (err) {
       res.status(400).render("error", {

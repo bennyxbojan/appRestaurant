@@ -4,7 +4,7 @@ const router = express.Router();
 
 //import data models
 const Student = require("../models/student");
-const Class = require("../models/student");
+const Class = require("../models/class");
 
 //default link redirect to index html page
 router.get("/", function(req, res) {
@@ -23,10 +23,10 @@ router.get("/list", async function(req, res) {
         status: 404
       });
     } else {
-      console.log(s);
       students = s;
     }
   });
+  
   await Class.find({}, function(err, c) {
     if (err) {
       res.status(404).render("error", {
@@ -34,7 +34,6 @@ router.get("/list", async function(req, res) {
         status: 404
       });
     } else {
-      console.log(c);
       classes = c;
     }
   });
