@@ -42,8 +42,8 @@ router.post("/", function(req, res) {
   var oneClass = new Class(req.body);
   oneClass.save(function(err) {
     if (err) {
-      res.status(401).render("error", {
-        status: 401,
+      res.status(204).render("error", {
+        status: 204,
         message: err
       });
     }
