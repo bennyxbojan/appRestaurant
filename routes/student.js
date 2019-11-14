@@ -10,8 +10,10 @@ const Class = require("../models/class");
 // RETRIEVE all students with a optional query parameter (major)
 router.get("/", function(req, res) {
   // if users did not enter a query parameter
-  if (!req.query.classID) {
-    Student.find({}, function(err, students) {
+  if (!req.query.major) {
+    Student.find({})
+      .populate("classes")
+      .exec(function(err, students) {
       if (err) {
         res.status(404).render("error", {
           message: err,
@@ -25,7 +27,9 @@ router.get("/", function(req, res) {
   }
   //if users did
   else {
-    Student.find({ major: req.query.major }, function(err, students) {
+    Student.find({major: req.query.major})
+      .populate("classes")
+      .exec(function(err, students) {
       if (err) {
         res.status(404).render("error", {
           message: err,
