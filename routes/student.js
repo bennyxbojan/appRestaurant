@@ -80,18 +80,18 @@ router.post("/", function(req, res, next) {
   console.log(student);
   student.save(function(err, student) {
     if (err) {
-      res.status(401).render("error", {
+      res.status(500).render("error", {
         message: err,
-        status: 401
+        status: 500
       });
     }
     Student.find({ studentID: student.studentID })
       .populate("classes")
       .exec(function(err, student) {
         if (err) {
-          res.status(401).render("error", {
+          res.status(404).render("error", {
             message: err,
-            status: 401
+            status: 404
           });
         }
         res.status(201).render("students", {
@@ -119,9 +119,9 @@ router.put("/:studentId", function(req, res) {
           .populate("classes")
           .exec(function(err, students) {
             if (err) {
-              res.status(401).render("error", {
+              res.status(404).render("error", {
                 message: err,
-                status: 401
+                status: 404
               });
             }
             res.render("students", {
@@ -133,15 +133,28 @@ router.put("/:studentId", function(req, res) {
   );
 });
 
-//udpate many -- update a major name together
-router.put("/udpate/:major", function(req, res) {
-  Student.updateMany( {major: req.params.major },
-      { $set: { "major" : false } }, function(err) {
+//udpate many -- delete students under a given gpa
+router.put("/udpate/:gpa", function(req, res) {
+  Student.deleteMany({ gpa: { $lt: req.params.gpa } }, function(err) {
     if (err) {
-      res.status(401).render("error", {
+      res.status(400).render("error", {
         message: err,
-        status: 401
+        status: 400
       });
+    } else {
+      Student.find({})
+        .populate("classes")
+        .exec(function(err, students) {
+          if (err) {
+            res.status(404).render("error", {
+              message: err,
+              status: 404
+            });
+          }
+          res.render("students", {
+            students: students
+          });
+        });
     }
   });
 });
