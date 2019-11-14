@@ -50,13 +50,13 @@ router.delete("/:studentId", function(req, res) {
   ) {
     student.remove(function(err) {
       if (err) {
-        res.status(404).render("error", {
+        res.status(500).render("error", {
           message: err,
-          status: 404
+          status: 500
         });
       } else {
         //print all student records ==> confirm the record is del
-        Student.find({ major: req.query.major })
+        Student.find({})
           .populate("classes")
           .exec(function(err, students) {
             if (err) {
@@ -87,16 +87,15 @@ router.post("/", function(req, res, next) {
     }
     Student.find({ studentID: student.studentID })
       .populate("classes")
-      .exec(function(err, s) {
-        console.log(s);
+      .exec(function(err, student) {
         if (err) {
           res.status(401).render("error", {
             message: err,
             status: 401
           });
         }
-        res.status(201).render("student", {
-          student: s
+        res.status(201).render("students", {
+          students: student
         });
       });
   });
@@ -104,13 +103,34 @@ router.post("/", function(req, res, next) {
 
 //UPDATE
 router.put("/:studentId", function(req, res) {
-  Student.find(req.params.studentId, function(err, book) {
-    book.title = req.body.title;
-    book.author = req.body.author;
-    book.rating = req.body.title;
-    book.save();
-    res.json(book);
-  });
+  var updated = req.body;
+  Student.findOneAndUpdate(
+    { studentID: req.params.studentId },
+    req.body,
+    function(err, student) {
+      if (err) {
+        res.status(500).render("error", {
+          message: err,
+          status: 500
+        });
+      } else {
+        //print this student's records ==> confirm the record is updated
+        Student.find({ studentID: student.studentID })
+          .populate("classes")
+          .exec(function(err, students) {
+            if (err) {
+              res.status(401).render("error", {
+                message: err,
+                status: 401
+              });
+            }
+            res.render("students", {
+              students: students
+            });
+          });
+      }
+    }
+  );
 });
 
 module.exports = router;
