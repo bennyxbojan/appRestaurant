@@ -22,7 +22,11 @@
           <td><%= student.name %></td>
           <td><%= student.major %></td>
           <td><%= student.gpa %></td>
-          <td><%= student.classes.name %></td>
+          <td><ol>
+      <%  student.classes.forEach(oneClass=>{ %>
+            <li><%= oneClass.name %></li>
+      <%  }) %>
+      </ol></td>
         </tr>
         <% }); %>
       </tbody>

@@ -11,7 +11,7 @@ const Class = require("../models/class");
 router.get("/", function(req, res) {
   // if users did not enter a query parameter
   if (!req.query.classID) {
-    Class.find({}, function(err, students) {
+    Student.find({}, function(err, students) {
       if (err) {
         res.status(404).render("error", {
           message: err,
@@ -25,7 +25,7 @@ router.get("/", function(req, res) {
   }
   //if users did
   else {
-    Class.find({ major: req.query.major }, function(err, students) {
+    Student.find({ major: req.query.major }, function(err, students) {
       if (err) {
         res.status(404).render("error", {
           message: err,
