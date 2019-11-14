@@ -133,9 +133,17 @@ router.put("/:studentId", function(req, res) {
   );
 });
 
-
 //udpate many -- update a major name together
-
-
+router.put("/udpate/:major", function(req, res) {
+  Student.updateMany( {major: req.params.major },
+      { $set: { "major" : false } }, function(err) {
+    if (err) {
+      res.status(401).render("error", {
+        message: err,
+        status: 401
+      });
+    }
+  });
+});
 
 module.exports = router;
