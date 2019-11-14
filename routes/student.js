@@ -52,7 +52,10 @@ router.post("/", function(req, res, next) {
       .populate("classes")
       .exec(function(err, student) {
         if (err) {
-          return next(err);
+          res.status(401).render("error", {
+            message: err,
+            status: 401
+          });
         }
         res.status(201).render("student", {
           student: student

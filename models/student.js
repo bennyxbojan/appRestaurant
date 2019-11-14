@@ -8,28 +8,17 @@ const studentSchema = new Schema({
     required: true,
     unique: true,
     autoIndex: false,
-    trim: true,
-    validate: {
-      validator: function(v) {
-        return /\d{,7}/.test(v);
-      },
-      message: props => `${props.value} is not a valid student ID!`
-    },
+    trim: true
   },
   name: { type: String, required: true, trim: true },
   major: { type: String, required: true, trim: true },
   gpa: {
     type: Number,
     trim: true,
-    validate: {
-      validator: function(v) {
-        return /^[0-4]\.\d\d$/.test(v);
-      },
-      message: props => `${props.value} is not a valid GPA number!`
-    },
-    required: true
+    min: [0, "GPA number cannot be lower than 0"],
+    max: [4, "GPA number cannot be higher than 4"]
   },
-  classes: {
+  classes: [{
     trim: true,
     type: mongoose.Schema.Types.ObjectId,
     required: true,
