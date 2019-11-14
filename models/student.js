@@ -13,7 +13,7 @@ const studentSchema = new Schema({
       validator: function(v) {
         return /\d{,7}/.test(v);
       },
-      message: props => `${props.value} is not a valid GPA number!`
+      message: props => `${props.value} is not a valid student ID!`
     },
   },
   name: { type: String, required: true, trim: true },
