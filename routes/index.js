@@ -23,6 +23,7 @@ router.get("/list", async function(req, res) {
         status: 404
       });
     } else {
+      console.log(s);
       students = s;
     }
   });
@@ -33,13 +34,13 @@ router.get("/list", async function(req, res) {
         status: 404
       });
     } else {
+      console.log(c);
       classes = c;
-
-      res.status(200).render("list", {
-        students: students,
-        classes: classes
-      });
     }
+  });
+  res.status(200).render("list", {
+    students: students,
+    classes: classes
   });
 });
 
