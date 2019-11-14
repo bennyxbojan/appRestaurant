@@ -43,8 +43,8 @@ app.set("view engine", "ejs")
 app.set("views", __dirname + "/views/");
 
 // Load routes
-const studentRouter = require("./routes/student");
 const indexRouter = require("./routes/index");
+const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
 
 app.use("/", indexRouter);

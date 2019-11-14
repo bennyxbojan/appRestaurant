@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hello, world!</title>
+  </head>
+<body>
+  <h1>
+    JSON Resources Display
+  </h1>
+    <table>
+      <thead>Students Data</thead>
+      <tr>
+        <th>Student ID</th>
+        <th>Student Name</th>
+        <th>Student Major</th>
+        <th>Student GPA</th>
+        <th>Student classes</th>
+      </tr>
+    <%  students.forEach(student=>{ %>
+
+      <tr>
+        <td><%=student.id %></td>
+        <td><%=student.name%></td>
+        <td><%=student.major%></td>
+        <td><%=student.gpa%></td>
+        <td><%=student.classes%></td>
+        
+      </tr>
+    <%  }) %>
+    </table>  
+      <table>
+      <thead>Classes Data</thead>
+      <tr>
+        <th>Class ID</th>
+        <th>Class Name</th>
+
+      </tr>
+    <%  classes.forEach(oneclass=>{ %>
+
+      <tr>
+        <td><%=oneclass.id %></td>
+        <td><%=oneclass.name%></td>
+      </tr>
+    <%  }) %>
+    </table> 
+</body>
+</html>

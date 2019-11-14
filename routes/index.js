@@ -5,11 +5,9 @@ const router = express.Router()
 //import data models
 const Student = require("../models/student");
 
-// RETRIEVE all students
-router.get("/", function(req,res){
-  Student.find({}, function (err, student_list){
-    res.render("students", {students:student_list});
-  });
+//default link redirect to index html page
+router.get("/", function(req, res) {
+  res.status(200).render("index.html");
 });
 
 module.exports = router;

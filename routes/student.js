@@ -133,4 +133,12 @@ router.put("/:studentId", function(req, res) {
   );
 });
 
+
+//update all -- update a major name
+router.put("/update/", function{
+           
+           })
+
+
+
 module.exports = router;
