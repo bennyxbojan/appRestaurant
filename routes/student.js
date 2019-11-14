@@ -42,6 +42,43 @@ router.get("/", function(req, res) {
   }
 });
 
+// RETRIEVE a student by ID
+router.get("/:studentID", function(req, res) {
+  Student.findById(req.params.studentID)
+    .populate("classes")
+    .exec(function(err, students) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
+        });
+      } else {
+        res.render("students", {
+          students: [students]
+        });
+      }
+    });
+});
+
+// RETRIEVE courses of one target students
+router.get("/:studentID", function(req, res) {
+  Student.findById(req.params.studentID)
+    .populate("classes")
+    .exec(function(err, students) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
+        });
+      } else {
+        res.render("students", {
+          students: [students]
+        });
+      }
+    });
+});
+
+
 //DELETE a student by student ID
 router.delete("/:studentId", function(req, res) {
   Student.findOneAndRemove({ studentID: req.params.studentId }, function(
