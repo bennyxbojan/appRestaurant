@@ -77,7 +77,6 @@ router.delete("/:studentId", function(req, res) {
 //CREATE
 router.post("/", function(req, res, next) {
   var student = new Student(req.body);
-  console.log(student);
   student.save(function(err, student) {
     if (err) {
       res.status(500).render("error", {
