@@ -7,7 +7,7 @@ const Student = require("../models/student");
 
 //default link redirect to index html page
 router.get("/", function(req, res) {
-  res.status(200).render("index.html");
+  res.status(200).render("../public/index.html");
 });
 
 module.exports = router;

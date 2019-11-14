@@ -134,10 +134,7 @@ router.put("/:studentId", function(req, res) {
 });
 
 
-//update all -- update a major name
-router.put("/update/", function{
-           
-           })
+//udpate many -- update a major name together
 
 
 

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello, world!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- import the webpage's stylesheet -->
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1>
+      This is my API documentation page
+    </h1>
+    <h3>
+      Base URL: https://infsci2560-project3a-feq6.glitch.me/
+    </h3>
+    <table>
+      <th>
+        Endpoints
+      </th>
+      <th>
+        HTTP method
+      </th>
+      <th>
+        Description
+      </th>
+      <th>
+        Parameters
+      </th>
+      <th>
+        Payloads
+      </th>
+      <th>
+        Status Code
+      </th>
+      <tr>
+        <td colspan="6"><strong>/students</strong></td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>GET</td>
+        <td>Show all students information</td>
+        <td>/</td>
+        <td>/</td>
+        <td>200: Success</td>
+      </tr>
+      <tr>
+        <td>/:id</td>
+        <td>GET</td>
+        <td>Show student information by ID</td>
+        <td>id</td>
+        <td>id number from 1-6</td>
+        <td>200: Success; 404: Not Found</td>
+      </tr>
+      <tr>
+        <td>?major =</td>
+        <td>GET</td>
+        <td>Show student information filter by major</td>
+        <td>major name</td>
+        <td>
+          Major name, including IS, Biology, Psychology, Chemistry, Literacture
+          (Case Sensitive)
+        </td>
+        <td>200: Success; 404: Not Found</td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>Post</td>
+        <td>Add a new student Record</td>
+        <td>Student information including id, name, major, gpa and classes</td>
+        <td>
+          Json. For example: { "id": 7, "name": "Usodesu", "gpa": 2.80, "major":
+          "IS", "classes": ["22","25"] }
+        </td>
+        <td>
+          200: Success; 400: Bad Request for missing or invalid information
+          input
+        </td>
+      </tr>
+      <tr>
+        <td>/:id</td>
+        <td>Put</td>
+        <td>Update a student information by id</td>
+        <td>
+          Student information including name, major, gpa and classes. Not all
+          fields are required.
+        </td>
+        <td>
+          Json. For example: { "name": "Usodesu", "gpa": 2.80, "classes":
+          ["22","25"] }
+        </td>
+        <td>200: Success; 400: Bad Request for invalid information input</td>
+      </tr>
+      <tr>
+        <td>/:id</td>
+        <td>DELETE</td>
+        <td>Delete a student by ID</td>
+        <td>id</td>
+        <td>id number from 1-6</td>
+        <td>200: Success; 404: Not Found</td>
+      </tr>
+
+      <tr>
+        <td colspan="6"><strong>/classes</strong></td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>GET</td>
+        <td>Show all classes information</td>
+        <td>/</td>
+        <td>/</td>
+        <td>200: Success</td>
+      </tr>
+      <tr>
+        <td>/:id</td>
+        <td>GET</td>
+        <td>Show class information by ID</td>
+        <td>id</td>
+        <td>id number from 21-26</td>
+        <td>200: Success; 404: Not Found</td>
+      </tr>
+      <tr>
+        <td>?id =</td>
+        <td>GET</td>
+        <td>
+          Show student information filter by id (an alternate of the above
+          approach)
+        </td>
+        <td>id</td>
+        <td>id number from 21-26</td>
+        <td>200: Success; 404: Not Found</td>
+      </tr>
+      <tr>
+        <td colspan="6"><strong>/list</strong></td>
+      </tr>
+      <tr>
+        <td>/</td>
+        <td>GET</td>
+        <td>Show all Json resources</td>
+        <td>/</td>
+        <td>/</td>
+        <td>200: Success</td>
+      </tr>
+    </table>
+  </body>
+</html>

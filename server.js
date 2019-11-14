@@ -41,6 +41,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // set the view engine
 app.set("view engine", "ejs")
 app.set("views", __dirname + "/views/");
+app.engine("html", require("ejs").renderFile);
+
+app.use(express.static("public"));
 
 // Load routes
 const indexRouter = require("./routes/index");
