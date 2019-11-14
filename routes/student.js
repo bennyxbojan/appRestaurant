@@ -6,7 +6,6 @@ const router = express.Router();
 const Student = require("../models/student");
 const Class = require("../models/class");
 
-
 // RETRIEVE all students with a optional query parameter (major)
 router.get("/", function(req, res) {
   // if users did not enter a query parameter
@@ -14,38 +13,41 @@ router.get("/", function(req, res) {
     Student.find({})
       .populate("classes")
       .exec(function(err, students) {
-      if (err) {
-        res.status(404).render("error", {
-          message: err,
-          status: 404
+        if (err) {
+          res.status(404).render("error", {
+            message: err,
+            status: 404
+          });
+        }
+        res.status(200).render("students", {
+          students: students
         });
-      }
-      res.status(200).render("students", {
-        students: students
       });
-    });
   }
   //if users did
   else {
-    Student.find({major: req.query.major})
+    Student.find({ major: req.query.major })
       .populate("classes")
       .exec(function(err, students) {
-      if (err) {
-        res.status(404).render("error", {
-          message: err,
-          status: 404
+        if (err) {
+          res.status(404).render("error", {
+            message: err,
+            status: 404
+          });
+        }
+        res.render("students", {
+          students: students
         });
-      }
-      res.render("students", {
-        students: students
       });
-    });
   }
 });
 
 //DELETE a student by student ID
 router.delete("/:studentId", function(req, res) {
-  Student.findOneAndRemove({ studentID: req.params.studentId }, function(err, student) {
+  Student.findOneAndRemove({ studentID: req.params.studentId }, function(
+    err,
+    student
+  ) {
     student.remove(function(err) {
       if (err) {
         res.status(404).render("error", {
@@ -53,12 +55,24 @@ router.delete("/:studentId", function(req, res) {
           status: 404
         });
       } else {
-        res.status(204).send("remove successful")
+        //print all student records ==> confirm the record is del
+        Student.find({ major: req.query.major })
+          .populate("classes")
+          .exec(function(err, students) {
+            if (err) {
+              res.status(404).render("error", {
+                message: err,
+                status: 404
+              });
+            }
+            res.render("students", {
+              students: students
+            });
+          });
       }
     });
   });
 });
-
 
 //CREATE
 router.post("/", function(req, res, next) {
@@ -74,7 +88,7 @@ router.post("/", function(req, res, next) {
     Student.find({ studentID: student.studentID })
       .populate("classes")
       .exec(function(err, s) {
-      console.log(s);
+        console.log(s);
         if (err) {
           res.status(401).render("error", {
             message: err,

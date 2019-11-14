@@ -3,6 +3,7 @@
 // init project
 const express = require('express');
 const mongoose = require('mongoose');
+mongoose.set('useFindAndModify', false);
 const bodyParser = require('body-parser');
 
 // Establish a connection with the Mongo Database
