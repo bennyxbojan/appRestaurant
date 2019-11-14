@@ -50,31 +50,9 @@ const indexRouter = require("./routes/index");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
 
-//get all database record
-app.get("/list", async function(req, res) {
-  let fashions;
-  let tags;
-  
-  await fashionItem.find({}, function(err,fashionList){
-    fashions = fashionList;
-  });
-  await fashionTags.find({},function(err,tagList){
-    console.log(tagList);
-    tags = tagList;
-  });
-  res.render("list",{
-    fashions:fashions,
-    tags:tags
-  });
-});
-
-
 app.use("/", indexRouter);
 app.use("/student", studentRouter);
 app.use("/class", classRouter);
-
-
-
 
 
 // listen for requests :)
