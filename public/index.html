@@ -20,38 +20,47 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-2"></div>
-      <div class="col-6" name= "signup">
+      <div class="col"></div>
+      <div class="col-5" name= "signup">
         <div class="form">
-          <form id="myForm" method="post">
-            <fieldset>
-            <legend>Sign Up</legend>
-            <label><span>Name:</span></label><input id="name" type="text" name="name" placeholder="Enter Student Name" /> 
-            <label><span>Email Address:</span></label><input id="email" type="text" name="email" placeholder="Enter Student Email Address" />
-            <label><span>Password:</span></label><input id="phone" type = "password" name="phone" placeholder="Enter a password" />   
-            <label><span>Re-enter Password</span></label><input id="classname" type="password" name="classname" placeholder="Enter Class Name" />
+          <form id="login" method="post">
+
+              <h2>Sign In</h2>
+            <label><span>Username:</span></label><input type="text" name="email" placeholder="Username" />
+            <label><span>Password:</span></label><input type = "password" name="phone" placeholder="Password" />   
             <p>
-              <input type="submit" class="button" value="Submit" /></p>
-            </fieldset>
+              <input type="submit" class="button" value="Log In" /></p>
           </form>
       </div>
       </div>
-      <div class="col-2"></div>
-      <div class="col-6" name= "signup">
+
+      <div class="col-5" name= "signup">
         <div class="form">
-          <form id="myForm" method="post">
-            <fieldset>
-            <legend>Sign Up</legend>
-            <label><span>Name:</span></label><input id="name" type="text" name="name" placeholder="Enter Student Name" /> 
-            <label><span>Email Address:</span></label><input id="email" type="text" name="email" placeholder="Enter Student Email Address" />
-            <label><span>Password:</span></label><input id="phone" type = "password" name="phone" placeholder="Enter a password" />   
-            <label><span>Re-enter Password</span></label><input id="classname" type="password" name="classname" placeholder="Enter Class Name" />
+          <form id="register" method="post">
+            <h2>Sign Up</h2>
+            <label><span>Username:</span></label><input type="text" name="name" placeholder="Username" /> 
+            <label><span>Email Address:</span></label><input type="text" name="email" placeholder="Email Address" />
+            <label><span>Password:</span></label><input type = "password" name="password" placeholder="Password" />   
+            <label><span>Re-enter Password</span></label><input  type="password" name="passwordRe" placeholder="Confirm Password" />
             <p>
-              <input type="submit" class="button" value="Submit" /></p>
-            </fieldset>
+              <input type="submit" class="button" value="Register" /></p>
           </form>
       </div>
       </div>
+            <div class="col"></div>
     </div>
   </body>
+  
+  <script type="text/javascript">
+		var passWordField = document.getElementById('password')
+		var passWordConfirmField = document.getElementById('password_conf')
+		var form = document.getElementById('login')
+		function validateMyForm(){
+			if(passWordField.value != passWordConfirmField.value){ 
+		    	alert("Passwords do not match. Please try again.");
+		  	} else {
+		  		form.submit()
+		  	}
+		}
+	</script>	
 </html>
