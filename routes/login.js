@@ -39,10 +39,10 @@ router.post('/', function (req, res, next) {
       }
     });
 
-  } else if (req.body.logemail && req.body.logpassword) {
-    User.authenticate(req.body.logemail, req.body.logpassword, function (error, user) {
+  } else if (req.body.logusername && req.body.logpassword) {
+    User.authenticate(req.body.logusername, req.body.logpassword, function (error, user) {
       if (error || !user) {
-        var err = new Error('Wrong email or password.');
+        var err = new Error('Wrong username or password.');
         err.status = 401;
         return next(err);
       } else {
