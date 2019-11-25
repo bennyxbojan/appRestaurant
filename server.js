@@ -5,6 +5,10 @@ const express = require('express');
 const mongoose = require('mongoose');
 mongoose.set('useFindAndModify', false);
 const bodyParser = require('body-parser');
+const session = require('express-session');
+var MongoStore = require('connect-mongo')(session);
+
+const app = express();
 
 // Establish a connection with the Mongo Database
 // Get the username, password, host, and databse from the .env file
@@ -33,8 +37,19 @@ mongoose.connection.on('disconnected', function (){
   console.log('Mongoose disconnected.');
 });
 
+
+//use sessions for tracking logins
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection
+  })
+}));
+
 //start express 
-const app = express();
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -46,14 +61,15 @@ app.engine("html", require("ejs").renderFile);
 app.use(express.static("public"));
 
 // Load routes
-const indexRouter = require("./routes/index");
+const indexRouter = require("./routes/login");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
+//const loginRouter = require("./routes/login");
 
 app.use("/", indexRouter);
 app.use("/student", studentRouter);
 app.use("/class", classRouter);
-
+//app.use("/",loginRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
