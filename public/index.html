@@ -8,168 +8,18 @@
     <link href="styles.css" rel="stylesheet" type="text/css"/>
   </head>
   <body>
-    <h1>
-      This is my API documentation page
-    </h1>
-    <h3>
-      Base URL: https://infsci2560-project3b-feq6.glitch.me/
-    </h3>
-    <table>
-      <th>
-        Endpoints
-      </th>
-      <th>
-        HTTP method
-      </th>
-      <th>
-        Description
-      </th>
-      <th>
-        Parameters
-      </th>
-      <th>
-        Payloads
-      </th>
-      <th>
-        Status Code
-      </th>
-      <tr>
-        <td colspan="6"><strong>/student</strong></td>
-      </tr>
-      <tr>
-        <td>/</td>
-        <td>GET</td>
-        <td>Show all students information</td>
-        <td>/</td>
-        <td>https://infsci2560-project3b-feq6.glitch.me/student</td>
-        <td>200: Success</td>
-      </tr>
-      <tr>
-        <td>/:id</td>
-        <td>GET</td>
-        <td>Show student information by ID</td>
-        <td>id</td>
-        <td>e.g. https://infsci2560-project3b-feq6.glitch.me/student/5dccacc698225c54667d9eae</td>
-        <td>200: Success; 404: Not Found</td>
-      </tr>
-      <tr>
-        <td>?major =</td>
-        <td>GET</td>
-        <td>Show student information filter by major</td>
-        <td>major name</td>
-        <td>
-          e.g. https://infsci2560-project3b-feq6.glitch.me/student?major=Psychology
-        </td>
-        <td>200: Success; 404: Not Found</td>
-      </tr>
-      <tr>
-        <td>/:id/classes</td>
-        <td>GET</td>
-        <td>Show classes of a given student</td>
-        <td>id</td>
-        <td>e.g. https://infsci2560-project3b-feq6.glitch.me/student/5dccacc698225c54667d9eae/classes</td>
-        <td>200: Success; 404: Not Found</td>
-      </tr>
-      <tr>
-        <td>/</td>
-        <td>Post</td>
-        <td>Add a new student record</td>
-        <td>Student information including id, name, major, gpa and classes</td>
-        <td>
-          Json. 
-          e.g.    <br />
-    {"studentID":1987362,<br />
-    "name": "Alan Walker",<br />
-    "major":"Geology",<br />
-    "gpa": 3.5,<br />
-    "classes": ["5dcca040e3ad8b41fb8e29ae","5dccd4041c9d4400000c20d1"]}
-        </td>
-        <td>
-          201: Created; 404: Not Found; 204: No Content
-        </td>
-      </tr>
-      <tr>
-        <td>/:id</td>
-        <td>Put</td>
-        <td>Update a student information by id</td>
-        <td>
-          Student information including name, major, gpa and classes. Not all
-          fields are required.
-        </td>
-        <td>
-          https://infsci2560-project3b-feq6.glitch.me/student/1987362
-          Json. e.g.<br />
-            {
-    "name": "Alan Walker",<br />
-    "major":"Geology",<br />
-    "gpa": 1.5,<br />
-    "classes": ["5dcca040e3ad8b41fb8e29ae","5dccd4041c9d4400000c20d1"]}
-        </td>
-        <td>200: Success; 404: Not Found; 204: No Content</td>
-      </tr>
-      <tr>
-        <td>/:id</td>
-        <td>DELETE</td>
-        <td>Delete a student by ID</td>
-        <td>id</td>
-        <td>e.g. https://infsci2560-project3b-feq6.glitch.me/student/1987362</td>
-        <td>200: Success; 404: Not Found; 204: No Content</td>
-      </tr>
-      <tr>
-        <td>/delete/gpa</td>
-        <td>DELETE MANY</td>
-        <td>Delete students whoever has a gpa below the target value</td>
-        <td>gpa</td>
-        <td>e.g. https://infsci2560-project3b-feq6.glitch.me/student/delete/3</td>
-        <td>200: Success; 404: Not Found; 204: No Content</td>
-      </tr>
-
-      <tr>
-        <td colspan="6"><strong>/class</strong></td>
-      </tr>
-      <tr>
-        <td>/</td>
-        <td>GET</td>
-        <td>Show all classes information</td>
-        <td>/</td>
-        <td>https://infsci2560-project3b-feq6.glitch.me/class</td>
-        <td>200: Success</td>
-      </tr>
-      <tr>
-        <td>?classID =</td>
-        <td>GET</td>
-        <td>
-          Show student information filter by classID
-        </td>
-        <td>id</td>
-        <td>https://infsci2560-project3b-feq6.glitch.me/class?classID=PSY2135</td>
-        <td>200: Success; 404: Not Found</td>
-      </tr>
-        <tr>
-        <td>/</td>
-        <td>POST</td>
-        <td>
-          Add a new class record
-        </td>
-        <td>id</td>
-        <td>JSON e.g. <br />
-            {
-    "classID":"INFSCI2500",<br />
-    "name":"Human Information Processing"
-  }</td>
-        <td>201: Created; 204: No Content</td>
-      </tr>
-      <tr>
-        <td colspan="6"><strong>/list</strong></td>
-      </tr>
-      <tr>
-        <td>/</td>
-        <td>GET</td>
-        <td>Show all Json resources</td>
-        <td>/</td>
-        <td>https://infsci2560-project3b-feq6.glitch.me/list</td>
-        <td>200: Success</td>
-      </tr>
-    </table>
+    <div class="form">
+      <form id="myForm" method="post">
+        <fieldset>
+        <legend>Sign Up</legend>
+        <label><span>Name:</span></label><input id="name" type="text" name="name" /> 
+        <label><span>Email Address:</span></label><input id="email" type="text" name="email" />
+        <label><span>Password:</span></label><input id="phone" type = "password" name="password" />   
+        <label><span>Re-enter Password</span></label><input id="classname" type="password" name="password2" />
+        <p>
+          <input type="submit" class="button" value="Register" /></p>
+        </fieldset>
+      </form>
+  </div>
   </body>
 </html>
