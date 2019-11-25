@@ -5,70 +5,32 @@
     <title>Hello, world!</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!-- import the webpage's stylesheet -->
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<!-- Custom Theme files -->
-  <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
+    
+    <link href="styles.css" rel="stylesheet" type="text/css"/>
+    
+    <!-- import Bootstrap CSS -->
 
-</head>
-<body>
-	<h1>Test Authentication </h1>
-	<!-- main -->
-	<div class="main">
-		<!--login-profile-->
-		
-		<!--login-profile-->
-		<!--signin-form-->
-		<div class="w3">
-			<div class="signin-form profile">
-				<h3>Login</h3>
-				
-				<div class="login-form">
-					<form action="/" method="post">
-						<input type="text" name="logemail" placeholder="E-mail" required="">
-						<input type="password" name="logpassword" placeholder="Password" required="">
-						<div class="tp">
-							<input type="submit" value="LOGIN NOW">
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-		<div class="agile">
-			<div class="signin-form profile">
-				<h3>Register</h3>
-				
-				<div class="login-form">
-					<form id="login" action="/" method="post" onsubmit="event.preventDefault(); validateMyForm();">
-						<fieldset>
-        <legend>Sign Up:</legend>
-        <label><span>Student Name:</span></label><input id="name" type="text" name="name" placeholder="Enter Student Name" /> 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+  </head>
+  <body>
+    <div class="form">
+      <form id="myForm" method="post">
+        <fieldset>
+        <legend>Sign Up</legend>
+        <label><span>Name:</span></label><input id="name" type="text" name="name" placeholder="Enter Student Name" /> 
         <label><span>Email Address:</span></label><input id="email" type="text" name="email" placeholder="Enter Student Email Address" />
-        <label><span>Phone Number:</span></label><input id="phone" type = "text" name="phone" placeholder="Enter Student Phone Number" />   
-        <label><span>Class Name:</span></label><input id="classname" type="text" name="classname" placeholder="Enter Class Name" />
+        <label><span>Password:</span></label><input id="phone" type = "password" name="phone" placeholder="Enter a password" />   
+        <label><span>Re-enter Password</span></label><input id="classname" type="password" name="classname" placeholder="Enter Class Name" />
         <p>
           <input type="submit" class="button" value="Submit" /></p>
         </fieldset>
-					</form>
-				</div>
-				<p><a href="#"> By clicking register, I agree to your terms</a></p>
-			</div>
-		</div>
-		<div class="clear"></div>
-		<!--//signin-form-->	
-	</div>
-  
-	<script type="text/javascript">
-		var passWordField = document.getElementById('password')
-		var passWordConfirmField = document.getElementById('password_conf')
-		var form = document.getElementById('login')
-		function validateMyForm(){
-			if(passWordField.value != passWordConfirmField.value){ 
-		    	alert("Passwords do not match. Please try again.");
-		  	} else {
-		  		form.submit()
-		  	}
-		}
-	</script>	
-
-</body>
+      </form>
+  </div>
+  </body>
 </html>
