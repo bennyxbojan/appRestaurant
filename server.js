@@ -61,12 +61,12 @@ app.engine("html", require("ejs").renderFile);
 app.use(express.static("public"));
 
 // Load routes
-const indexRouter = require("./routes/login");
+const loginRouter = require("./routes/login");
 const studentRouter = require("./routes/student");
 const classRouter = require("./routes/class");
 //const loginRouter = require("./routes/login");
 
-app.use("/", indexRouter);
+app.use("/login", loginRouter);
 app.use("/student", studentRouter);
 app.use("/class", classRouter);
 //app.use("/",loginRouter);

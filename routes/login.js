@@ -5,7 +5,7 @@ var User = require('../models/user');
 
 // GET route for reading data
 router.get('/', function (req, res, next) {
-  res.status(200).render("../public/index.html");
+  res.status(200).render("../public/login.html");
 });
 
 

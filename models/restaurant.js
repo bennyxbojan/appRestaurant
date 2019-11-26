@@ -15,7 +15,7 @@ var restaurantSchema = new Schema({
   zip: {
     type: String,
     required: true,
-    match: "d{5}(-d{4})?",
+    match: "[0-9]{5}(-[0-9]{4})?",
     trim: true
   },
   cuisine: {
@@ -24,25 +24,39 @@ var restaurantSchema = new Schema({
   },
   price: {
     type: Number,
-    min: [1,"Please enter a price level between 1 and 5"],
-    max: [5,"Please enter a price level between 1 and 5"]
+    min: [1, "Please enter a price level between 1 and 5"],
+    max: [5, "Please enter a price level between 1 and 5"]
   },
   opendays: {
     type: [String],
     required: true,
     trim: true
   },
-  tables: [{
-    time:{
-      type:String,
-      match:"d{2}",
-      required:true,
-      trim:true
-    },
-    
-  }]
+  tables: [
+    {
+      _id: {
+        type: Number,
+        required: true,
+        unique: true,
+        autoIndex: false
+      },
+      time: {
+        type: String,
+        match: "[0-9]{1,2}[AP]M",
+        required: true,
+        trim: true
+      },
+      taken: {
+        type: Boolean,
+        required: true
+      },
+      size: {
+        type: Number,
+        required: true
+      }
+    }
+  ]
 });
-  
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);
