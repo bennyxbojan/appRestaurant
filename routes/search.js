@@ -10,6 +10,10 @@ router.get("/", function(req, res, next) {
     var taken = false;
     
     
+    var query = Restaurant.find({});
+    query.where(().in(['movie', 'music', 'art']));
+    
+    
     
   }else{
     var err = new Error("All fields required.");
