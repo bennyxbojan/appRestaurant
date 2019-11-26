@@ -28,10 +28,9 @@ var restaurantSchema = new Schema({
     max: [5, "Please enter a price level between 1 and 5"]
   },
   opendays: [{
-    type: mongoose.Schema.Types.ObjectId,
+    type: [Number],
     required: true,
-    trim: true,
-    ref:"Week"
+    trim: true
   }],
   tables: [
     {
