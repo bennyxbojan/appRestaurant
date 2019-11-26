@@ -6,7 +6,8 @@ var UserSchema = new mongoose.Schema({
     type: String,
     unique: true,
     required: true,
-    trim: true
+    trim: true,
+    match:"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
   },
   username: {
     type: String,
@@ -17,6 +18,7 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+    minlength:6
   },
   auth:{
     type:String,
