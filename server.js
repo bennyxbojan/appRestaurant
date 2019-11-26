@@ -7,6 +7,15 @@ mongoose.set('useFindAndModify', false);
 const bodyParser = require('body-parser');
 const session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
+const cors = require('cors');
+const errorHandler = require('errorhandler');
+
+//Configure mongoose's promise to global promise
+mongoose.promise = global.Promise;
+
+//Configure isProduction variable
+const isProduction = process.env.NODE_ENV === 'production';
+
 
 //start express
 const app = express();
@@ -41,7 +50,7 @@ mongoose.connection.on('disconnected', function (){
 
 //use sessions for tracking logins
 app.use(session({
-  secret: 'work hard',
+  secret: 'final project',
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
@@ -52,6 +61,8 @@ app.use(session({
  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
+
 
 // set the view engine
 app.set("view engine", "ejs")
@@ -60,6 +71,23 @@ app.engine("html", require("ejs").renderFile);
 
 app.use(express.static("public"));
 
+
+if(!isProduction) {
+  app.use(errorHandler());
+}
+
+if(!isProduction) {
+  app.use((err, req, res) => {
+    res.status(err.status || 500);
+
+    res.json({
+      errors: {
+        message: err.message,
+        error: err,
+      },
+    });
+  });
+}
 // Load routes
 const loginRouter = require("./routes/login");
 const searchRouter = require("./routes/search");

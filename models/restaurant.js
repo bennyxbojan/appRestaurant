@@ -15,7 +15,7 @@ var restaurantSchema = new Schema({
   zip: {
     type: String,
     required: true,
-    match: /^[0-9]{5}(-[0-9]{4})?$/,
+    match: [/^[0-9]{5}(-[0-9]{4})?$/,"Please enter a valid zip code"],
     trim: true
   },
   cuisine: {
