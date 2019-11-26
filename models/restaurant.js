@@ -40,10 +40,6 @@ var restaurantSchema = new Schema({
 });
 
 var hour = new Schema({
-  
-})
-
-var table = new Schema({
   //time
   _id:{
     type: String,
@@ -52,8 +48,17 @@ var table = new Schema({
     trim:true,
     required:true
   },
-  tableID:{
+  tables:{
+    type:[table],
+    required:true
+  }
+})
+
+var table = new Schema({
+  //time
+  _id:{
     type: Number,
+    unique:true,
     autoIndex:false,
     trim:true,
     required:true
