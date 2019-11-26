@@ -8,22 +8,24 @@ router.post("/", function(req, res, next) {
     var date = new Date(req.body.date);
     var weekday = date.getDay();
 
-    console.log(weekday)
-    Restaurant.find(
-      { opendays: weekday },
-      { city: req.body.city },
-      { tables: { $elemMatch: { time: req.body.time } } },
-      { tables: { $elemMatch: { taken: false } } },
-      function(err, tables) {
-        if (err) {
-          res.status(404).render("error", {
-            message: err,
-            status: 404
-          });
-        }
-        console.log("success")
+    console.log(weekday);
+    var result = Restaurant.find({
+      opendays: weekday,
+      city: req.body.city,
+      tables: { $elemMatch: { time: req.body.time } },
+      tables: { $elemMatch: { taken: false } },
+      tables: { $elemMatch: { size: req.body.guest } }
+    });
+
+    result.exec(function(err, tables) {
+      if (err) {
+        res.status(404).render("error", {
+          message: err,
+          status: 404
+        });
       }
-    );
+      console.log("success");
+    });
   } else {
     var err = new Error("All fields required.");
     err.status = 400;
