@@ -17,9 +17,12 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
+  },
+  auth:{
+    type:String,
+    required:true
   }
 });
-
 
 //authenticate input against database
 UserSchema.statics.authenticate = function (username, password, callback) {
