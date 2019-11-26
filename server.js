@@ -62,10 +62,10 @@ app.use(express.static("public"));
 
 // Load routes
 const loginRouter = require("./routes/login");
-//const loginRouter = require("./routes/login");
+const searchRouter = require("./routes/search");
 
 app.use("/login", loginRouter);
-//app.use("/",loginRouter);
+app.use("/search",searchRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
