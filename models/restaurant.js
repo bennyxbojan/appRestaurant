@@ -24,8 +24,8 @@ var restaurantSchema = new Schema({
   },
   price: {
     type: Number,
-    min: 1,
-    max: 5
+    min: [1,"Please enter a price level between 1 and 5"],
+    max: [5,"Please enter a price level between 1 and 5"]
   },
   opendays: {
     type: [String],
@@ -33,17 +33,28 @@ var restaurantSchema = new Schema({
     trim: true
   },
   openhours: {
-    type: [Number],
-    required: true
+    type: [String],
+    required:true,
+    trim:true
   },
-  tables: [{
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: "table",
-    trim: true,
-  }]
+  tables: {
+    type: [tables],
+    required: true
+  }
   
 });
+
+var tables = new Schema({
+  people:{
+    type:Number,
+    required:true
+  },
+  taken:{
+    type:Boolean,
+    required:true
+  }
+  
+})
 
 
 // Export model
