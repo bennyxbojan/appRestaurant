@@ -14,6 +14,7 @@ const errorHandler = require('errorhandler');
 mongoose.promise = global.Promise;
 
 //Configure isProduction variable
+
 const isProduction = process.env.NODE_ENV === 'production';
 
 
@@ -76,8 +77,9 @@ if(!isProduction) {
   app.use(errorHandler());
 }
 
+//Error handlers & middlewares
 if(!isProduction) {
-  app.use((err, req, res) => {
+  app.use(function(err, req, res){
     res.status(err.status || 500);
 
     res.json({
