@@ -33,22 +33,17 @@ var restaurantSchema = new Schema({
     trim: true
   },
   openhours: {
-    type: [String],
+    type: [tables],
     required:true,
     trim:true
-  },
-  tables: {
-    type: [tables],
-    required: true
   }
   
 });
 
 var tables = new Schema({
-  time:{
-    type:mongoose.Schema.Types.ObjectId,
+  _id:{
+    type:
   },
-  
   people:{
     type:Number,
     required:true
