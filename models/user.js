@@ -21,7 +21,7 @@ var UserSchema = new mongoose.Schema({
     required: true,
     minlength:[4,"Password should be longer than 4"]
   },
-  auth:{
+  role:{
     type:String,
     required:true
   }
