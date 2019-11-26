@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var weekSchema = new Schema({
-  _id:{
+  weekNum:{
     type:Number,
     min:0,
     max:6
