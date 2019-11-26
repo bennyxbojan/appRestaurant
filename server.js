@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 
+//start express
 const app = express();
 
 // Establish a connection with the Mongo Database
@@ -48,7 +49,7 @@ app.use(session({
   })
 }));
 
-//start express 
+ 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
