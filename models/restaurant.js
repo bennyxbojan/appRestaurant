@@ -32,17 +32,31 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   },
-  openhours: {
-    type: [tables],
+  tables: {
+    type: [table],
     required:true,
     trim:true
   }
-  
 });
 
-var tables = new Schema({
+var hour = new Schema({
+  
+})
+
+var table = new Schema({
+  //time
   _id:{
-    type:
+    type: String,
+    unique:true,
+    autoIndex:false,
+    trim:true,
+    required:true
+  },
+  tableID:{
+    type: Number,
+    autoIndex:false,
+    trim:true,
+    required:true
   },
   people:{
     type:Number,
@@ -54,6 +68,7 @@ var tables = new Schema({
   }
   
 })
+
 
 
 // Export model
