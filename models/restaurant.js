@@ -32,8 +32,8 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   },
-  tables: {
-    type: [table],
+  hours: {
+    type: [hour],
     required:true,
     trim:true
   }
