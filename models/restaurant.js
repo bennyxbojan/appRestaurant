@@ -1,6 +1,7 @@
-var mongoose = require("mongoose");
+const mongoose = require("mongoose");
+const Schema = mongoose.Schema;
 
-var RestaurantSchema = new mongoose.Schema({
+var restaurantSchema = new Schema({
   name: {
     type: String,
     required: true,
@@ -35,6 +36,15 @@ var RestaurantSchema = new mongoose.Schema({
     type: [Number],
     required: true
   },
-  tables
+  tables: [{
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: "table",
+    trim: true,
+  }]
   
 });
+
+
+// Export model
+module.exports = mongoose.model("Restaurant", restaurantSchema);
