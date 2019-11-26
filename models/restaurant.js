@@ -15,7 +15,7 @@ var restaurantSchema = new Schema({
   zip: {
     type: String,
     required: true,
-    match: "^d{5}(-d{4})?$",
+    match: "d{5}(-d{4})?",
     trim: true
   },
   cuisine: {
@@ -32,49 +32,17 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   },
-  hours: {
-    type: [hour],
-    required:true,
-    trim:true
-  }
+  tables: [{
+    time:{
+      type:String,
+      match:"d{2}",
+      required:true,
+      trim:true
+    },
+    
+  }]
 });
-
-var hour = new Schema({
-  //time
-  _id:{
-    type: String,
-    unique:true,
-    autoIndex:false,
-    trim:true,
-    required:true
-  },
-  tables:{
-    type:[table],
-    required:true
-  }
-})
-
-var table = new Schema({
-  //time
-  _id:{
-    type: Number,
-    unique:true,
-    autoIndex:false,
-    trim:true,
-    required:true
-  },
-  people:{
-    type:Number,
-    required:true
-  },
-  taken:{
-    type:Boolean,
-    required:true
-  }
   
-})
-
-
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);
