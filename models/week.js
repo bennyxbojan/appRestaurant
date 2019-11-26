@@ -15,4 +15,5 @@ var weekSchema = new Schema({
 });
 
 // Export model
-module.exports = mongoose.model("weekdays", weekSchema);
+var Week = mongoose.model('Week', weekSchema);
+module.exports = Week;

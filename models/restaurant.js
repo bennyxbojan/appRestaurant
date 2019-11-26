@@ -31,7 +31,7 @@ var restaurantSchema = new Schema({
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     trim: true,
-    ref:"weekdays"
+    ref:"Week"
   }],
   tables: [
     {
