@@ -15,7 +15,7 @@ var restaurantSchema = new Schema({
   zip: {
     type: String,
     required: true,
-    match: "[0-9]{5}(-[0-9]{4})?",
+    match: /^[0-9]{5}(-[0-9]{4})?$/,
     trim: true
   },
   cuisine: {
@@ -42,7 +42,7 @@ var restaurantSchema = new Schema({
       },
       time: {
         type: String,
-        match: "[0-9]{1,2}[AP]M",
+        match: /^[0-9]{1,2}[AP]M$/,
         required: true,
         trim: true
       },

@@ -7,7 +7,7 @@ var UserSchema = new mongoose.Schema({
     unique: true,
     required: true,
     trim: true,
-    match:"^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$"
+    match:[/^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,"Please provide a valid email address"]
   },
   username: {
     type: String,
@@ -18,13 +18,14 @@ var UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    minlength:6
+    minlength:[4,"Password should be longer than 4"]
   },
   auth:{
     type:String,
     required:true
   }
 });
+
 
 //authenticate input against database
 UserSchema.statics.authenticate = function (username, password, callback) {
