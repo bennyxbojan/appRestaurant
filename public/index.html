@@ -36,15 +36,52 @@
   <body>
     <form>
       <div class="form-row">
-        <div class="col-3">
-          <input type="date" class="form-control" name = "date" value = "11/26/2019"/>
+        <div class="col">
+          <input
+            type="date"
+            class="form-control"
+            name="date"
+            value="11/26/2019"
+          />
         </div>
-        <div class="col-3">
-          <input type="number" class="form-control" name = "guest" placeholder="2" />
+        <div class="col">
+          <select class="form-control" name="time">
+            <option>9AM</option>
+            <option>10AM</option>
+            <option>11AM</option>
+            <option>12PM</option>
+            <option>1PM</option>
+            <option>2PM</option>
+            <option>3PM</option>
+            <option>4PM</option>
+            <option>5PM</option>
+            <option>6PM</option>
+            <option>7PM</option>
+            <option>8PM</option>
+            <option>9PM</option>
+            <option>10PM</option>
+            <option>11PM</option>
+            <option>12AM</option>
+          </select>
         </div>
-          <div class="col-3">
-          <input type="text" class="form-control" name = "" placeholder="2" />
+        <div class="col">
+          <i class="fa fa-user icon"></i>
+          <input
+            type="number"
+            class="form-control"
+            name="guest"
+            placeholder="2"
+          />
         </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            name="city"
+            placeholder="Pittsburgh"
+          />
+        </div>
+        <button type="submit" class="btn btn-secondary">Search</button>
       </div>
     </form>
   </body>
