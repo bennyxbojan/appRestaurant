@@ -5,12 +5,16 @@ var User = require("../models/user");
 // GET route for reading data
 router.get("/", function(req, res, next) {
   if (req.body.date && req.body.time && req.body.guest && req.body.city) {
-    var query = {
-      date: req.body.date,
-      time: req.body.time,
-      guest: req.body.guest,
-      city: req.body.city
-    };
+    var date = new Date(req.body.date);
+    var weekday = date.getDay();
+    
+    
+    
+    
+  }else{
+    var err = new Error("All fields required.");
+    err.status = 400;
+    return next(err);
   }
   
 });
