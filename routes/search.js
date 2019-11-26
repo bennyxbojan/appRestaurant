@@ -10,7 +10,6 @@ router.post("/", function(req, res, next) {
     var date = new Date(req.body.date);
     var weekday = date.getDay();
 
-    console.log(weekday);
     var result = Restaurant.find({
       opendays: weekday,
       city: req.body.city,

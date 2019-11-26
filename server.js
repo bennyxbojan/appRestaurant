@@ -10,14 +10,6 @@ var MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const errorHandler = require('errorhandler');
 
-//Configure mongoose's promise to global promise
-mongoose.promise = global.Promise;
-
-//Configure isProduction variable
-
-const isProduction = process.env.NODE_ENV === 'production';
-
-
 //start express
 const app = express();
 
@@ -59,7 +51,7 @@ app.use(session({
   })
 }));
 
- 
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
@@ -73,23 +65,6 @@ app.engine("html", require("ejs").renderFile);
 app.use(express.static("public"));
 
 
-if(!isProduction) {
-  app.use(errorHandler());
-}
-
-//Error handlers & middlewares
-if(!isProduction) {
-  app.use(function(err, req, res){
-    res.status(err.status || 500);
-
-    res.json({
-      errors: {
-        message: err.message,
-        error: err,
-      },
-    });
-  });
-}
 // Load routes
 const loginRouter = require("./routes/login");
 const searchRouter = require("./routes/search");
