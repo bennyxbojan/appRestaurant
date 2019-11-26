@@ -11,13 +11,6 @@ router.get("/", function(req, res, next) {
 
 //POST route for updating data
 router.post("/", auth.public, function(req, res, next) {
-  // confirm that user typed same password twice
-  if (req.body.password !== req.body.passwordRe) {
-    var err = new Error("Passwords do not match.");
-    err.status = 400;
-    res.send("passwords dont match");
-    return next(err);
-  }
 
   if (
     req.body.email &&
@@ -67,7 +60,7 @@ router.post("/", auth.public, function(req, res, next) {
 });
 
 // GET route after registering
-router.get("/profile", function(req, res, next) {
+router.get("/profile", auth.private, function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -89,7 +82,7 @@ router.get("/profile", function(req, res, next) {
   });
 });
 
-router.get("/admin", function(req, res, next) {
+router.get("/admin", auth.private,function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -114,7 +107,7 @@ router.get("/admin", function(req, res, next) {
 
 
 // GET for logout
-router.get("/logout", function(req, res, next) {
+router.get("/logout", auth.private, function(req, res, next) {
   if (req.session) {
     // delete session object
     req.session.destroy(function(err) {
