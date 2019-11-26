@@ -45,6 +45,10 @@ var restaurantSchema = new Schema({
 });
 
 var tables = new Schema({
+  time:{
+    type:mongoose.Schema.Types.ObjectId,
+  },
+  
   people:{
     type:Number,
     required:true
