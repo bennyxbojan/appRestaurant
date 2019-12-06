@@ -3,14 +3,13 @@
   <head>
     <meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="/index.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    
     <script
       src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -34,8 +33,24 @@
     <!--------- navigation header-------->
     <div class="banner-img">
       <a class="link-home" href="https://final-pro-yay76-feq.glitch.me/">
-        <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Flogo.png?v=1575665544457" />
+        <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Flogo.png?v=1575665544457"/>
       </a>
+      
+      <% if(loginUser == null){ %>
+        <a href="https://final-pro-yay76-feq/signin" class="signin">
+          Sign In
+        </a>  
+      <% } else { %>
+        <a href="https://final-pro-yay76-feq/api/user/logout" class="signin">
+          Log out
+        </a>  
+      <% }%>
+      
+      <% if(loginUser != null){ %>
+        <a href="https://https://final-pro-yay76-feq.glitch.me//api/user/profile/<%= loginUser._id%>"><span class="username">&nbsp;&nbsp;&nbsp;&nbsp;(<%= loginUser.username%>)</span></a>
+      <% } %>      
+    </div>
+      
       <form id="search" action = "/search" method="post">
         <div class="form-row">
           <div class="col">
