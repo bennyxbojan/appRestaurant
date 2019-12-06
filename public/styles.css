@@ -25,7 +25,9 @@ h1 {
 
 
 .banner-img{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("photographer.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
+    rgba(0, 0, 0, 0.5)), 
+    url("https://previews.123rf.com/images/rawpixel/rawpixel1507/rawpixel150704508/41940521-food-beverage-party-meal-drink-concept.jpg");
 
   /* Set a specific height */
   height: 50%;
