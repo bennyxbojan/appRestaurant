@@ -57,6 +57,7 @@ h1 {
 
 .promo {
   height: 50%;
+  display: inline-block;
 }
 .location{
   height:20%;
@@ -65,7 +66,14 @@ h1 {
   position:relative;
   height:60%;
   top:10%;
-  left:5%
+  left:5%;
+}
+.location span{
+  position:relative;
+  left:5%;
+  top:10%;
+  text-transform: uppercase;
+  font-family: "Times New Roman", Times, serif;
 }
 
 p {
