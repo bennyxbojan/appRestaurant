@@ -22,13 +22,16 @@ h1 {
 .bold {
   font-weight: bold;
 }
+
+
 .head-line{
-  background-color: #555;
-  height:5%;
+  background-color: #38351F;
+  height:8%;
 }
 .head-line img {
-  position: relative;
-  width: 5% ;}
+  position:relative;
+  height:90%;}
+
 .banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)), 
