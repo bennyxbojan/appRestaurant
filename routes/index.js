@@ -8,7 +8,8 @@ const router = express.Router();
 
 //default link redirect to index html page
 router.get("/", function(req, res) {
-  res.status(200).render("index");
+  res.status(200);
+  res.render("index");
 });
 
 //get all database record
