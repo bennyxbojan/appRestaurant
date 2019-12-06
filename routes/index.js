@@ -8,7 +8,7 @@ const Class = require("../models/class");
 
 //default link redirect to index html page
 router.get("/", function(req, res) {
-  res.status(200).render("../public/index.html");
+  res.status(200).render("index");
 });
 
 //get all database record
