@@ -38,75 +38,76 @@
   
   
   <body>
-    
-    <form id="search" action = "/search" method="post">
-      <div class="form-row">
-        <div class="input-group col">
-          <div class="input-group-prepend">
-            <div class="input-group-text">Date</div>
-          </div>
-          <input type="date" class="form-control" name="date" id="date" value="" />
-        </div>
-
-        <div class="col">
+    <div class="banner">
+      
+      <form id="search" action = "/search" method="post">
+        <div class="form-row">
           <div class="input-group col">
             <div class="input-group-prepend">
-              <div class="input-group-text">Time</div>
+              <div class="input-group-text">Date</div>
             </div>
+            <input type="date" class="form-control" name="date" id="date" value="" />
+          </div>
 
-            <select class="form-control" name="time">
-              <option>9AM</option>
-              <option>10AM</option>
-              <option>11AM</option>
-              <option>12PM</option>
-              <option>1PM</option>
-              <option>2PM</option>
-              <option>3PM</option>
-              <option>4PM</option>
-              <option>5PM</option>
-              <option>6PM</option>
-              <option>7PM</option>
-              <option selected>8PM</option>
-              <option>9PM</option>
-              <option>10PM</option>
-              <option>11PM</option>
-              <option>12AM</option>
-            </select>
-          </div>
-        </div>
-        <div class="col">
-          <div class="input-group col">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Guests</div>
-            </div>
-            <input type="number" class="form-control" name="guest" value="2" />
-          </div>
-        </div>
-        <div class="col">
-          <div class="input-group col">
-            <div class="input-group-prepend">
-              <div class="input-group-text">City</div>
-            </div>
-            <input
-              type="text"
-              class="form-control"
-              name="city"
-              value="Pittsburgh"
-            />
+          <div class="col">
+            <div class="input-group col">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Time</div>
+              </div>
 
-            <span class="input-group-append">
-              <button
-                class="btn btn-outline-secondary border-left-0 border"
-                type="submit"
-              >
-                Search
-              </button>
-            </span>
+              <select class="form-control" name="time">
+                <option>9AM</option>
+                <option>10AM</option>
+                <option>11AM</option>
+                <option>12PM</option>
+                <option>1PM</option>
+                <option>2PM</option>
+                <option>3PM</option>
+                <option>4PM</option>
+                <option>5PM</option>
+                <option>6PM</option>
+                <option>7PM</option>
+                <option selected>8PM</option>
+                <option>9PM</option>
+                <option>10PM</option>
+                <option>11PM</option>
+                <option>12AM</option>
+              </select>
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-group col">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Guests</div>
+              </div>
+              <input type="number" class="form-control" name="guest" value="2" />
+            </div>
+          </div>
+          <div class="col">
+            <div class="input-group col">
+              <div class="input-group-prepend">
+                <div class="input-group-text">City</div>
+              </div>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                value="Pittsburgh"
+              />
+
+              <span class="input-group-append">
+                <button
+                  class="btn btn-outline-secondary border-left-0 border"
+                  type="submit"
+                >
+                  Search
+                </button>
+              </span>
+            </div>
           </div>
         </div>
-      </div>
-    </form>
-  </body>
+      </form>
+    </body>
   
   <script>
     var today = new Date();
