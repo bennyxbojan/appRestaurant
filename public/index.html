@@ -41,11 +41,13 @@
     <div class="banner-img">
       <form id="search" action = "/search" method="post">
         <div class="form-row">
-          <div class="input-group col">
-            <div class="input-group-prepend">
-              <div class="input-group-text">Date</div>
+          <div class="col">
+            <div class="input-group col">
+              <div class="input-group-prepend">
+                <div class="input-group-text">Date</div>
+              </div>
+              <input type="date" class="form-control" name="date" id="date" value="" />
             </div>
-            <input type="date" class="form-control" name="date" id="date" value="" />
           </div>
 
           <div class="col">
@@ -106,7 +108,8 @@
           </div>
         </div>
       </form>
-    </body>
+    </div>
+  </body>
   
   <script>
     var today = new Date();
