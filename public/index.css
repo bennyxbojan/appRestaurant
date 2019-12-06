@@ -25,12 +25,14 @@ h1 {
 
 
 .head-line{
-  background-color: #38351F;
+  background-color: #34332D;
   height:8%;
 }
 .head-line img {
   position:relative;
-  height:90%;}
+  height:90%;
+  left: 47%;
+}
 
 .banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
@@ -39,18 +41,22 @@ h1 {
 
   /* Set a specific height */
   height: 50%;
-
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   position: relative;
 }
-
-.banner .col{
-  top: 100%;
-  text-align: center;
+.form-row
+{
+  
   position:relative;
+}
+.col{
+  
+  
+  text-align: center;
+  
 }
 
 p {
