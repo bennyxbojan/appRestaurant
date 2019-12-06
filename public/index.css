@@ -42,7 +42,7 @@ h1 {
     url("https://p2.ifengimg.com/2019_23/D19AD008B62FB2E735DD49FB609DA51C4F53C6DC_w640_h353.gif");
 
   /* Set a specific height */
-  height: 30%;
+  height: 50%;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
   background-repeat: no-repeat;
@@ -57,14 +57,15 @@ h1 {
 
 .promo {
   height: 50%;
-  width: 100%;
 }
-.promo img{
+.location{
+  height:20%;
+}
+.location img{
   position:relative;
-  height:10%;
-  top:5%;
-  left: 47%;
-  
+  height:60%;
+  top:10%;
+  left:5%
 }
 
 p {
