@@ -71,7 +71,6 @@ const searchRouter = require("./routes/search");
 const indexRouter = require("./routes/index.js");
 
 app.use("/", indexRouter);
-
 app.use("/login", loginRouter);
 app.use("/search",searchRouter);
 
