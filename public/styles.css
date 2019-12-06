@@ -5,6 +5,10 @@
   box-sizing: border-box;
 }
 
+body, html {
+    height: 100%;
+}
+
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
   margin: 2em;
@@ -17,6 +21,20 @@ h1 {
 
 .bold {
   font-weight: bold;
+}
+
+
+.banner-img{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("photographer.jpg");
+
+  /* Set a specific height */
+  height: 50%;
+
+  /* Position and center the image to scale nicely on all screens */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
 p {
