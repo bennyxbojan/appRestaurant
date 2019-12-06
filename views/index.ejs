@@ -31,7 +31,7 @@
   
   <body>
     <!--------- header with logo and user login status-------->
-    <div class = "head-line">
+    <!---<div class = "head-line">
       <a class="link-home" href="https://final-pro-yay76-feq.glitch.me/">
         <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Flogo.png?v=1575665544457"/>
       </a>
@@ -49,10 +49,10 @@
       <% if(loginUser != null){ %>
         <a href="https://final-pro-yay76-feq.glitch.me//api/user/profile/<%= loginUser._id%>"><span class="username">&nbsp;&nbsp;&nbsp;&nbsp;(<%= loginUser.username%>)</span></a>
       <% } %>   
-    </div> 
+    </div> --->
     
     <!-----------Banner image +  Searching feature -------------->
-    <div class="banner-img"> 
+    <div class="banner"> 
       <img src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fbanner.gif?v=1575667007328"/>
       <form id="search" action = "/search" method="post">
         <div class="form-row">
@@ -125,6 +125,11 @@
         </div>
       </form>
     </div>
+    
+    <div class = "promo">
+      
+    </div>
+    
   </body>
   
   <script>
