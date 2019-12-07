@@ -52,6 +52,7 @@ router.post("/", function(req, res, next) {
         return next(error);
       } else {
         req.session.userID = user._id;
+        console.log(req.session.userID);
         return res.redirect("/login/profile");
       }
     });
@@ -67,6 +68,7 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
+          console.log(req.session.userID);
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
           req.session.userID = user._id;
@@ -83,6 +85,7 @@ router.post("/", function(req, res, next) {
 
 // GET route after registering
 router.get("/profile",  function(req, res, next) {
+  console.log(req.session.userID);
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -105,7 +108,7 @@ router.get("/profile",  function(req, res, next) {
 });
 
 router.get("/admin", function(req, res, next) {
-  User.findById(req.session.userId).exec(function(error, user) {
+  User.findOne({_id:req.session.userId}).exec(function(error, user) {
     if (error) {
       return next(error);
     } else {
