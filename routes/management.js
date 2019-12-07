@@ -21,7 +21,21 @@ router.get("/", function(req, res) {
 //add new restaurants
 
 router.post("/", function(req, res, next) {
-  console.log(req.body.tables[1])
+  var tables = req.body.tables;
+  
+  var alltables = []
+  tables.forEach(function(table) {
+    alltables.push(
+      {
+        _id:table._id,
+        time:table.time,
+        taken:table.taken,
+        size:table.size
+      }
+      
+      )});
+  console.log(alltables);
+    
   if (
     req.body.name &&
     req.body.city &&
@@ -30,7 +44,6 @@ router.post("/", function(req, res, next) {
     req.body.price &&
     req.body.opendays &&
     req.body.tables
-    
   ) {
     var restData = {
       name: req.body.name,
@@ -40,12 +53,7 @@ router.post("/", function(req, res, next) {
       cuisine: req.body.cuisine,
       price: req.body.price,
       opendays: req.body.opendays,
-      tables: {
-        _id: req.body.tables._id,
-        time: req.body.tables.time,
-        taken: req.body.tables.taken,
-        size: req.body.tables.size
-      }
+      tables: alltables
     };
 
     Restaurant.create(restData, function(error, rest) {

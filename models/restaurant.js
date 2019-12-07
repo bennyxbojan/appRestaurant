@@ -41,8 +41,7 @@ var restaurantSchema = new Schema({
       trim: true
     }
   ],
-  tables: {
-    options: {
+  tables: [{
       _id: {
         type: Number,
         required: true,
@@ -63,8 +62,8 @@ var restaurantSchema = new Schema({
         type: Number,
         required: true
       }
-    }
-  }
+    }]
+  
 });
 
 // Export model
