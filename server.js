@@ -51,15 +51,17 @@ app.use(session({
   resave: true,
   saveUninitialized: false,
   store: new MongoStore({
-    mongooseConnection: mongoose.connection
+    mongooseConnection: mongoose.connection,
+    autoRemove:'native'
   })
 }));
+
 
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
-
+app.use(flash());
 
 // set the view engine
 app.set("view engine", "ejs")
