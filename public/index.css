@@ -71,8 +71,6 @@ h1 {
 }
 .input-group-col{
   display: table;
-  width: 100%;
-  display:inline-block;
 }
 .input-group-col label{
   display: table-cell;
@@ -80,10 +78,16 @@ h1 {
   background-color:#34332D; 
   color:white;
   border:none;
+  width:3%
 }
 .input-group-col span {
   display: table-cell;
-  width:50%;
+  width:60%
+}
+.input-group-col button{
+  background-color: #34332D; 
+  color:white;
+  border:none;
 }
 
 .promo {
