@@ -50,14 +50,14 @@ h1 {
 .banner-img{
   height:70%; 
 }
-.banner-text{
+.banner-text {
   text-align: center;
   position: relative;
   top:60%;
   left: 50%;
   transform: translate(-50%, -50%);
-  color: white;
 }
+.banner-text h1{color: white;}
 .banner .col{
   text-align: center;
   positon:relative;
@@ -89,9 +89,11 @@ p {
   max-width: 600px;
 }
 
-.input-group-col{
-  display: inline;
+.form-row
+{
+  display: table
   background:#F8F8F8;
+  
 }
 
 /*
