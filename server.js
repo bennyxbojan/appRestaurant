@@ -9,6 +9,10 @@ const session = require('express-session');
 var MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
 const errorHandler = require('errorhandler');
+const cookieParser = require('cookie-parser');
+const flash = require('connect-flash'); 
+const passport = require('passport'); 
+
 
 //start express
 const app = express();
