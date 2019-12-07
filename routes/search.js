@@ -5,7 +5,7 @@ var Restaurant = require("../models/restaurant");
 const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
 // POST route for reading data
-router.post("/", function(req, res, next) {
+router.get("/", function(req, res, next) {
   if (req.body.date && req.body.time && req.body.guest && req.body.city) {
     var date = new Date(req.body.date);
     var weekday = date.getDay();
@@ -25,7 +25,10 @@ router.post("/", function(req, res, next) {
           status: 404
         });
       }
-      console.log("success");
+      else{
+        res.render("restaurants",{
+                  tables:tables})
+      }
     });
   } else {
     var err = new Error("All fields required.");
