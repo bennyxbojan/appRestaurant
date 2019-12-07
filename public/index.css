@@ -59,11 +59,11 @@ h1 {
 .banner-text h1{color: white;}
 
 /* search form */
-.banner .col{
+/* .banner .col{
   text-align: center;
   positon:relative;
   top:90%;
-}
+} */
 .banner-form {
   width: 90%;
   position:relative;
