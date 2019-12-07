@@ -48,7 +48,17 @@ h1 {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
+.banner-img{
+  height:70%; 
+}
+.banner-text{
+  text-align: center;
+  position: relative;
+  top:60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}
 .banner .col{
   text-align: center;
   positon:relative;
