@@ -62,7 +62,13 @@ h1 {
   text-align: center;
   positon:relative;
   top:90%;
+  display: table;
+  width: 100%
 }
+
+
+
+
 
 .promo {
   height: 50%;
