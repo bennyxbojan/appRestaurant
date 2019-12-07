@@ -61,7 +61,6 @@ h1 {
   text-align: center;
   positon:relative;
   top:90%;
-  
 }
 .input-group-col{
   display: table;
@@ -72,10 +71,9 @@ label {
     white-space: nowrap
 }
 span {
-    display: table-cell;
-    
-}
-input {
+  display: table-cell;
+  width: 10%;
+  
     
 }
 
