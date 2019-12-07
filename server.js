@@ -61,6 +61,7 @@ app.use(session({
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use(flash());
 
 // set the view engine
 app.set("view engine", "ejs")
@@ -84,7 +85,7 @@ app.use("/logout", function(req, res, next) {
       if (err) {
         return next(err);
       } else {
-        req.flash('message', 'Successfully logged out')
+        req.flash("info", "test");
         res.redirect("/");
       }
     });
