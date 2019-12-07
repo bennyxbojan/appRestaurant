@@ -41,7 +41,8 @@ var restaurantSchema = new Schema({
       trim: true
     }
   ],
-  tables: [{
+  tables: {
+    options:{
       _id: {
         type: Number,
         required: true,
@@ -61,11 +62,11 @@ var restaurantSchema = new Schema({
         type: Number,
         required: true
       }
-    }]
+    }}
   
 });
 
-restaurantSchema.index({"tables._id":1,"tables.time":1},{unique:true});
+restaurantSchema.index({"_id":1,"tables._id":1,"tables.time":1},{unique:true});
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);

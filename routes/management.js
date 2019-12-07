@@ -21,8 +21,8 @@ router.get("/", function(req, res) {
 //add new restaurants
 
 router.post("/", function(req, res, next) {
-  var tables = req.body.tables;
-  
+  var tables = Object.values(req.body.tables);
+  console.log(tables);
   var alltables = []
   tables.forEach(function(table) {
     alltables.push(
