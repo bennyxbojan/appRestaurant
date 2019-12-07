@@ -13,14 +13,15 @@ router.get("/", function(req, res) {
       });
     }
     res.status(200).render("manage_rest", {
-      resturants:restaurants
+      resturants: restaurants
     });
   });
 });
 
 //add new restaurants
 
-router.post("/", function(req,res,next){
+router.post("/", function(req, res, next) {
+  console.log(req.body.tables[0]._id)
   if (
     req.body.name &&
     req.body.city &&
@@ -28,47 +29,43 @@ router.post("/", function(req,res,next){
     req.body.cuisine &&
     req.body.price &&
     req.body.opendays &&
-    req.body.table_id &&
-    req.body.table_time &&
-    req.body.table_taken &&
-    req.body.table_size
+    req.body.tables
+    
   ) {
     var restData = {
       name: req.body.name,
-      city :    req.body.city,
-      img :    req.body.img,
-      cuisine :   req.body.cuisine,
-      price :   req.body.price,
-      opendays :    req.body.opendays ,
-      tables :  {_id: req.body.tables._id ,
-      time :    req.body.tables.time,
-      taken :    req.body.tables.taken ,
-      size :   req.body.tables.size}
+      city: req.body.city,
+      zip: req.body.zip,
+      img: req.body.img,
+      cuisine: req.body.cuisine,
+      price: req.body.price,
+      opendays: req.body.opendays,
+      tables: {
+        _id: req.body.tables._id,
+        time: req.body.tables.time,
+        taken: req.body.tables.taken,
+        size: req.body.tables.size
+      }
     };
 
     Restaurant.create(restData, function(error, rest) {
       if (error) {
         return next(error);
       } else {
-        res.render("manage_rest",{
-          "message":"okay"
-        })
+        res.render("manage_rest", {
+          message: "okay"
+        });
       }
-    });  
-  }
-  else{
+    });
+  } else {
     var err = new Error("All fields required.");
     err.status = 400;
     return next(err);
   }
-})
-
+});
 
 //update resturant
 
-
-
 //delete resturant
-
 
 module.exports = router;
