@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-const auth = require('./auth');
+// const auth = require('./auth');
 var User = require("../models/user");
 
 
@@ -10,7 +10,7 @@ router.get("/", function(req, res, next) {
 });
 
 //POST route for updating data
-router.post("/", auth.public, function(req, res, next) {
+router.post("/", function(req, res, next) {
 
   if (
     req.body.email &&
@@ -60,7 +60,7 @@ router.post("/", auth.public, function(req, res, next) {
 });
 
 // GET route after registering
-router.get("/profile", auth.private, function(req, res, next) {
+router.get("/profile", function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -82,7 +82,7 @@ router.get("/profile", auth.private, function(req, res, next) {
   });
 });
 
-router.get("/admin", auth.private,function(req, res, next) {
+router.get("/admin", function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -107,7 +107,7 @@ router.get("/admin", auth.private,function(req, res, next) {
 
 
 // GET for logout
-router.get("/logout", auth.private, function(req, res, next) {
+router.get("/logout", function(req, res, next) {
   if (req.session) {
     // delete session object
     req.session.destroy(function(err) {

@@ -61,27 +61,27 @@ UserSchema.pre('save', function (next) {
   })
 });
 
-//generate jwt token
-UserSchema.methods.generateJWT = function() {
-  const today = new Date();
-  const expirationDate = new Date(today);
-  expirationDate.setDate(today.getDate() + 30);
+// //generate jwt token
+// UserSchema.methods.generateJWT = function() {
+//   const today = new Date();
+//   const expirationDate = new Date(today);
+//   expirationDate.setDate(today.getDate() + 30);
 
-  return jwt.sign({
-    username: this.username,
-    id: this._id,
-    exp: parseInt(expirationDate.getTime() / 1000, 10),
-  }, 'secret');
-}
+//   return jwt.sign({
+//     username: this.username,
+//     id: this._id,
+//     exp: parseInt(expirationDate.getTime() / 1000, 10),
+//   }, 'secret');
+// }
 
-//authToken
-UserSchema.methods.toAuthJSON = function() {
-  return {
-    _id: this._id,
-    username: this.username,
-    token: this.generateJWT(),
-  };
-};
+// //authToken
+// UserSchema.methods.toAuthJSON = function() {
+//   return {
+//     _id: this._id,
+//     username: this.username,
+//     token: this.generateJWT(),
+//   };
+// };
 
 var User = mongoose.model('User', UserSchema);
 module.exports = User;
