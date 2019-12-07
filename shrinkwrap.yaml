@@ -1,7 +1,9 @@
 dependencies:
   bcrypt: 3.0.7
   body-parser: 1.19.0
+  connect-flash: 0.1.1
   connect-mongo: 3.1.2
+  cookie-parser: 1.4.4
   cors: 2.8.5
   ejs: 3.0.1
   errorhandler: 1.5.1
@@ -284,6 +286,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha512-vtv5HtGjcYUgFrXc6Kx747B83MRRVS5R1VTEQoXvuP+kMI+if6uywV0nDGoiydJRy4yk7h9od5Og0kxx4zUXmw==
+  /connect-flash/0.1.1:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha1-2GMPJtlaf4UfmVax6MxnMvO2qjA=
   /connect-mongo/3.1.2:
     dependencies:
       mongodb: 3.3.4
@@ -306,6 +314,15 @@ packages:
       node: '>= 0.6'
     resolution:
       integrity: sha512-hIP3EEPs8tB9AT1L+NUqtwOAps4mk2Zob89MWXMHjHWg9milF/j4osnnQLXBCBFBk/tvIG/tUc9mOUJiPBhPXA==
+  /cookie-parser/1.4.4:
+    dependencies:
+      cookie: 0.3.1
+      cookie-signature: 1.0.6
+    dev: false
+    engines:
+      node: '>= 0.8.0'
+    resolution:
+      integrity: sha512-lo13tqF3JEtFO7FyA49CqbhaFkskRJ0u/UAiINgrIXeRCY41c88/zxtrECl8AKH3B0hj9q10+h3Kt8I7KlW4tw==
   /cookie-signature/1.0.6:
     dev: false
     resolution:
@@ -1904,7 +1921,9 @@ shrinkwrapVersion: 3
 specifiers:
   bcrypt: ^3.0.7
   body-parser: ^1.19.0
+  connect-flash: ^0.1.1
   connect-mongo: ^3.1.2
+  cookie-parser: ^1.4.4
   cors: ^2.8.5
   ejs: ^3.0.1
   errorhandler: ^1.5.1
