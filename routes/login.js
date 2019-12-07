@@ -4,9 +4,22 @@ var router = express.Router();
 var User = require("../models/user");
 
 
-function checkAuth(req, res,next){
-   if(req.session.user){
-      next();     //If session exists, proceed to page
+function checkClient(req, res,next){
+   if(req.session.userID){
+     if (req.session.role == 'client'){
+       next();     //If session exists, proceed to page
+     }
+   } else {
+      var err = new Error("You must be logged into see this page");
+      next(err);  //Error, trying to access unauthorized page!
+   }
+}
+
+function checkAdmin(req, res,next){
+     if(req.session.userID){
+     if (req.session.role == 'admin'){
+       next();     //If session exists, proceed to page
+     }
    } else {
       var err = new Error("You must be logged into see this page");
       next(err);  //Error, trying to access unauthorized page!
@@ -39,6 +52,7 @@ router.post("/", function(req, res, next) {
         return next(error);
       } else {
         req.session.userId = user._id;
+        req.session.role = user.role;
         return res.redirect("/login/profile");
       }
     });
@@ -54,9 +68,11 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userId = user._id;
+          req.session.role = user.role;
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
           req.session.userId = user._id;
+          req.session.role = user.role;
           return res.redirect("/login/admin");
         }
       }
