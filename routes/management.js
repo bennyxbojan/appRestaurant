@@ -21,8 +21,8 @@ router.get("/", function(req, res) {
 //add new restaurants
 
 router.post("/", function(req, res, next) {
-  var tables = Object.values(req.body.tables);
-  console.log(tables);
+  var tables = req.body.tables;
+  
   var alltables = []
   tables.forEach(function(table) {
     alltables.push(
@@ -60,6 +60,7 @@ router.post("/", function(req, res, next) {
       if (error) {
         return next(error);
       } else {
+        req.flash("info", "successfully created");
         return res.redirect("/admin");
       }
     });

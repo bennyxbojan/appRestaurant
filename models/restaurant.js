@@ -20,19 +20,19 @@ var restaurantSchema = new Schema({
   },
   img: {
     type: String,
-    trim: true,
-    required: true
+    trim:true,
+    required:true,
   },
   cuisine: {
     type: String,
     trim: true,
-    required: true
+    required:true
   },
   price: {
     type: Number,
     min: [1, "Please enter a price level between 1 and 5"],
     max: [5, "Please enter a price level between 1 and 5"],
-    required: true
+    required:true
   },
   opendays: [
     {
@@ -41,11 +41,12 @@ var restaurantSchema = new Schema({
       trim: true
     }
   ],
-  tables: {
-    options:{
+  tables: [
+    {
       _id: {
         type: Number,
         required: true,
+        unique: true,
         autoIndex: false
       },
       time: {
@@ -62,11 +63,9 @@ var restaurantSchema = new Schema({
         type: Number,
         required: true
       }
-    }}
-  
+    }
+  ]
 });
-
-restaurantSchema.index({"_id":1,"tables._id":1,"tables.time":1},{unique:true});
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);
