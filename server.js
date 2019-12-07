@@ -75,6 +75,7 @@ app.use(express.static("public"));
 const loginRouter = require("./routes/login");
 const searchRouter = require("./routes/search");
 const indexRouter = require("./routes/index");
+const adminRouter = require("./routes/management");
 
 
 // GET for logout
@@ -95,6 +96,7 @@ app.use("/logout", function(req, res, next) {
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/search",searchRouter);
+app.use("/admin", adminRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
