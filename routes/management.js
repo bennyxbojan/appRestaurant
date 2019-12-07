@@ -20,9 +20,30 @@ router.get("/", function(req, res) {
 
 //add new restaurants
 
-router.post("/", function(req,res){
-            
-})
+// router.post("/", function(req,res,next){
+//   if (
+//     req.body.name &&
+//     req.body.city &&
+//     req.body.image
+//   ) {
+//     var userData = {
+//       email: req.body.email,
+//       username: req.body.username,
+//       password: req.body.password,
+//       role: "client"
+//     };
+
+//     User.create(userData, function(error, user) {
+//       if (error) {
+//         return next(error);
+//       } else {
+//         req.session.userID = user._id;
+//         req.session.role=user.role;
+//         return res.redirect("/login/profile");
+//       }
+//     });  
+//   }
+// })
 
 
 //update resturant
