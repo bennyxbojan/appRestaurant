@@ -12,6 +12,9 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   },
+  img:{
+    type:String
+  },
   zip: {
     type: String,
     required: true,
@@ -32,7 +35,6 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   }],
-  img:
   tables: [
     {
       _id: {
