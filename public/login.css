@@ -41,7 +41,6 @@ body {
 
 .form label {
   padding: 12px 12px 12px 0;
-  display: inline-block;
 }
 
 .form input[type=submit] {
