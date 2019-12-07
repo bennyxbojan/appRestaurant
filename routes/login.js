@@ -4,6 +4,15 @@ var router = express.Router();
 var User = require("../models/user");
 
 
+function checkSignIn(req, res,next){
+   if(req.session.user){
+      next();     //If session exists, proceed to page
+   } else {
+      var err = new Error("Not logged in!");
+      next(err);  //Error, trying to access unauthorized page!
+   }
+}
+
 // GET route for reading data
 router.get("/", function(req, res, next) {
   res.status(200).render("login");

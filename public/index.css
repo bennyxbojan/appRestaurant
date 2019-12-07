@@ -29,11 +29,17 @@ h1 {
   background-color: #34332D;
   height:8%;
 }
-.head-line img {
+.head-line .logo {
   position:relative;
   height:90%;
   top:5%;
   left: 47%;
+}
+.userLogo{
+  position:relative;
+  height:90%;
+  top:5%;
+  left: 80%;
 }
 
 .banner{
