@@ -21,7 +21,7 @@ router.get("/", function(req, res) {
 //add new restaurants
 
 router.post("/", function(req, res, next) {
-  console.log(req.body.tables[0]._id)
+  console.log(req.body.tables[1])
   if (
     req.body.name &&
     req.body.city &&

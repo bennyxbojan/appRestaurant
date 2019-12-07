@@ -20,19 +20,19 @@ var restaurantSchema = new Schema({
   },
   img: {
     type: String,
-    trim:true,
-    required:true,
+    trim: true,
+    required: true
   },
   cuisine: {
     type: String,
     trim: true,
-    required:true
+    required: true
   },
   price: {
     type: Number,
     min: [1, "Please enter a price level between 1 and 5"],
     max: [5, "Please enter a price level between 1 and 5"],
-    required:true
+    required: true
   },
   opendays: [
     {
@@ -41,8 +41,8 @@ var restaurantSchema = new Schema({
       trim: true
     }
   ],
-  tables: [
-    {
+  tables: {
+    options: {
       _id: {
         type: Number,
         required: true,
@@ -64,7 +64,7 @@ var restaurantSchema = new Schema({
         required: true
       }
     }
-  ]
+  }
 });
 
 // Export model
