@@ -65,6 +65,7 @@ var restaurantSchema = new Schema({
   
 });
 
+restaurantSchema.index({"tables._id":1,"tables.time":1},{unique:true});
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);
