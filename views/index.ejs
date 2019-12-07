@@ -130,7 +130,18 @@
       </div>
       <div>
         <h3>Popular Restaurants At Your Area</h3>
-        
+        <% top.forEach(restaurant=>{ %>
+          <a href="https://final-pro-yay76-feq.glitch.me/api/restaurant/one/<%= restaurant._id%>">
+            <div class="item">
+              <div id="<%= restaurant.name %>" class="info_box">
+                <p class="name"><b><%= restaurant.name %></b></p>
+                <p class="cuisineType">Cuisine: <%= restaurant.cuisine %></p>
+                <p class="price"><%= restaurant.price %></p>
+              </div>
+              <img src="<%= movie.poster %>" />       
+            </div>
+          </a>
+        <% })%>
       </div>
     </div>
     

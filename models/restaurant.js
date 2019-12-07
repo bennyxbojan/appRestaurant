@@ -32,6 +32,7 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   }],
+  img:
   tables: [
     {
       _id: {
