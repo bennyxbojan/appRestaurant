@@ -16,7 +16,6 @@ h1 {
   color: #373fff;
 }
 
-
 .head-line{
   background-color: #34332D;
   height:8%;
@@ -62,11 +61,23 @@ h1 {
   text-align: center;
   positon:relative;
   top:90%;
+  
+}
+.input-group-col{
   display: table;
   width: 100%
 }
-
-
+label {
+    display: table-cell;
+    white-space: nowrap
+}
+span {
+    display: table-cell;
+    
+}
+input {
+    
+}
 
 
 
