@@ -85,7 +85,7 @@ router.post("/", function(req, res, next) {
 });
 
 // GET route after registering
-router.get("/profile", function(req, res, next) {
+router.get("/profile", checkClient, function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -107,7 +107,7 @@ router.get("/profile", function(req, res, next) {
   });
 });
 
-router.get("/admin", function(req, res, next) {
+router.get("/admin", checkAdmin, function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
