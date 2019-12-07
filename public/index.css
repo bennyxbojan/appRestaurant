@@ -11,11 +11,6 @@ body {
   margin: 0;
 }
 
-h1 {
-  font-style: italic;
-  color: #373fff;
-}
-
 .head-line{
   background-color: #34332D;
   height:8%;
@@ -87,7 +82,6 @@ h1 {
 .input-group-col button{
   background-color: #34332D; 
   color:white;
-  border:none;
 }
 
 .promo {
