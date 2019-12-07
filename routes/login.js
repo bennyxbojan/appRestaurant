@@ -70,7 +70,9 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
+          console.log(req.session.userID);
           req.session.role = user.role;
+          console.log(req.session.role);
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
           req.session.userID = user._id;
