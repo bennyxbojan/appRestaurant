@@ -5,7 +5,6 @@ const router = express.Router();
 //import data models
 // const Student = require("../models/student");
 // const Class = require("../models/class");
-
 //default link redirect to index html page
 
 var today = new Date();
