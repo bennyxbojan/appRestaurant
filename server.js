@@ -75,6 +75,22 @@ const loginRouter = require("./routes/login");
 const searchRouter = require("./routes/search");
 const indexRouter = require("./routes/index");
 
+
+// GET for logout
+app.use("/logout", function(req, res, next) {
+  if (req.session) {
+    // delete session object
+    req.session.destroy(function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        req.flash('message', 'Successfully logged out')
+        res.redirect("/");
+      }
+    });
+  }
+});
+
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/search",searchRouter);
