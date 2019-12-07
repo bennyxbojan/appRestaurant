@@ -45,7 +45,6 @@ var restaurantSchema = new Schema({
       _id: {
         type: Number,
         required: true,
-        unique: true,
         autoIndex: false
       },
       time: {
@@ -65,6 +64,7 @@ var restaurantSchema = new Schema({
     }]
   
 });
+
 
 // Export model
 module.exports = mongoose.model("Restaurant", restaurantSchema);

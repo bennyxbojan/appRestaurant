@@ -60,9 +60,7 @@ router.post("/", function(req, res, next) {
       if (error) {
         return next(error);
       } else {
-        res.render("manage_rest", {
-          message: "okay"
-        });
+        return res.redirect("/admin");
       }
     });
   } else {
