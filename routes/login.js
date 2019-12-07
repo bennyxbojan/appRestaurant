@@ -5,7 +5,7 @@ var User = require("../models/user");
 
 
 function checkClient(req, res,next){
-   if(req.session.username){
+   if(req.session.userID){
      if (req.session.role == 'client'){
        next();     //If session exists, proceed to page
      }
@@ -16,12 +16,12 @@ function checkClient(req, res,next){
 }
 
 function checkAdmin(req, res,next){
-     if(req.session.username){
+     if(req.session.userID){
      if (req.session.role == 'admin'){
        next();     //If session exists, proceed to page
      }
    } else {
-      var err = new Error("You must be logged into see this page");
+      var err = new Error("You don't have access to this page");
       next(err);  //Error, trying to access unauthorized page!
    }
 }
@@ -51,7 +51,8 @@ router.post("/", function(req, res, next) {
       if (error) {
         return next(error);
       } else {
-        req.session.username = user.username;
+        req.session.userID = user._id;
+        console.log(req.session.userID);
         req.session.role =user.role;
         console.log(req.session.role);
         return res.redirect("/login/profile");
@@ -68,11 +69,11 @@ router.post("/", function(req, res, next) {
         return next(err);
       } else {
         if (user.role == "client") {
-          req.session.username = user.username;
+          req.session.userID = user._id;
           req.session.role = user.role;
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
-          req.session.username = user.username;
+          req.session.userID = user._id;
           req.session.role = user.role;
           return res.redirect("/login/admin");
         }
@@ -87,7 +88,7 @@ router.post("/", function(req, res, next) {
 
 // GET route after registering
 router.get("/profile", checkClient, function(req, res, next) {
-  User.find({username: req.session.username}).exec(function(error, user) {
+  User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
     } else {
