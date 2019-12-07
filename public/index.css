@@ -89,9 +89,9 @@ p {
   max-width: 600px;
 }
 
-.form-row
+form
 {
-  display: table
+  display: table-cell;
   background:#F8F8F8;
   
 }
