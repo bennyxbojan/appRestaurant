@@ -1,0 +1,36 @@
+body, html {
+  height: 100%;
+  width:100%;
+}
+
+body {
+  font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 2em;
+}
+
+h1 {
+  font-style: italic;
+  color: #373fff;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+
+.head-line{
+  background-color: #34332D;
+  height:8%;
+}
+.head-line .logo {
+  position:relative;
+  height:90%;
+  top:5%;
+  left: 47%;
+}
+.userLogo{
+  position:relative;
+  height:70%;
+  top:5%;
+  left: 85%;
+}
