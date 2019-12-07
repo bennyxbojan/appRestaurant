@@ -81,11 +81,11 @@ const indexRouter = require("./routes/index");
 app.use("/logout", function(req, res, next) {
   if (req.session) {
     // delete session object
+    req.flash("info", "Successfully logged out");
     req.session.destroy(function(err) {
       if (err) {
         return next(err);
       } else {
-        req.flash("info", "test");
         res.redirect("/");
       }
     });
