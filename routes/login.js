@@ -4,27 +4,27 @@ var router = express.Router();
 var User = require("../models/user");
 
 
-function checkClient(req, res,next){
-   if(req.session.userID){
-     if (req.session.role == 'client'){
-       next();     //If session exists, proceed to page
-     }
-   } else {
-      var err = new Error("You must be logged into see this page");
-      next(err);  //Error, trying to access unauthorized page!
-   }
-}
+// function checkClient(req, res,next){
+//    if(req.session.userID){
+//      if (req.session.role == 'client'){
+//        next();     //If session exists, proceed to page
+//      }
+//    } else {
+//       var err = new Error("You must be logged into see this page");
+//       next(err);  //Error, trying to access unauthorized page!
+//    }
+// }
 
-function checkAdmin(req, res,next){
-     if(req.session.userID){
-     if (req.session.role == 'admin'){
-       next();     //If session exists, proceed to page
-     }
-   } else {
-      var err = new Error("You don't have access to this page");
-      next(err);  //Error, trying to access unauthorized page!
-   }
-}
+// function checkAdmin(req, res,next){
+//      if(req.session.userID){
+//      if (req.session.role == 'admin'){
+//        next();     //If session exists, proceed to page
+//      }
+//    } else {
+//       var err = new Error("You don't have access to this page");
+//       next(err);  //Error, trying to access unauthorized page!
+//    }
+// }
 
 // GET route for reading data
 router.get("/", function(req, res, next) {
@@ -52,9 +52,6 @@ router.post("/", function(req, res, next) {
         return next(error);
       } else {
         req.session.userID = user._id;
-        console.log(req.session.userID);
-        req.session.role =user.role;
-        console.log(req.session.role);
         return res.redirect("/login/profile");
       }
     });
@@ -70,13 +67,9 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
-          console.log(req.session.userID);
-          req.session.role = user.role;
-          console.log(req.session.role);
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
           req.session.userID = user._id;
-          req.session.role = user.role;
           return res.redirect("/login/admin");
         }
       }
@@ -111,7 +104,7 @@ router.get("/profile",  function(req, res, next) {
   });
 });
 
-router.get("/admin", checkAdmin, function(req, res, next) {
+router.get("/admin", function(req, res, next) {
   User.findById(req.session.userId).exec(function(error, user) {
     if (error) {
       return next(error);
