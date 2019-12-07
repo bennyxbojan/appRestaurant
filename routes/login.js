@@ -3,28 +3,25 @@ var router = express.Router();
 // const auth = require('./auth');
 var User = require("../models/user");
 
+function checkClient(req, res, next) {
+  if (req.session.userID) {
+    next(); //If session exists, proceed to page
+  } else {
+    var err = new Error("You must be logged into see this page");
+    next(err); //Error, trying to access unauthorized page!
+  }
+}
 
-// function checkClient(req, res,next){
-//    if(req.session.userID){
-//      if (req.session.role == 'client'){
-//        next();     //If session exists, proceed to page
-//      }
-//    } else {
-//       var err = new Error("You must be logged into see this page");
-//       next(err);  //Error, trying to access unauthorized page!
-//    }
-// }
-
-// function checkAdmin(req, res,next){
-//      if(req.session.userID){
-//      if (req.session.role == 'admin'){
-//        next();     //If session exists, proceed to page
-//      }
-//    } else {
-//       var err = new Error("You don't have access to this page");
-//       next(err);  //Error, trying to access unauthorized page!
-//    }
-// }
+function checkAdmin(req, res, next) {
+  if (req.session.userID) {
+    if (req.session.role == "admin") {
+      next(); //If session exists, proceed to page
+    }
+  } else {
+    var err = new Error("You don't have access to this page");
+    next(err); //Error, trying to access unauthorized page!
+  }
+}
 
 // GET route for reading data
 router.get("/", function(req, res, next) {
@@ -33,7 +30,6 @@ router.get("/", function(req, res, next) {
 
 //POST route for updating data
 router.post("/", function(req, res, next) {
-
   if (
     req.body.email &&
     req.body.username &&
@@ -44,7 +40,7 @@ router.post("/", function(req, res, next) {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      role: 'client'
+      role: "client"
     };
 
     User.create(userData, function(error, user) {
@@ -52,7 +48,7 @@ router.post("/", function(req, res, next) {
         return next(error);
       } else {
         req.session.userID = user._id;
-        console.log(req.session.userID);
+        req.session.role=user.role;
         return res.redirect("/login/profile");
       }
     });
@@ -68,10 +64,12 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
+          req.session.role=user.role;
           console.log(req.session.userID);
           return res.redirect("/login/profile");
         } else if (user.auth == "admin") {
           req.session.userID = user._id;
+          req.session.role=user.role;
           return res.redirect("/login/admin");
         }
       }
@@ -84,9 +82,9 @@ router.post("/", function(req, res, next) {
 });
 
 // GET route after registering
-router.get("/profile",  function(req, res, next) {
+router.get("/profile", checkClient, function(req, res, next) {
   console.log(req.session.userID);
-  User.findById(req.session.userId).exec(function(error, user) {
+  User.findById(req.session.userID).exec(function(error, user) {
     if (error) {
       return next(error);
     } else {
@@ -108,7 +106,7 @@ router.get("/profile",  function(req, res, next) {
 });
 
 router.get("/admin", function(req, res, next) {
-  User.findOne({_id:req.session.userId}).exec(function(error, user) {
+  User.findOne({ _id: req.session.userId }).exec(function(error, user) {
     if (error) {
       return next(error);
     } else {
@@ -119,7 +117,7 @@ router.get("/admin", function(req, res, next) {
       } else {
         return res.send(
           "<h1>Admin Page</h1>" +
-          "<h1>Name: </h1>" +
+            "<h1>Name: </h1>" +
             user.username +
             "<h2>Mail: </h2>" +
             user.email +
@@ -129,7 +127,6 @@ router.get("/admin", function(req, res, next) {
     }
   });
 });
-
 
 // GET for logout
 router.get("/logout", function(req, res, next) {
