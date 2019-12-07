@@ -28,7 +28,7 @@ var restaurantSchema = new Schema({
     max: [5, "Please enter a price level between 1 and 5"]
   },
   opendays: [{
-    type: [Number],
+    type: [String],
     required: true,
     trim: true
   }],

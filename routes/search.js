@@ -11,7 +11,7 @@ router.post("/", function(req, res, next) {
     var weekday = date.getDay();
 
     var result = Restaurant.find({
-      opendays: weekday,
+      opendays: week[weekday],
       city: req.body.city,
       tables: { $elemMatch: { time: req.body.time } },
       tables: { $elemMatch: { taken: false } },
