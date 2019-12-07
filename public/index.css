@@ -57,24 +57,30 @@ h1 {
   transform: translate(-50%, -50%);
 }
 .banner-text h1{color: white;}
+
+/* search form */
 .banner .col{
   text-align: center;
   positon:relative;
   top:90%;
 }
+.banner-form {
+  width: 90%;
+  position:relative;
+  left:5%;
+}
 .input-group-col{
   display: table;
   width: 100%
 }
-label {
-    display: table-cell;
-    white-space: nowrap
-}
-span {
+.input-group-col label{
   display: table-cell;
-  width: 10%;
-  
-    
+  white-space: nowrap;
+  background-color:#FED25D;  
+}
+.input-group-col span {
+  display: table-cell;
+  width:50%;
 }
 
 
