@@ -71,18 +71,29 @@ h1 {
 }
 .input-group-col{
   display: table;
-  width: 100%
+  width: 100%;
+  display:inline-block;
 }
 .input-group-col label{
   display: table-cell;
   white-space: nowrap;
-  background-color:#FED25D;  
+  background-color:#34332D; 
+  color:white;
+  border:none;
 }
 .input-group-col span {
   display: table-cell;
   width:50%;
 }
 
+/* #time
+{
+  white-space: nowrap;
+  background-color:#34332D; 
+  color:white;
+  border-color:#342E21
+}
+ */
 
 
 .promo {
