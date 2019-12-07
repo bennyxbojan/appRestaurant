@@ -30,14 +30,7 @@ body {
 }
 
 /*========== Forms =============*/
-.container{
-  position: relative;
-  top:20%;
-}
-.form
-{
-  
-}
+
 .form input[type=text], [type=password],select, textarea {
   width: 100%;
   padding: 12px;
@@ -60,11 +53,4 @@ body {
   border-radius: 4px;
   cursor: pointer;
   float: right;
-}
-
-@media screen and (max-width: 600px) {
-  .col-25, .col-75, input[type=submit] {
-    width: 100%;
-    margin-top: 0;
-  }
 }
