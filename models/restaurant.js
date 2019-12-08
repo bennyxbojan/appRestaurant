@@ -20,19 +20,19 @@ var restaurantSchema = new Schema({
   },
   img: {
     type: String,
-    trim:true,
-    required:true,
+    trim: true,
+    required: true
   },
   cuisine: {
     type: String,
     trim: true,
-    required:true
+    required: true
   },
   price: {
     type: Number,
     min: [1, "Please enter a price level between 1 and 5"],
     max: [5, "Please enter a price level between 1 and 5"],
-    required:true
+    required: true
   },
   opendays: [
     {
@@ -41,26 +41,15 @@ var restaurantSchema = new Schema({
       trim: true
     }
   ],
-  tables: [
+  options: [
     {
-      _id: {
-        type: Number,
+      table: {
+        type: mongoose.Schema.Types.ObjectId,
         required: true,
-        unique: true,
-        autoIndex: false
-      },
-      time: {
-        type: String,
-        match: /^[0-9]{1,2}[AP]M$/,
-        required: true,
-        trim: true
+        ref: "Table"
       },
       taken: {
         type: Boolean,
-        required: true
-      },
-      size: {
-        type: Number,
         required: true
       }
     }

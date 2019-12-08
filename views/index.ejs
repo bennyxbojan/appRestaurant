@@ -35,16 +35,18 @@
     <div class = "head-line">
       <a class="link-home" href="https://final-pro-yay76-feq6.glitch.me/">
         <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
-      </a> 
-      <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
-        <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
-      </a >
+      </a>
       
-      <% if (curUser) {%>
-        <a class="login" href="/login/profile">Hi,<%= curUser.username%></a>
+      <% if (curUser !== null) {%>
+        <span><a class="login" href="/login/profile">Hi,<%= curUser.username%></a></span>
         <a class="link-login" herf="/login/logout">
-          <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+          <img class="userLogo" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_logOut-ltr.svg/768px-OOjs_UI_icon_logOut-ltr.svg.png"/>
         </a>
+      <%} else {%>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+        <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+        </a >
+      <%}%>
     </div> 
     
     <!-----------Banner image +  Searching feature -------------->
