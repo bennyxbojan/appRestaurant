@@ -19,5 +19,17 @@
   <h2>
   <%= restaurants %>
   </h2>
+  
+  <table class="table">
+      <tbody><tr><th>CourseID</th><th>Name</th></tr>
+        <% classes.forEach(function(oneClass){ %>
+        <tr>
+          <td><%= oneClass.classID %></td>
+          <td><%= oneClass.name %></td>
+
+        </tr>
+        <% }); %>
+      </tbody>
+    </table>
 </body>
 </html>
