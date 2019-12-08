@@ -3,20 +3,55 @@ var router = express.Router();
 var Restaurant = require("../models/restaurant");
 var Table = require("../models/table");
 
-const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+const week = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday"
+];
+
+function getTableSize(guest) {
+  var size;
+  if (guest > 0 && guest <= 2) {
+    size = "small";
+  } else if (guest > 2 && guest <= 4) {
+    size = "medium";
+  } else if (guest > 4 && guest <= 6) {
+    size = "large";
+  } else if (guest > 6) {
+    size = "party";
+  }
+  return size;
+}
 
 // POST route for reading data
 router.get("/", function(req, res, next) {
   if (req.query.date && req.query.time && req.query.guest && req.query.city) {
     var date = new Date(req.query.date);
     var weekday = date.getDay();
+    var size = getTableSize(req.query.guest);
+    console.log(weekday);
+    console.log(size);
+    console.log(req.query.guest <= 2);
+    var options;
+
+    var options = Table.find({time: req.query.time, size:size}, function(err,tables){
+      if(err){
+        return next(err);
+      }else{
+        options = tables._id;
+      }
+    });
 
     var result = Restaurant.find({
       opendays: week[weekday],
       city: req.query.city,
-      tables: { $elemMatch: { time: req.body.time } },
+      tables: { $elemMatch: { time: req.query.time } },
       tables: { $elemMatch: { taken: false } },
-      tables: { $elemMatch: { size: req.body.guest } }
+      tables: { $elemMatch: { size: size } }
     });
 
     result.exec(function(err, tables) {
@@ -25,10 +60,10 @@ router.get("/", function(req, res, next) {
           message: err,
           status: 404
         });
-      }
-      else{
-        res.render("restaurants",{
-                  tables:tables})
+      } else {
+        res.render("restaurants", {
+          tables: tables
+        });
       }
     });
   } else {
