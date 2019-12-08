@@ -12,7 +12,7 @@ function checkClient(req, res, next) {
   } else {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
-    res.redirect('/login');
+    res.redirect("/login");
   }
 }
 
@@ -38,7 +38,7 @@ router.get("/review", checkClient, function(req, res, next) {
                   user: user,
                   table: table,
                   date: req.query.date,
-                  guest:req.query.guest
+                  guest: req.query.guest
                 });
               }
             });
@@ -52,11 +52,9 @@ router.get("/review", checkClient, function(req, res, next) {
   }
 });
 
-
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
   var tableinfo = req.body.table;
-
 
   Table.find({ time: tableinfo.time, size: tableinfo.size }, function(
     err,
@@ -66,32 +64,29 @@ router.post("/", checkClient, function(req, res, next) {
       return next(err);
     } else {
       var tableid = table._id;
-        let filter = { options: { $elemMatch: { table: tableid } } };
-  let update = { options: { taken: true } };
+      let filter = { options: { $elemMatch: { table: tableid } } };
+      let update = { options: { taken: true } };
 
-  Restaurant.findOneAndUpdate(filter, update);
+      Restaurant.findOneAndUpdate(filter, update);
 
-  var order = {
-    userID: req.session.userID,
-    restID: req.body.restID,
-    date: req.body.date,
-    guest: req.body.guest,
-    table: tableid
-  };
-  Order.create(order, function(error, order) {
-    if (error) {
-      return next(error);
-    } else {
-      //should redirect to "Congrats! Successfully!"
-      return res.redirect("/login/profile");
+      var order = {
+        userID: req.session.userID,
+        restID: req.body.restID,
+        date: req.body.date,
+        guest: req.body.guest,
+        guestname:req.body.guestname,
+        table: tableid
+      };
+      Order.create(order, function(error, order) {
+        if (error) {
+          return next(error);
+        } else {
+          //should redirect to "Congrats! Successfully!"
+          return res.redirect("/login/profile");
+        }
+      });
     }
   });
-      
-      
-    }
-  });
-
-
 });
 
 module.exports = router;

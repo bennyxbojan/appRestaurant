@@ -27,6 +27,11 @@ var orderSchema = new Schema({
     type: Number,
     required: true
   },
+  guestname:{
+    type: String,
+    required:true,
+    trim:true
+  },
   table: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
