@@ -3,6 +3,7 @@ var router = express.Router();
 // const auth = require('./auth');
 var User = require("../models/user");
 var Order = require("../models/order");
+var Table = require("../models/table");
 
 function checkClient(req, res, next) {
   if (req.session.userID) {
@@ -14,14 +15,31 @@ function checkClient(req, res, next) {
 }
 
 router.post("/", function(req, res, next) {
+  var tableinfo = req.body.table;
+  var tableid;
+
+  Table.find({ time: tableinfo.time, size: tableinfo.size }, function(
+    err,
+    table
+  ) {
+    if (err) {
+      return next(err);
+    } else {
+      tableid = table._id;
+    }
+  });
+
   var order = {
-    
+    userID: req.session.userID,
+    restID: req.body.restID,
+    date: req.body.date,
+    guest: req.body.guest,
+    table: tableid
   };
   Order.create(order, function(error, order) {
     if (error) {
       return next(error);
     } else {
-
       //should redirect to "Congrats! Successfully!"
       return res.redirect("/login/profile");
     }

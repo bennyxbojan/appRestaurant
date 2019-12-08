@@ -27,7 +27,7 @@ var orderSchema = new Schema({
     type: Number,
     required: true
   },
-  tables: {
+  table: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: "Table"

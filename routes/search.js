@@ -6,14 +6,14 @@ var Table = require("../models/table");
 const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 
 // POST route for reading data
-router.post("/", function(req, res, next) {
-  if (req.body.date && req.body.time && req.body.guest && req.body.city) {
-    var date = new Date(req.body.date);
+router.get("/", function(req, res, next) {
+  if (req.query.date && req.query.time && req.query.guest && req.query.city) {
+    var date = new Date(req.query.date);
     var weekday = date.getDay();
 
     var result = Restaurant.find({
       opendays: week[weekday],
-      city: req.body.city,
+      city: req.query.city,
       tables: { $elemMatch: { time: req.body.time } },
       tables: { $elemMatch: { taken: false } },
       tables: { $elemMatch: { size: req.body.guest } }
