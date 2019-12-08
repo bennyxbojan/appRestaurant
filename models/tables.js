@@ -10,7 +10,8 @@ var tableSchema = new Schema({
   },
   size:{
     type: String,
-    required:true
+    required:true,
+    enum:['small','medium','large','jumbo']
   }
 });
 

@@ -39,6 +39,12 @@
       <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
         <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
       </a >
+      
+      <% if (curUser) {%>
+        <a class="login" href="/login/profile">Hi,<%= curUser.username%></a>
+        <a class="link-login" herf="/login/logout">
+          <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+        </a>
     </div> 
     
     <!-----------Banner image +  Searching feature -------------->
@@ -62,8 +68,6 @@
               <div class="input-group-col">
                 <label class = "input-group-text">Time</label>
                 <span><select class="form-control" name="time">
-                    <option>9AM</option>
-                    <option>10AM</option>
                     <option>11AM</option>
                     <option>12PM</option>
                     <option>1PM</option>
