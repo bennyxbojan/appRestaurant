@@ -33,25 +33,30 @@ router.get("/", function(req, res, next) {
     var date = new Date(req.query.date);
     var weekday = date.getDay();
     var size = getTableSize(req.query.guest);
-    console.log(weekday);
-    console.log(size);
-    console.log(req.query.guest <= 2);
-    var options;
-
-    var options = Table.find({time: req.query.time, size:size}, function(err,tables){
+    var optionid;
+    
+    Table.find({time: req.query.time, size:size}, function(err,table){
       if(err){
         return next(err);
       }else{
-        options = tables._id;
+        optionid = table[0]._id;
+        // console.log(table[0]._id);
       }
     });
+    
+    var option = {
+      table:optionid,
+      taken:false
+    }
+    console.log(option);
 
     var result = Restaurant.find({
       opendays: week[weekday],
       city: req.query.city,
-      tables: { $elemMatch: { time: req.query.time } },
-      tables: { $elemMatch: { taken: false } },
-      tables: { $elemMatch: { size: size } }
+      options:option
+      // options: { $elemMatch: { time: req.query.time } },
+      // tables: { $elemMatch: { taken: false } },
+      // tables: { $elemMatch: { size: size } }
     });
 
     result.exec(function(err, tables) {
