@@ -12,7 +12,7 @@ router.get("/", function(req, res) {
         status: 404
       });
     }
-    res.status(200).render("manage_rest", {
+    res.status(200).render("manageRest", {
       restaurants: restaurants
     });
   });
