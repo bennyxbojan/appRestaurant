@@ -14,10 +14,8 @@
         <p>Open Days: <%= item.opendays%></p>
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
-        <p>
-          Table: <% item.options.table.forEach(table=>{%>
-          
-        </p>
+        <p><% item.options%></p>
+        
       </div>
     </div>
     <% }) %>
