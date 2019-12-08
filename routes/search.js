@@ -66,7 +66,7 @@ router.get("/", function(req, res, next) {
             status: 404
           });
         } else {
-          console.log(rest)
+          //console.log(rest)
           res.render("restaurants", {
             rest: rest,
             date: req.query.date,

@@ -20,7 +20,12 @@ var UserSchema = new mongoose.Schema({
     required: true,
     minlength:[4,"Password should be longer than 4"]
   },
-  name:{
+  fname:{
+    type:String,
+    required:true,
+    trim:true
+  },
+  lname:{
     type:String,
     required:true,
     trim:true

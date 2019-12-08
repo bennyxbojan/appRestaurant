@@ -12,7 +12,6 @@ function checkClient(req, res, next) {
   } else {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
-    alert()
     res.redirect('/login');
   }
 }
@@ -23,7 +22,7 @@ router.get("/review", checkClient, function(req, res, next) {
       if (err) {
         return next(err);
       } else {
-        User.findById(req.query.userID, function(err, user) {
+        User.findById(req.session.userID, function(err, user) {
           if (err) {
             return next(err);
           } else {
@@ -31,6 +30,9 @@ router.get("/review", checkClient, function(req, res, next) {
               if (err) {
                 return next(err);
               } else {
+                console.log(rest);
+                console.log(table);
+                console.log(user);
                 res.render("review", {
                   rest: rest,
                   user: user,

@@ -26,15 +26,18 @@ router.get("/", checkAdmin, function(req, res, next) {
       }
       res.status(200).render("manageRest", {
         restaurants: restaurants,
-        name: user.username,
+        name: user.name,
         email: user.email
       });
     });
   });
 });
 
+// enter the create new object page
+router.get("/newrest", check)
+
 //add new restaurants
-router.post("/", checkAdmin, function(req, res, next) {
+router.post("/newrest", checkAdmin, function(req, res, next) {
   var options = req.body.options;
   console.log(options);
   // var alltables = [];
