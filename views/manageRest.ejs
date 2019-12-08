@@ -28,6 +28,7 @@
         </a >
       <%}%>
   </div> 
+  <!-----------------------Navigation Portal----------------------------->
   <div class="banner">
     <div class = "banner-img">
       <div class = "banner-text">
@@ -40,13 +41,14 @@
       </div>    
     </div>
   </div>
+  <!-----------------------Search bar----------------------------->
   <div class = "search-form">
     <form>
       <input
           type="text"
           name="idolname"
           onChange={this.handleSearch}
-          placeholder="Find your Idol now!"
+          placeholder="Search By Restaurant Name"
       />
       <input
           type="submit"
@@ -55,12 +57,14 @@
       />
     </form>
   </div>
+  <!-----------------------Operation buttons----------------------------->
+  <div class="operTools">
+    <a class="createNew" href="#test"></a>
+    <span><a></a></span>
+  </div>
   
   
   <!-----------------------Navigation Portal----------------------------->
-  <div class="navi">
-   
-  </div>
 
   <div class="item-admin">
     <% restaurants.forEach(item=>{%>
