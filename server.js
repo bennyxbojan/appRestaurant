@@ -81,6 +81,7 @@ const orderRouter = require("./routes/order");
 app.use(function(req, res, next) {
   res.locals.curUser = req.session.userID;
   res.locals.curUserName = req.session.username;
+  res.locals.curUserRole = req.session.role;
   next();
 });
 

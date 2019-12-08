@@ -108,6 +108,7 @@ router.get("/profile", checkClient, function(req, res, next) {
           error,
           orders
         ) {
+          console.log(orders);
           return res.render("profile", {
             orders: orders,
             user: user.fname,

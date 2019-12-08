@@ -136,7 +136,7 @@
 
       var data = $('.row.ifields').map(function() {
         return {
-          : $(this).find('[name="pname"]').val(),
+          product: $(this).find('[name="pname"]').val(),
           quantity: $(this).find('[name="pquantity"]').val(),
           quantityttype: $(this).find('[name="qtype"]').val(),
           cost: $(this).find('[name="pcost"]').val()
@@ -144,8 +144,6 @@
       }).get();
 
       console.log(data);
-      
-      
     </script>
   
   </body>  

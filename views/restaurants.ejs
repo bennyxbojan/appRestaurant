@@ -38,7 +38,7 @@
       </a>
       
       <% if (curUser) {%>
-        <%if (curUser.role == "client"){%>
+        <%if (curUserRole == "client"){%>
           <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
         <%} else{%>
           <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
