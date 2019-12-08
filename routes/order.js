@@ -36,7 +36,9 @@ router.get("/review", checkClient, function(req, res, next) {
                 res.render("review", {
                   rest: rest,
                   user: user,
-                  table: table
+                  table: table,
+                  date: req.query.date,
+                  guest:req.query.guest
                 });
               }
             });
