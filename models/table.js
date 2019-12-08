@@ -11,7 +11,7 @@ var tableSchema = new Schema({
   size:{
     type: String,
     required:true,
-    enum:['small','medium','large','jumbo']
+    enum:['small','medium','large','party']
   }
 });
 

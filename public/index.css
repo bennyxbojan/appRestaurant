@@ -14,6 +14,7 @@ body {
 .head-line{
   background-color: #34332D;
   height:8%;
+  width:100%;
 }
 .head-line .logo {
   position:relative;
@@ -28,9 +29,12 @@ body {
   left: 85%;
 }
 
-.logged-in{
+.loged-in{
   position:relative;
+  left:83%;
   height:70%;
+  text-align:center;
+  color:white
 }
 
 .banner{

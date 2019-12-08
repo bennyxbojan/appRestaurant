@@ -102,6 +102,19 @@ app.use("/login", loginRouter);
 app.use("/search",searchRouter);
 app.use("/manage", adminRouter);
 
+
+// const Table = require("./models/table");
+
+// app.get("/test",function(req,res){
+//   Table.find({},function(error,tables){
+//     if (error){
+//       res.send(error)
+//     }else{
+//       res.send(tables)
+//     }
+//   })
+// });
+
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {
   console.log('Your app is listening on port ' + listener.address().port);
