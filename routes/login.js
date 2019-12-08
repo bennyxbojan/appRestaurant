@@ -43,6 +43,7 @@ router.post("/", function(req, res, next) {
       password: req.body.password,
       role: "client"
     };
+    
 
     User.create(userData, function(error, user) {
       if (error) {
