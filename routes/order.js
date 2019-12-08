@@ -52,6 +52,19 @@ router.get("/review", checkClient, function(req, res, next) {
   }
 });
 
+router.get("/test", checkClient, function(req,res,next){
+  let filter = { options: { $elemMatch: { table: req.query.tableID } } };
+  Restaurant.find(filter, function(err,rest){
+     if (err){
+       return next(err)
+     }else{
+       console.log(rest);
+       res.send(rest);
+     }
+        })
+
+})
+
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
   let filter = { options: { $elemMatch: { table: req.body.tableID } } };
