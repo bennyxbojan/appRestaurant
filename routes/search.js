@@ -33,43 +33,40 @@ router.get("/", function(req, res, next) {
     var date = new Date(req.query.date);
     var weekday = date.getDay();
     var size = getTableSize(req.query.guest);
-    var optionid;
-    
-    Table.find({time: req.query.time, size:size}, function(err,table){
-      if(err){
+
+    Table.find({ time: req.query.time, size: size }, function(err, table) {
+      if (err) {
         return next(err);
-      }else{
-        optionid = table[0]._id;
+      } else {
+        var tableid = table[0]._id;
         // console.log(table[0]._id);
       }
-    });
-    
-    var option = {
-      table:optionid,
-      taken:false
-    }
-    console.log(option);
+      // var option = {
+      //   table: tableid,
+      //   taken: false
+      // };
+      // console.log(option);
 
-    var result = Restaurant.find({
-      opendays: week[weekday],
-      city: req.query.city,
-      options:option
-      // options: { $elemMatch: { time: req.query.time } },
-      // tables: { $elemMatch: { taken: false } },
-      // tables: { $elemMatch: { size: size } }
-    });
+      var result = Restaurant.find({
+        opendays: week[weekday],
+        city: req.query.city,
+        //options: option
+         options: { $elemMatch: { table: tableid } },
+         options: { $elemMatch: { taken: false } }
+      });
 
-    result.exec(function(err, tables) {
-      if (err) {
-        res.status(404).render("error", {
-          message: err,
-          status: 404
-        });
-      } else {
-        res.render("restaurants", {
-          tables: tables
-        });
-      }
+      result.exec(function(err, tables) {
+        if (err) {
+          res.status(404).render("error", {
+            message: err,
+            status: 404
+          });
+        } else {
+          res.render("restaurants", {
+            tables: tables
+          });
+        }
+      });
     });
   } else {
     var err = new Error("All fields required.");

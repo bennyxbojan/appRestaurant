@@ -4,6 +4,7 @@ var router = express.Router();
 var User = require("../models/user");
 var Order = require("../models/order");
 var Table = require("../models/table");
+var Restaurant = require("../models/restaurant");
 
 function checkClient(req, res, next) {
   if (req.session.userID) {
@@ -28,6 +29,9 @@ router.post("/", function(req, res, next) {
       tableid = table._id;
     }
   });
+  
+  Restaurant.findOneAndUpdate()
+  
 
   var order = {
     userID: req.session.userID,
