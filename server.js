@@ -96,7 +96,7 @@ app.use("/logout", function(req, res, next) {
 app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/search",searchRouter);
-app.use("/admin", adminRouter);
+app.use("/manage", adminRouter);
 
 // listen for requests :)
 const listener = app.listen(process.env.PORT, function() {

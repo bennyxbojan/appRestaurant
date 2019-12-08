@@ -73,7 +73,7 @@ router.post("/", function(req, res, next) {
           req.session.role = user.role;
           console.log(req.session.userID);
           console.log(req.session.role);
-          return res.redirect("/login/admin");
+          return res.redirect("/manage");
         }
       }
     });
@@ -105,26 +105,6 @@ router.get("/profile", checkClient, function(req, res, next) {
     }
   });
 });
-
-router.get("/admin", checkAdmin, function(req, res, next) {
-  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    if (error) {
-      return next(error);
-    } else {
-      if (user === null) {
-        var err = new Error("Not authorized! Go back!");
-        err.status = 400;
-        return next(err);
-      } else {
-        return res.render("manageRest", {
-          name: user.username,
-          email: user.email
-        });
-      }
-    }
-  });
-});
-
 
 
 module.exports = router;
