@@ -26,7 +26,7 @@ router.get("/", checkAdmin, function(req, res, next) {
       }
       res.status(200).render("manageRest", {
         restaurants: restaurants,
-        name: user.name,
+        name: user.fname,
         email: user.email
       });
     });
@@ -115,7 +115,7 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         }
         res.status(200).render("manageOrder", {
           orders: orders,
-          name: user.username,
+          name: user.fname,
           email: user.email
         });
       });

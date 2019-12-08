@@ -3,7 +3,7 @@
   <head>
     <meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <title>Home</title>
-    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link rel="stylesheet" type="text/css" href="/admin.css" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -39,9 +39,9 @@
       
       <% if (curUser) {%>
         <%if (curUser.role == "client"){%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUser%></a> 
+          <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
         <%} else{%>
-          <a class="loged-in" href="/manage">Hi,<%= curUser%></a>
+          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
           <%}%>
           <a href="/logout">
             <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>
@@ -59,16 +59,36 @@
     <h2>
       Please review your order.
     </h2>
+    <form>
+      
+
+    <h3>
+      Restaurant:
+
+    <div class="item-admin">
+    <% rest.forEach(item=>{%>
+    <div class="item">
+      <img src = <%= item.img%>>
+      <div class="itemdetail">
+        <p>ID: <%= item._id%></p>
+        <p>Name: <%= item.name%></p>
+        <p>Open Days: <%= item.opendays%></p>
+        <p>Location: <%=item.city%>, <%=item.zip%></p>
+        <p>Price: <%= item.price%></p>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+          </h3>
     
-    <p>
-      <%= rest%>
-    </p>
-        <p>
-      <%= user%>
-    </p>
-        <p>
-      <%= table%>
-    </p>
+    <h3>
+      Guest Name: <%= user.fname%> &nbsp <%= user.fname%> 
+    </h3>
+    <h3>
+      Table Selected: <%= table.size%> &nbsp <%= user.fname%> 
+      </h3> 
+    
+    </form>
     
   </body>
   
