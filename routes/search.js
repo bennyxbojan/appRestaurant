@@ -55,7 +55,13 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { taken: false } }
       });
 
-      result.exec(function(err, tables) {
+      result.populate({ 
+     path: 'options',
+     populate: {
+       path: 'table',
+       model: 'Table'
+     } 
+  }).exec(function(err, tables) {
         if (err) {
           res.status(404).render("error", {
             message: err,
