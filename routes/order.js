@@ -15,6 +15,11 @@ function checkClient(req, res, next) {
   }
 }
 
+router.get("/review",function(req,res,next){
+    console.log(req.query);
+           
+ });
+
 router.post("/", function(req, res, next) {
   var tableinfo = req.body.table;
   var tableid;

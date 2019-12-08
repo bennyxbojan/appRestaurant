@@ -54,9 +54,7 @@
     </div> 
     
     <!-----------Banner image +  Searching feature -------------->
-    
-    <div class="banner">
-      
+  
       <div class = "banner-form">
         <form id="search" action = "/search" method="get">
           <div class="form-row">
@@ -124,13 +122,17 @@
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
         <p>Options: <% for (var i = 0; i < item.options.length; i++) { %>
-            <li><a href = "book?restID=<%= item._id %>"><%= item.options[i].table.time %>, <%= item.options[i].table.size %></a>
+            <li><a href = "neworder/review?restID=<%= item._id%>&&date=<%= date%>&&guest=<%= guest%>&&table=<%= item.options[i].table._id%>"><%= item.options[i].table.time %>, <%= item.options[i].table.size %></a>
     </li>
     <% } %>
       </div>
       
     </div>
     <% }) %>
+  
+
+  
+  
   
   
   </div>
