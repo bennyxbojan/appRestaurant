@@ -10,15 +10,14 @@
   <% rest.forEach(item=>{%>
     <div class="item">
       <div class="itemdetail">
-        <p>ID: <%= item._id%></p>
         <p>Name: <%= item.name%></p>
         <p>Open Days: <%= item.opendays%></p>
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
         <p>
-          Table: <% item.options.table.size{%>
+          Table: <% item.options.table.forEach(table=>{%>
+          
         </p>
-
       </div>
     </div>
     <% }) %>
