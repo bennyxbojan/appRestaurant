@@ -22,28 +22,7 @@ var orderSchema = new Schema({
     required:true,
   },
   tables: [
-    {
-      _id: {
-        type: Number,
-        required: true,
-        unique: true,
-        autoIndex: false
-      },
-      time: {
-        type: String,
-        match: /^[0-9]{1,2}[AP]M$/,
-        required: true,
-        trim: true
-      },
-      taken: {
-        type: Boolean,
-        required: true
-      },
-      size: {
-        type: Number,
-        required: true
-      }
-    }
+    
   ]
 });
 
