@@ -39,7 +39,7 @@ body {
     url("https://images.unsplash.com/photo-1516528387618-afa90b13e000?ixlib=rb-1.2.1&w=1000&q=80");
 
   /* Set a specific height */
-  height: 20%;
+  height: 30%;
   margin:0;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
@@ -58,6 +58,11 @@ body {
 }
 .banner-text h1{color: white;}
 /*==================Navigation ===============*/
+.navi{
+  position:relative;
+  top:25%;
+  left:35%;
+}
 .navi a {
   display: inline-block;
   color: #ddd;
@@ -79,6 +84,10 @@ body {
   color: black;
 }
 
+/*====================Search Bar Section========================*/
+.search-form{
+  
+}
 /*================Items=======================*/
 
 .item-admin{

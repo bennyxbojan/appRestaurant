@@ -57,7 +57,7 @@ router.post("/", checkAdmin, function(req, res, next) {
   ) {
     var restData = {
       name: req.body.name,
-      city: req.body.city,
+      city: req.body.city, 
       zip: req.body.zip,
       img: req.body.img,
       cuisine: req.body.cuisine,
