@@ -10,6 +10,7 @@ dependencies:
   express: 4.17.1
   express-jwt: 5.3.1
   express-session: 1.17.0
+  js-base64: 2.5.1
   mongoose: 5.7.14
   nodemon: 2.0.1
   passport: 0.4.0
@@ -847,6 +848,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+  /js-base64/2.5.1:
+    dev: false
+    resolution:
+      integrity: sha512-M7kLczedRMYX4L8Mdh4MzyAMM9O5osx+4FcOQuTvr3A9F2D9S5JXheN0ewNbrvK2UatkTRhL5ejGmGSjNMiZuw==
   /jsonwebtoken/8.5.1:
     dependencies:
       jws: 3.2.2
@@ -1836,6 +1841,7 @@ specifiers:
   express: ^4.17.1
   express-jwt: ^5.3.1
   express-session: ^1.16.1
+  js-base64: ^2.5.1
   mongoose: ^5.7.13
   nodemon: ^2.0.1
   passport: ^0.4.0

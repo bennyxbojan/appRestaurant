@@ -54,36 +54,25 @@ router.get("/review", checkClient, function(req, res, next) {
 
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
+  let filter = { options: { $elemMatch: { table: req.body.tableID } } };
+  let update = { options: { taken: true } };
 
-  Table.find({ time: tableinfo.time, size: tableinfo.size }, function(
-    err,
-    table
-  ) {
-    if (err) {
-      return next(err);
+  Restaurant.findOneAndUpdate(filter, update);
+
+  var order = {
+    userID: req.session.userID,
+    restID: req.body.restID,
+    date: req.body.date,
+    guest: req.body.guest,
+    guestname: req.body.guestname,
+    table: req.body.tableID
+  };
+  Order.create(order, function(error, order) {
+    if (error) {
+      return next(error);
     } else {
-      var tableid = table._id;
-      let filter = { options: { $elemMatch: { table: tableid } } };
-      let update = { options: { taken: true } };
-
-      Restaurant.findOneAndUpdate(filter, update);
-
-      var order = {
-        userID: req.session.userID,
-        restID: req.body.restID,
-        date: req.body.date,
-        guest: req.body.guest,
-        guestname:req.body.guestname,
-        table: req.body.tableID
-      };
-      Order.create(order, function(error, order) {
-        if (error) {
-          return next(error);
-        } else {
-          //should redirect to "Congrats! Successfully!"
-          return res.redirect("/login/profile");
-        }
-      });
+      //should redirect to "Congrats! Successfully!"
+      return res.redirect("/login/profile");
     }
   });
 });

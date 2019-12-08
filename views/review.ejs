@@ -74,7 +74,7 @@
     </div>
   
   <div class="form">
-          <form id="order" action="/neworder" method="post" onsubmit="event.preventDefault(); validateMyForm();">
+          <form id="order" action="/neworder" method="post">
             <label><span>Name on Reservation:</span></label><input type="text" name="guestname" value=<%= user.lname%> required/> 
             <label><span>Guest Number:</span></label><input type="text" name="guest" value=<%= guest%> readonly/> 
             <label><span>Date:</span></label><input type="text" name="date" value=<%= date%>  readonly/>
