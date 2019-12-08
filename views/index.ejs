@@ -39,9 +39,9 @@
       
       <% if (curUser) {%>
         <%if (curUser.role == "client"){%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUser%></a> 
+          <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
         <%} else{%>
-          <a class="loged-in" href="/manage">Hi,<%= curUser%></a>
+          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
           <%}%>
           <a href="/logout">
             <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>

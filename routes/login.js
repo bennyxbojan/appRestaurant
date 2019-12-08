@@ -33,6 +33,8 @@ router.get("/", function(req, res, next) {
 //POST route for updating data
 router.post("/", function(req, res, next) {
   if (
+    req.body.fname &&
+    req.body.lname &&
     req.body.email &&
     req.body.username &&
     req.body.password &&
@@ -42,6 +44,8 @@ router.post("/", function(req, res, next) {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
+      fname:req.body.fname,
+      lname:req.body.lname,
       role: "client"
     };
 
@@ -51,7 +55,7 @@ router.post("/", function(req, res, next) {
       } else {
         req.session.userID = user._id;
         req.session.role = user.role;
-        req.session.username = user.username;
+        req.session.username = user.fname;
         return res.redirect("/login/profile");
       }
     });
@@ -68,15 +72,15 @@ router.post("/", function(req, res, next) {
         if (user.role == "client") {
           req.session.userID = user._id;
           req.session.role = user.role;
-          req.session.username = user.username;
-          console.log(req.session.userID);
+          req.session.username = user.fname;
+          // console.log(req.session.userID);
           return res.redirect("/login/profile");
         } else if (user.role == "admin") {
           req.session.userID = user._id;
           req.session.role = user.role;
-          req.session.username = user.username;
-          console.log(req.session.userID);
-          console.log(req.session.role);
+          req.session.username = user.fname;
+          // console.log(req.session.userID);
+          // console.log(req.session.role);
           return res.redirect("/manage");
         }
       }
@@ -90,7 +94,7 @@ router.post("/", function(req, res, next) {
 
 // Client profile page
 router.get("/profile", checkClient, function(req, res, next) {
-  console.log(req.session.userID);
+  // console.log(req.session.userID);
   User.findById(req.session.userID).exec(function(error, user) {
     if (error) {
       return next(error);
@@ -106,7 +110,7 @@ router.get("/profile", checkClient, function(req, res, next) {
         ) {
           return res.render("profile", {
             orders: orders,
-            user: user.username,
+            user: user.fname,
             email: user.email
             // '<br><a type="button" href="/logout">Logout</a>'
           });

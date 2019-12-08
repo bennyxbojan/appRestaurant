@@ -31,10 +31,20 @@ router.get("/", checkAdmin, function(req, res, next) {
       });
     });
   });
-});
+}); 
 
 // enter the create new object page
-router.get("/newrest", check)
+router.get("/newrest", checkAdmin, function(req,res,next){
+  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
+    Restaurant.find({}, function(err, restaurants) {
+      if (err) {
+        err.status = 404;
+        return next(err);
+      }
+      res.status(200).render("insertNew");
+    });
+  });
+})
 
 //add new restaurants
 router.post("/newrest", checkAdmin, function(req, res, next) {
