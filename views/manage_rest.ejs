@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/index.css" rel="stylesheet" type="text/css"/>
+    <link href="/admin.css" rel="stylesheet" type="text/css"/>
     <title>Manager Page</title>
   </head>
 <body>
@@ -15,6 +15,16 @@
       <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
     </a >
   </div> 
+  
+  <div class="banner">
+    <div class = "banner-img">
+      <div class = "banner-text">
+        <h1>Hello Administrator</h1>
+      </div>
+    </div>
+    <div class = "banner-form">
+    </div>
+  </div>
 
   <div class="item-admin">
     <% restaurants.forEach(item=>{%>
@@ -26,8 +36,10 @@
         <p>Open Days: <%= item.opendays%></p>
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
+        <a> Edit </a>
+        <span><a>Delete</a></span>
       </div>
-    <% }) %>;
+    <% }) %>
     </div>
   </div>
 
