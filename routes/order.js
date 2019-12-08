@@ -52,9 +52,11 @@ router.get("/review", checkClient, function(req, res, next) {
   }
 });
 
+
+//submit a new order
 router.post("/", checkClient, function(req, res, next) {
   var tableinfo = req.body.table;
-  var tableid;
+
 
   Table.find({ time: tableinfo.time, size: tableinfo.size }, function(
     err,
@@ -63,11 +65,8 @@ router.post("/", checkClient, function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      tableid = table._id;
-    }
-  });
-
-  let filter = { options: { $elemMatch: { table: tableid } } };
+      var tableid = table._id;
+        let filter = { options: { $elemMatch: { table: tableid } } };
   let update = { options: { taken: true } };
 
   Restaurant.findOneAndUpdate(filter, update);
@@ -87,6 +86,12 @@ router.post("/", checkClient, function(req, res, next) {
       return res.redirect("/login/profile");
     }
   });
+      
+      
+    }
+  });
+
+
 });
 
 module.exports = router;
