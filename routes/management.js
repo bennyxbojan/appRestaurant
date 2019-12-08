@@ -46,7 +46,7 @@ router.get("/newrest", checkAdmin, function(req,res,next){
 })
 
 //add new restaurants
-router.post("/newrest", function(req, res, next) {
+router.post("/newrest", checkAdmin, function(req, res, next) {
   var options = req.body.options;
   console.log(options);
   // var alltables = [];
