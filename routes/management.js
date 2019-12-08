@@ -48,6 +48,8 @@ router.post("/", checkAdmin, function(req, res, next) {
   if (
     req.body.name &&
     req.body.city &&
+    req.body.contact&&
+    req.body.address&&
     req.body.img &&
     req.body.cuisine &&
     req.body.price &&
@@ -58,6 +60,8 @@ router.post("/", checkAdmin, function(req, res, next) {
       name: req.body.name,
       city: req.body.city, 
       zip: req.body.zip,
+      contact: req.body.contact,
+      address:req.body.address,
       img: req.body.img,
       cuisine: req.body.cuisine,
       price: req.body.price,

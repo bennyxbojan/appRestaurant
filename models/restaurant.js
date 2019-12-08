@@ -12,6 +12,17 @@ var restaurantSchema = new Schema({
     required: true,
     trim: true
   },
+  address: {
+    type: String,
+    required: true,
+    trim:true
+  },
+  contact:{
+    type:String,
+    required:true,
+    match: [/^\d{3}-\d{3}-\d{4}$/, "Please enter a valid contact number"],
+    trim:true
+  },
   zip: {
     type: String,
     required: true,
@@ -51,8 +62,7 @@ var restaurantSchema = new Schema({
       taken: {
         type: Boolean,
         required: true,
-        default:false
-        
+        default: false
       }
     }
   ]
