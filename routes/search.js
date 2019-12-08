@@ -27,6 +27,10 @@ function getTableSize(guest) {
   return size;
 }
 
+function getSize(array){
+  
+}
+
 // POST route for reading data
 router.get("/", function(req, res, next) {
   if (req.query.date && req.query.time && req.query.guest && req.query.city) {
@@ -64,7 +68,11 @@ router.get("/", function(req, res, next) {
         } else {
           console.log(rest)
           res.render("restaurants", {
-            rest: rest
+            rest: rest,
+            date: req.query.date,
+            time: req.query.time,
+            guest: req.query.guest,
+            city: req.query.city
           });
         }
       });

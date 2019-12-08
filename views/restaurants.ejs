@@ -1,12 +1,121 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <link href="styles.css" rel="stylesheet" type="text/css"/>
-    <title>Hello, world!</title>
+    <meta charset = "utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="index.css" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    
+<!--     <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script> -->
+<!--     <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script> -->
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
+<!--     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
   </head>
-<body>
-<h2>
+  
+  <body>
+    <!--------- header with logo and user login status-------->
+    <div class = "head-line">
+      <a class="link-home" href="https://final-pro-yay76-feq6.glitch.me/">
+        <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
+      </a>
+      
+      <% if (curUser) {%>
+        <%if (curUser.role == "client"){%>
+          <a class="loged-in" href="/login/profile">Hi,<%= curUser%></a> 
+        <%} else{%>
+          <a class="loged-in" href="/manage">Hi,<%= curUser%></a>
+          <%}%>
+          <a href="/logout">
+            <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>
+          </a>
+      <%} else {%>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+        </a >
+      <%}%>
+    </div> 
+    
+    <!-----------Banner image +  Searching feature -------------->
+    
+    <div class="banner">
+      
+      <div class = "banner-form">
+        <form id="search" action = "/search" method="get">
+          <div class="form-row">
+            <div class="col">
+              <div class="input-group-col">
+                  <label class = "input-group-text">Date</label>
+                  <span><input type="date" class="form-control" name="date" id="date" value=<%= date %> /></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="input-group-col">
+                <label class = "input-group-text">Time</label>
+                <span><select class="form-control" name="time" value=<%= time %> >
+                    <option>11AM</option>
+                    <option>12PM</option>
+                    <option>1PM</option>
+                    <option>2PM</option>
+                    <option>3PM</option>
+                    <option>4PM</option>
+                    <option>5PM</option>
+                    <option>6PM</option>
+                    <option>7PM</option>
+                    <option>8PM</option>
+                    <option>9PM</option>
+                    <option>10PM</option>
+                    <option>11PM</option>
+                    <option>12AM</option>
+                  </select></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="input-group-col">
+                <label class="input-group-text">Guests</label>
+                <span><input type="number" class="form-control" name="guest" value=<%= guest %>  /></span>
+              </div>
+            </div>
+            <div class="col">
+              <div class="input-group-col">
+                <label class="input-group-text">City</label>
+                <span><input
+                  type="text"
+                  class="form-control"
+                  name="city"
+                  value=<%= city %> /></span>
+                <span class="input-group-append">
+                  <button
+                    class="btn border-left-0 "
+                    type="submit"
+                    id="search"
+                  >Search</button>
+                </span>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    
+  <div>
   <% rest.forEach(item=>{%>
     <div class="item">
       <div class="itemdetail">
@@ -15,21 +124,17 @@
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
         <p>Options: <% for (var i = 0; i < item.options.length; i++) { %>
-            <li><%= item.options[i].table.time %>, <%= item.options[i].table.size %>
+            <li><a href = "book?restID=<%= item._id %>"><%= item.options[i].table.time %>, <%= item.options[i].table.size %></a>
     </li>
     <% } %>
       </div>
       
-      
-      
     </div>
     <% }) %>
   
-
   
+  </div>
+    
+  </body>
   
-  
-  
-  </h2>
-</body>
 </html>
