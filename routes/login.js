@@ -116,14 +116,10 @@ router.get("/admin", checkAdmin, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        return res.send(
-          "<h1>Admin Page</h1>" +
-            "<h1>Name: </h1>" +
-            user.username +
-            "<h2>Mail: </h2>" +
-            user.email +
-            '<br><a type="button" href="/logout">Logout</a>'
-        );
+        return res.render("profile", {
+          name: user.username,
+          email: user.email
+        });
       }
     }
   });
