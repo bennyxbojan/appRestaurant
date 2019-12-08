@@ -27,21 +27,18 @@ router.get("/", checkAdmin, function(req, res, next) {
       } else {
         Restaurant.find({}, function(err, restaurants) {
           if (err) {
-            res.status(404).render("error", {
-              message: err,
-              status: 404
-            });
-          }
+            return next(err);
+            };
+          })
           res.status(200).render("manageRest", {
             restaurants: restaurants,
             name: user.username,
             email: user.email
           });
-        });
+        };
       }
-    }
+    })
   });
-});
 
 //add new restaurants
 

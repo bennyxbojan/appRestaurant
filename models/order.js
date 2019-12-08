@@ -21,9 +21,11 @@ var orderSchema = new Schema({
     type: Number,
     required:true,
   },
-  tables: [
-    
-  ]
+  tables: {
+    type: mongoose.Schema.Types.ObjectId,
+    required:true,
+    ref: "Table"
+  }
 });
 
 // Export model
