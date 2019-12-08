@@ -50,6 +50,7 @@ router.post("/", function(req, res, next) {
       } else {
         req.session.userID = user._id;
         req.session.role=user.role;
+        req.session.username = user.username;
         return res.redirect("/login/profile");
       }
     });
@@ -66,11 +67,13 @@ router.post("/", function(req, res, next) {
         if (user.role == "client") {
           req.session.userID = user._id;
           req.session.role=user.role;
+          req.session.username = user.username;
           console.log(req.session.userID);
           return res.redirect("/login/profile");
         } else if (user.role == "admin") {
           req.session.userID = user._id;
           req.session.role = user.role;
+          req.session.username = user.username;
           console.log(req.session.userID);
           console.log(req.session.role);
           return res.redirect("/manage");
