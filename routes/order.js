@@ -15,12 +15,30 @@ function checkClient(req, res, next) {
   }
 }
 
-router.get("/review",function(req,res,next){
-    console.log(req.query);
+router.get("/review",checkClient, function(req,res,next){
+    if(req.query){
+      
+      Restaurant.findById(req.query.restID, function(err,rest){
+        if (err){
+          return next(err)
+        }else{
+
+        }
+      })
+      
+      
+      res.render("review",{
+        
+      })
+    }else{
+      var err = new Error("Something's wrong! Please try again");
+      next(err); //Error, trying to access unauthorized page!
+   
+    }
            
  });
 
-router.post("/", function(req, res, next) {
+router.post("/", checkClient, function(req, res, next) {
   var tableinfo = req.body.table;
   var tableid;
 
