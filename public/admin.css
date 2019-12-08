@@ -5,10 +5,11 @@ body, html {
 
 body {
   font-family: "Benton Sans", "Helvetica Neue", helvetica, arial, sans-serif;
+  margin: 0;
 }
 
 .head-line{
-  background-color: #34332D;
+  background-color: #FAFBF3;
   height:8%;
 }
 .head-line .logo {
@@ -23,13 +24,14 @@ body {
   top:5%;
   left: 85%;
 }
+
 .banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)), 
-    url("https://gifimage.net/wp-content/uploads/2018/11/restaurant-anime-gif-1.gif");
+    url("https://images.unsplash.com/photo-1516528387618-afa90b13e000?ixlib=rb-1.2.1&w=1000&q=80");
 
   /* Set a specific height */
-  height: 50%;
+  height: 20%;
   margin:0;
   /* Position and center the image to scale nicely on all screens */
   background-position: center;
@@ -46,4 +48,4 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
 }
-.banner-text h1{color: white
+.banner-text h1{color: white;}
