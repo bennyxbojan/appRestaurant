@@ -55,16 +55,16 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { taken: false } }
       });
 
-      result.populate("options.table").exec(function(err, tables) {
+      result.populate("options.table").exec(function(err, rest) {
         if (err) {
           res.status(404).render("error", {
             message: err,
             status: 404
           });
         } else {
-          console.log(tables)
+          console.log(rest)
           res.render("restaurants", {
-            tables: tables
+            rest: rest
           });
         }
       });

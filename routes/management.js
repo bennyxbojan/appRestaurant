@@ -45,7 +45,6 @@ router.post("/", checkAdmin, function(req, res, next) {
   //   });
   // });
   // console.log(alltables);
-
   if (
     req.body.name &&
     req.body.city &&
@@ -54,7 +53,7 @@ router.post("/", checkAdmin, function(req, res, next) {
     req.body.price &&
     req.body.opendays &&
     req.body.options
-  ) {
+  ) { 
     var restData = {
       name: req.body.name,
       city: req.body.city, 
