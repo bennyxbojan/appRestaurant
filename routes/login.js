@@ -36,7 +36,7 @@ router.post("/", function(req, res, next) {
     req.body.username &&
     req.body.password &&
     req.body.passwordRe
-  ) {
+  ) { 
     var userData = {
       email: req.body.email,
       username: req.body.username,
