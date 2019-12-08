@@ -2,6 +2,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 var orderSchema = new Schema({
+  _id:{
+    type:String,
+    unique:true,
+    required:true
+  },
   userID: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,

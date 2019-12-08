@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 var Restaurant = require("../models/restaurant");
 var User = require("../models/user");
+var Order = require("../models/order");
 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {
@@ -15,34 +16,25 @@ function checkAdmin(req, res, next) {
   }
 }
 
+//get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    if (error) {
-      return next(error);
-    } else {
-      if (user === null) {
-        var err = new Error("Not authorized! Go back!");
-        err.status = 400;
+    Restaurant.find({}, function(err, restaurants) {
+      if (err) {
+        err.status = 404;
         return next(err);
-      } else {
-        Restaurant.find({}, function(err, restaurants) {
-          if (err) {
-            err.status = 404;
-            return next(err);
-          }
-          res.status(200).render("manageRest", {
-            restaurants: restaurants,
-            name: user.username,
-            email: user.email
-          });
-        });
       }
-    }
+      res.status(200).render("manageRest", {
+        restaurants: restaurants,
+        name: user.username,
+        email: user.email
+      });
+    });
   });
 });
 
 //add new restaurants
-router.post("/", function(req, res, next) {
+router.post("/", checkAdmin, function(req, res, next) {
   var options = req.body.options;
   console.log(options);
   // var alltables = [];
@@ -92,5 +84,23 @@ router.post("/", function(req, res, next) {
 //update resturant
 
 //delete resturant
+
+
+//get all orders
+router.get("/orders", checkAdmin, function(req, res, next) {
+  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
+    Order.find({}, function(err, orders) {
+      if (err) {
+        err.status = 404;
+        return next(err);
+      }
+      res.status(200).render("manageOrder", {
+        orders: orders,
+        name: user.username,
+        email: user.email
+      });
+    });
+  });
+});
 
 module.exports = router;

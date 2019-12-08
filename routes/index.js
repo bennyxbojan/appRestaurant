@@ -20,11 +20,5 @@ router.get("/", function(req, res) {
   })
 }); 
 
-//get all database record
-router.get("/list", async function(req, res) {
-  var students;
-  var classes;
-
-});
 
 module.exports = router;

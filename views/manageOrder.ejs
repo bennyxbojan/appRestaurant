@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link href="/admin.css" rel="stylesheet" type="text/css"/>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
+      crossorigin="anonymous"
+    />
+    <title>Manager Page</title>
+  </head>
+<body>
+  <!--------- header with logo and user login status-------->
+ <div class = "head-line">
+      <a class="link-home" href="/manage">
+        <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
+      </a>
+      
+      <% if (curUser) {%>
+          <a href="/logout">
+            <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>
+            </a>
+      <%} else {%>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+        </a >
+      <%}%>
+  </div> 
+  <div class="banner">
+    <div class = "banner-img">
+      <div class = "banner-text">
+          <h1>Hi <%= name %></h1>
+          <h2> Email: <%= email %> </h2>
+      </div>
+      <div class="navi">
+        <a class="active" href="/manage">Manage Restaurants</a>
+        <a href="#orders">Manage Orders</a>
+      </div>    
+    </div>
+  </div>
+  <div class = "search-form">
+    <form style={{ display: "flex" }}>
+      <input
+          type="text"
+          name="idolname"
+          onChange={this.handleSearch}
+          style={{ flex: "10", padding: "5px", border: "1px solid line" }}
+          placeholder="Find your Idol now!"
+      />
+      <input
+          type="submit"
+          value="Search"
+          className="searchbtn"
+          style={{ flex: "1" }}
+      />
+    </form>
+  </div>
+  
+  
+  <!-----------------------Navigation Portal----------------------------->
+  <div class="navi">
+   
+  </div>
+
+  <div class="item-admin">
+    <% orders.forEach(order=>{%>
+    <div class="item">
+      <img src = "https://img-aws.ehowcdn.com/700x/cdn.onlyinyourstate.com/wp-content/uploads/2019/01/1-12-700x541.jpg">
+      <div class="itemdetail">
+        <p>ID: <%= item._id%></p>
+        <p>Name: <%= item.name%></p>
+        <p>Open Days: <%= item.opendays%></p>
+        <p>Location: <%=item.city%>, <%=item.zip%></p>
+        <p>Price: <%= item.price%></p>
+        <a> Edit </a>
+        <span><a>Delete</a></span>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+
+
+</body>
+</html>
