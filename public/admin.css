@@ -87,7 +87,7 @@ body {
 /*====================Search Bar Section========================*/
 .search-from{
   height:8%;
-  width:100%
+  width:100%;
 }
 .search-form input[type=text]{
   width: 50%;
@@ -99,14 +99,14 @@ body {
   left:25%;
 }
 .createNew img{
-  height:3%;
+  width:30px;
   position:relative;
-  left:70%
+  left:80%
 }
 .sort {
   height:100%;
   position:relative;
-  left:47%
+  left:81%
 }
 /*================Items=======================*/
 
