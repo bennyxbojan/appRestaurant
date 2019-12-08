@@ -25,6 +25,14 @@ body {
   left: 85%;
 }
 
+.loged-in{
+  position:relative;
+  left:83%;
+  height:70%;
+  text-align:center;
+  color:white
+}
+
 .banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)), 
