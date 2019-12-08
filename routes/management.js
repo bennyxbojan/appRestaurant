@@ -45,14 +45,14 @@ router.get("/", checkAdmin, function(req, res, next) {
 router.post("/", function(req, res, next) {
   var options = req.body.options;
   console.log(options);
-  var alltables = [];
-  options.forEach(function(one) {
-    alltables.push({
-      table: one.table,
-      taken: one.taken,
-    });
-  });
-  console.log(alltables);
+  // var alltables = [];
+  // options.forEach(function(one) {
+  //   alltables.push({
+  //     table: one.table,
+  //     taken: one.taken,
+  //   });
+  // });
+  // console.log(alltables);
 
   if (
     req.body.name &&
@@ -61,7 +61,7 @@ router.post("/", function(req, res, next) {
     req.body.cuisine &&
     req.body.price &&
     req.body.opendays &&
-    req.body.tables
+    req.body.options
   ) {
     var restData = {
       name: req.body.name,
@@ -71,7 +71,7 @@ router.post("/", function(req, res, next) {
       cuisine: req.body.cuisine,
       price: req.body.price,
       opendays: req.body.opendays,
-      tables: alltables
+      options: options
     };
 
     Restaurant.create(restData, function(error, rest) {
