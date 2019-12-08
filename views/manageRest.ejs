@@ -34,6 +34,25 @@
           <h1>Hi <%= name %></h1>
           <h2> Email: <%= email %> </h2>
       </div>
+      <div class="navi">
+        <a></a>
+        <a></a>
+        <form style={{ display: "flex" }}>
+          <input
+              type="text"
+              name="idolname"
+              onChange={this.handleSearch}
+              style={{ flex: "10", padding: "5px", border: "1px solid line" }}
+              placeholder="Find your Idol now!"
+            />
+            <input
+              type="submit"
+              value="Search"
+              className="searchbtn"
+              style={{ flex: "1" }}
+            />
+        </form>
+      </div>
     </div>
     <div class = "banner-form">
     </div>
@@ -41,7 +60,7 @@
   
   <!-----------------------Navigation Portal----------------------------->
   <div class="navi">
-    <input type="text">
+   
   </div>
 
   <div class="item-admin">

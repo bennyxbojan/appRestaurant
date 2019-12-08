@@ -50,7 +50,9 @@ var restaurantSchema = new Schema({
       },
       taken: {
         type: Boolean,
-        required: true
+        required: true,
+        default:false
+        
       }
     }
   ]
