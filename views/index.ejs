@@ -38,10 +38,14 @@
       </a>
       
       <% if (curUser) {%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUser%></a>
+        <%if (curUser.role == "client"){%>
+          <a class="loged-in" href="/login/profile">Hi,<%= curUser%></a> 
+        <%} else{%>
+          <a class="loged-in" href="/manage">Hi,<%= curUser%></a>
+          <%}%>
           <a href="/logout">
             <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>
-            </a>
+          </a>
       <%} else {%>
         <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
           <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>

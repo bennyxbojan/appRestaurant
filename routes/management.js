@@ -27,31 +27,29 @@ router.get("/", checkAdmin, function(req, res, next) {
       } else {
         Restaurant.find({}, function(err, restaurants) {
           if (err) {
+            err.status = 404;
             return next(err);
-            };
-          })
+          }
           res.status(200).render("manageRest", {
             restaurants: restaurants,
             name: user.username,
             email: user.email
           });
-        };
+        });
       }
-    })
+    }
   });
+});
 
 //add new restaurants
-
 router.post("/", function(req, res, next) {
-  var tables = req.body.tables;
-
+  var options = req.body.options;
+  console.log(options);
   var alltables = [];
-  tables.forEach(function(table) {
+  options.forEach(function(one) {
     alltables.push({
-      _id: table._id,
-      time: table.time,
-      taken: table.taken,
-      size: table.size
+      table: one.table,
+      taken: one.taken,
     });
   });
   console.log(alltables);
@@ -81,7 +79,7 @@ router.post("/", function(req, res, next) {
         return next(error);
       } else {
         req.flash("info", "successfully created");
-        return res.redirect("/admin");
+        return res.redirect("/manage");
       }
     });
   } else {
