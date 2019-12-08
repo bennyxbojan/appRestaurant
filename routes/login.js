@@ -116,7 +116,7 @@ router.get("/admin", checkAdmin, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        return res.render("profile", {
+        return res.render("manageRest", {
           name: user.username,
           email: user.email
         });
