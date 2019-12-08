@@ -55,19 +55,14 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { taken: false } }
       });
 
-      result.populate({ 
-     path: 'options',
-     populate: {
-       path: 'table',
-       model: 'Table'
-     } 
-  }).exec(function(err, tables) {
+      result.populate("options.table").exec(function(err, tables) {
         if (err) {
           res.status(404).render("error", {
             message: err,
             status: 404
           });
         } else {
+          console.log(tables)
           res.render("restaurants", {
             tables: tables
           });
