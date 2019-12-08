@@ -16,5 +16,4 @@ var tableSchema = new Schema({
 });
 
 // Export model
-var Table = mongoose.model('Table', tableSchema);
-module.exports = Table;
+module.exports = mongoose.model("Table", tableSchema);

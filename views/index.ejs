@@ -37,13 +37,25 @@
         <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
       </a>
       
-      <% if (curUser !== null) {%>
-        <span><a class="login" href="/login/profile">Hi,<%= curUser.username%></a></span>
-        <a class="link-login" herf="/login/logout">
-          <img class="userLogo" src = "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/OOjs_UI_icon_logOut-ltr.svg/768px-OOjs_UI_icon_logOut-ltr.svg.png"/>
+      
+      <% if(curUser == null){ %>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login"> Login/Signup
+          <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
         </a>
+      <% } else { %>
+         
+      <% }%>
+      
+      <% if(loginUser != null){ %>
+        <a class="username" href="https://2560-final.glitch.me/api/user/profile/<%= loginUser._id%>"><span>&nbsp;&nbsp;&nbsp;&nbsp;(<%= loginUser.username%>)</span></a>
+      <% } %>  
+      
+      
+      <% if (curUser) {%>
+        <a class="link-login" href="/login/profile">Hi,(<%= curUser.username%>)</a>
+        <a class="link-login" href="/logout"> Log out</a>
       <%} else {%>
-        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login"> Login/Signup
         <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
         </a >
       <%}%>
