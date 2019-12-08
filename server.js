@@ -76,6 +76,7 @@ const loginRouter = require("./routes/login");
 const searchRouter = require("./routes/search");
 const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/management");
+const orderRouter = require("./routes/order");
 
 app.use(function(req, res, next) {
   res.locals.curUser = req.session.username;
@@ -101,6 +102,7 @@ app.use("/", indexRouter);
 app.use("/login", loginRouter);
 app.use("/search",searchRouter);
 app.use("/manage", adminRouter);
+app.use("/neworder", orderRouter);
 
 
 // const Table = require("./models/table");
