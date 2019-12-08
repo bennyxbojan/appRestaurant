@@ -91,9 +91,23 @@ body {
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
-  margin:2%;
+  margin:1%;
   position:relative;
   left:25%;
+}
+
+.operTools{
+  height:7%;
+}
+.createNew img{
+  height:100%;
+  position:relative;
+  left:45%
+}
+.sort {
+  height:100%;
+  postion:relative;
+  left:65%
 }
 /*================Items=======================*/
 
