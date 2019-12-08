@@ -47,7 +47,7 @@ body {
   background-size: cover;
 }
 .banner-img{
-  height:70%; 
+  height:100%; 
 }
 .banner-text {
   text-align: center;
@@ -60,7 +60,8 @@ body {
 /*==================Navigation ===============*/
 .navi a {
   display: inline-block;
-  color: black;
+  color: #ddd;
+  background-color: black;
   text-align: center;
   padding: 14px;
   text-decoration: none;
@@ -74,8 +75,8 @@ body {
 }
 
 .navi a.active {
-  background-color: dodgerblue;
-  color: white;
+  background-color: #ddd;
+  color: black;
 }
 
 /*================Items=======================*/
