@@ -30,8 +30,10 @@ router.post("/", function(req, res, next) {
     }
   });
   
-  Restaurant.findOneAndUpdate()
+  let filter = {options: { $elemMatch: { table: tableid } }};
+  let update = {options: {taken:true}};
   
+  Restaurant.findOneAndUpdate(filter,update);
 
   var order = {
     userID: req.session.userID,
