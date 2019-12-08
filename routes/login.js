@@ -2,6 +2,7 @@ var express = require("express");
 var router = express.Router();
 // const auth = require('./auth');
 var User = require("../models/user");
+var Order = require("../models/order");
 
 function checkClient(req, res, next) {
   if (req.session.userID) {
@@ -36,20 +37,20 @@ router.post("/", function(req, res, next) {
     req.body.username &&
     req.body.password &&
     req.body.passwordRe
-  ) { 
+  ) {
     var userData = {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
       role: "client"
     };
-    
+
     User.create(userData, function(error, user) {
       if (error) {
         return next(error);
       } else {
         req.session.userID = user._id;
-        req.session.role=user.role;
+        req.session.role = user.role;
         req.session.username = user.username;
         return res.redirect("/login/profile");
       }
@@ -66,7 +67,7 @@ router.post("/", function(req, res, next) {
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
-          req.session.role=user.role;
+          req.session.role = user.role;
           req.session.username = user.username;
           console.log(req.session.userID);
           return res.redirect("/login/profile");
@@ -87,7 +88,7 @@ router.post("/", function(req, res, next) {
   }
 });
 
-// GET route after registering
+// Client profile page
 router.get("/profile", checkClient, function(req, res, next) {
   console.log(req.session.userID);
   User.findById(req.session.userID).exec(function(error, user) {
@@ -99,15 +100,20 @@ router.get("/profile", checkClient, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        return res.render( "profile", {
+        Order.find({ userID: req.session.userID }).exec(function(
+          error,
+          orders
+        ) {
+          return res.render("profile", {
+            orders: orders,
             user: user.username,
-            email: user.email,
+            email: user.email
             // '<br><a type="button" href="/logout">Logout</a>'
+          });
         });
       }
     }
   });
 });
-
 
 module.exports = router;

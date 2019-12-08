@@ -85,21 +85,24 @@ router.post("/", checkAdmin, function(req, res, next) {
 
 //delete resturant
 
-
 //get all orders
 router.get("/orders", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    Order.find({}, function(err, orders) {
-      if (err) {
-        err.status = 404;
-        return next(err);
-      }
-      res.status(200).render("manageOrder", {
-        orders: orders,
-        name: user.username,
-        email: user.email
+    Order.find({})
+      .populate("userID")
+      .populate("restID")
+      .populate("options")
+      .exec(function(err, orders) {
+        if (err) {
+          err.status = 404;
+          return next(err);
+        }
+        res.status(200).render("manageOrder", {
+          orders: orders,
+          name: user.username,
+          email: user.email
+        });
       });
-    });
   });
 });
 
