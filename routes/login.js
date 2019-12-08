@@ -104,7 +104,12 @@ router.get("/profile", checkClient, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        Order.find({ userID: req.session.userID }).exec(function(
+        Order.find({ userID: req.session.userID })
+          .populate("restID")
+          .populate("restID.options")
+          .populate("tableID")
+
+        .exec(function(
           error,
           orders
         ) {

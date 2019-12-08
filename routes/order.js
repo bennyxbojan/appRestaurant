@@ -57,7 +57,9 @@ router.post("/", checkClient, function(req, res, next) {
   let filter = { options: { $elemMatch: { table: req.body.tableID } } };
   let update = { options: { taken: true } };
 
-  Restaurant.findOneAndUpdate(filter, update);
+  Restaurant.findOneAndUpdate(filter, update, function(err){
+    return next(err)
+  });
 
   var order = {
     userID: req.session.userID,

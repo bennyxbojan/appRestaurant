@@ -15,7 +15,6 @@ function checkAdmin(req, res, next) {
     next(err); //Error, trying to access unauthorized page!
   }
 }
-
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
