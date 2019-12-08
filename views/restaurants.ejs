@@ -14,9 +14,14 @@
         <p>Open Days: <%= item.opendays%></p>
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
-        <p><% item.options%></p>
-        
+        <p>Options: <% for (var i = 0; i < item.options.length; i++) { %>
+            <li><%= item.options[i].table.time %>, <%= item.options[i].table.size %>
+    </li>
+    <% } %>
       </div>
+      
+      
+      
     </div>
     <% }) %>
   
