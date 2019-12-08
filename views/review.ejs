@@ -60,43 +60,29 @@
       Please review your order.
     </h2>
 
-      Restaurant:
-
     <div class="item">
       <img src = <%= rest.img%>>
       <div class="itemdetail">
         <p>Name: <%= rest.name%></p>
         <p>Open Days: <%= rest.opendays%></p>
-        <p>Location: <%=rest.city%>, <%=rest.zip%></p>
+        <p>Location: <%=rest.address%>, <%=rest.city%>, <%=rest.zip%></p>
+        <p>
+          Contact:<%=rest.contact%>
+        </p>
         <p>Price: <%= rest.price%></p>
       </div>
     </div>
-    
-      
-    <span></span><input name = 'guest'></input>
-    
-    Name on Reservation: <%= user.fname%> &nbsp <%= user.lname%> with a party of <%= guest%>
-      <h3>
-        Date: <%= date %>
-      </h3>
-      <h3>
-        
-      </h3>
-    <h3>
-      Table Selected: <%= table.size%> &nbsp <%= table.time%> 
-      </h3> 
-    
-    
   
   <div class="form">
           <form id="order" action="/neworder" method="post" onsubmit="event.preventDefault(); validateMyForm();">
-            <label><span>Name on Reservation:</span></label><input type="text" name="guestname" value = <%= user.fname%><%= user.lname%> required/> 
-            <label><span>Last Name:</span></label><input type="text" name="lname" placeholder="Last Name" required/> 
-            <label><span>Username:</span></label><input type="text" name="username" placeholder="Username" required/> 
-            <label><span>Email Address:</span></label><input type="text" name="email" placeholder="Email Address" required/>
-            <label><span>Password:</span></label><input id = "password" type = "password" name="password" placeholder="Password" required/>   
-            <label><span>Re-enter Password</span></label><input  id = "passwordRe" type="password" name="passwordRe" placeholder="Confirm Password" required/>
-            <p><input type="submit" value="Register" /></p>
+            <label><span>Name on Reservation:</span></label><input type="text" name="guestname" value=<%= user.lname%> required/> 
+            <label><span>Guest Number:</span></label><input type="text" name="guest" value=<%= guest%> readonly/> 
+            <label><span>Date:</span></label><input type="text" name="date" value=<%= date%>  readonly/>
+            <label><span>Time:</span></label><input type="text" name="email" value= <%= table.time%> readonly/>
+            <input type="text" name="userID" value= <%= user._id%> hidden/>
+            <input type="text" name="restID" value= <%= rest._id%> hidden/>
+            <input type="text" name="tableID" value= <%= table._id%> hidden/>
+            <p><input type="submit" value="Make Reservation" /></p>
           </form>
       </div>
   

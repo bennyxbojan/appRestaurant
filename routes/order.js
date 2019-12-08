@@ -54,7 +54,6 @@ router.get("/review", checkClient, function(req, res, next) {
 
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
-  var tableinfo = req.body.table;
 
   Table.find({ time: tableinfo.time, size: tableinfo.size }, function(
     err,
@@ -75,7 +74,7 @@ router.post("/", checkClient, function(req, res, next) {
         date: req.body.date,
         guest: req.body.guest,
         guestname:req.body.guestname,
-        table: tableid
+        table: req.body.tableID
       };
       Order.create(order, function(error, order) {
         if (error) {
