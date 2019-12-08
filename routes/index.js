@@ -18,7 +18,7 @@ router.get("/", function(req, res) {
   res.render("index",{
     date:today  
   })
-});
+}); 
 
 //get all database record
 router.get("/list", async function(req, res) {

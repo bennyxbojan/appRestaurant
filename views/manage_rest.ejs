@@ -17,10 +17,16 @@
   </div> 
   
   <h2>
-  <%= restaurants %>
+  Restaurant <%= restaurants.name %>
   </h2>
   
-  
+  <div class = "item-admin">
+    <% restaurants.forEach(item=>){%>
+      <p><%= item._id%></p>
+      <p><%= item.name%></p>
+    });
+  </div>
+
 
 </body>
 </html>

@@ -44,7 +44,6 @@ router.post("/", function(req, res, next) {
       role: "client"
     };
     
-
     User.create(userData, function(error, user) {
       if (error) {
         return next(error);
