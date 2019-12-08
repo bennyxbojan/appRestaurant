@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var Restaurant = require("../models/restaurant");
+var Table = require("../models/table");
 
 const week = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
 

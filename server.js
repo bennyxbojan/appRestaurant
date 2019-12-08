@@ -78,8 +78,7 @@ const indexRouter = require("./routes/index");
 const adminRouter = require("./routes/management");
 
 app.use(function(req, res, next) {
-  res.locals.curUser = req.session;
-  console.log(res.locals.curUser);
+  res.locals.curUser = req.session.username;
   next();
 });
 

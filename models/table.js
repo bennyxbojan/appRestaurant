@@ -15,5 +15,8 @@ var tableSchema = new Schema({
   }
 });
 
+//make the combination of time + size unique
+tableSchema.index({ "time": 1, "size": 1}, { "unique": true });
+
 // Export model
 module.exports = mongoose.model("Table", tableSchema);
