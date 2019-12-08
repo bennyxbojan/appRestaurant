@@ -12,31 +12,41 @@ function checkClient(req, res, next) {
   } else {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
+    alert()
+    res.redirect('/login');
   }
 }
 
-router.get("/review",checkClient, function(req,res,next){
-    if(req.query){
-      
-      Restaurant.findById(req.query.restID, function(err,rest){
-        if (err){
-          return next(err)
-        }else{
-
-        }
-      })
-      
-      
-      res.render("review",{
-        
-      })
-    }else{
-      var err = new Error("Something's wrong! Please try again");
-      next(err); //Error, trying to access unauthorized page!
-   
-    }
-           
- });
+router.get("/review", checkClient, function(req, res, next) {
+  if (req.query) {
+    Restaurant.findById(req.query.restID, function(err, rest) {
+      if (err) {
+        return next(err);
+      } else {
+        User.findById(req.query.userID, function(err, user) {
+          if (err) {
+            return next(err);
+          } else {
+            Table.findById(req.query.tableID, function(err, table) {
+              if (err) {
+                return next(err);
+              } else {
+                res.render("review", {
+                  rest: rest,
+                  user: user,
+                  table: table
+                });
+              }
+            });
+          }
+        });
+      }
+    });
+  } else {
+    var err = new Error("Something's wrong! Please try again");
+    next(err); //Error, trying to access unauthorized page!
+  }
+});
 
 router.post("/", checkClient, function(req, res, next) {
   var tableinfo = req.body.table;
@@ -52,11 +62,11 @@ router.post("/", checkClient, function(req, res, next) {
       tableid = table._id;
     }
   });
-  
-  let filter = {options: { $elemMatch: { table: tableid } }};
-  let update = {options: {taken:true}};
-  
-  Restaurant.findOneAndUpdate(filter,update);
+
+  let filter = { options: { $elemMatch: { table: tableid } } };
+  let update = { options: { taken: true } };
+
+  Restaurant.findOneAndUpdate(filter, update);
 
   var order = {
     userID: req.session.userID,
