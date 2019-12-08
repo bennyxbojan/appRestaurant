@@ -54,4 +54,4 @@ orderSchema.pre("save", function(next) {
   );
 });
 // Export model
-module.exports = mongoose.model("Order", orderSchema);
+module.exports = Order;

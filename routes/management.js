@@ -46,7 +46,7 @@ router.get("/newrest", checkAdmin, function(req,res,next){
 })
 
 //add new restaurants
-router.post("/newrest", checkAdmin, function(req, res, next) {
+router.post("/newrest", function(req, res, next) {
   var options = req.body.options;
   console.log(options);
   // var alltables = [];
@@ -106,7 +106,7 @@ router.get("/orders", checkAdmin, function(req, res, next) {
     Order.find({})
       .populate("userID")
       .populate("restID")
-      .populate("options")
+      .populate("restID.options.table")
       .exec(function(err, orders) {
         if (err) {
           err.status = 404;
