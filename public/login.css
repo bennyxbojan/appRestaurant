@@ -38,8 +38,13 @@ body {
 }
 .leftf{
   margin-left:120px;
-
 }
+
+.form label{
+  width:120px;
+  display: inline-block
+}
+
 .form{
   background-color: ##FAFBF3;
   display: inline-block;

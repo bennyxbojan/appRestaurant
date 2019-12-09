@@ -89,31 +89,30 @@ body {
   height:8%;
   width:100%;
 }
+
+.search-form form{
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
 .search-form input[type=text]{
   width: 50%;
   border: 1px solid #ccc;
   border-radius: 4px;
   resize: vertical;
   margin:1%;
-  position:relative;
-  left:25%;
 }
 
 .search-form button{
-  position:relative;
-  left:25%;
+  display: inline;
 }
 
 .createNew img{
   width:30px;
-  position:relative;
-  left:80%
+  display: inline;
 }
-.sort {
-  height:100%;
-  position:relative;
-  left:81%
-}
+
 /*==========================    Items     ================================*/
 .item-admin{
   margin:2%;
