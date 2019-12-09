@@ -10,6 +10,9 @@ dependencies:
   express: 4.17.1
   express-jwt: 5.3.1
   express-session: 1.17.0
+  jquery: 3.4.1
+  jquery-ajax: 2.1.4
+  jquery-serializejson: 2.9.0
   js-base64: 2.5.1
   mongoose: 5.7.14
   nodemon: 2.0.1
@@ -848,6 +851,18 @@ packages:
     dev: false
     resolution:
       integrity: sha1-6PvzdNxVb/iUehDcsFctYz8s+hA=
+  /jquery-ajax/2.1.4:
+    dev: false
+    resolution:
+      integrity: sha1-63vMB7PQ8CG3XmAp6IaseM7WejY=
+  /jquery-serializejson/2.9.0:
+    dev: false
+    resolution:
+      integrity: sha512-xR7rjl0tRKIVioV5lOkOSv7K8BHMvGzYzC7Ech1iAYuZiYf0ksEpLC8OqjA5VApXf/qn/49O9hTmW70+/EA0vA==
+  /jquery/3.4.1:
+    dev: false
+    resolution:
+      integrity: sha512-36+AdBzCL+y6qjw5Tx7HgzeGCzC81MDDgaUP8ld2zhx58HdqXGoBd+tHdrBMiyjGQs0Hxs/MLZTu/eHNJJuWPw==
   /js-base64/2.5.1:
     dev: false
     resolution:
@@ -1841,6 +1856,9 @@ specifiers:
   express: ^4.17.1
   express-jwt: ^5.3.1
   express-session: ^1.16.1
+  jquery: ^3.4.1
+  jquery-ajax: ^2.1.4
+  jquery-serializejson: ^2.9.0
   js-base64: ^2.5.1
   mongoose: ^5.7.13
   nodemon: ^2.0.1

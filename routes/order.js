@@ -75,7 +75,7 @@ router.post("/", checkClient, function(req, res, next) {
 
   // Restaurant.findOneAndUpdate(filter, update, function(err){
   //   return next(err)
-  // });
+  // }); 
 
   console.log(req.body.restID)
   var order = {

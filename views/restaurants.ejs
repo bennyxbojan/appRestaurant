@@ -122,10 +122,21 @@
         <p>Location: <%=item.city%>, <%=item.zip%></p>
         <p>Price: <%= item.price%></p>
         <p>Options: <% for (var i = 0; i < item.options.length; i++) { %>
+          <%=item.options[i].table._id%>
+          <%=tableid%>
+          
           <%if (item.options[i].table._id == tableid) { %>
-            <li><a href = "neworder/review?restID=<%= item._id%>&&date=<%= date%>&&guest=<%= guest%>&&tableID=<%= item.options[i].table._id%>"> <%= item.options[i].table.time %>, <%= item.options[i].table.size %></a>
+            <li><a href = "neworder/review?restID=<%= item._id%>&&date=<%= date%>&&guest=<%= guest%>&&tableID=<%= item.options[i].table._id%>"> <%= item.options[i].table.time %>, <%= item.options[i].table.size %></a>   </li>
+              <p>
+                aaaaaaaa
+              </p>
+              <%} else { %>
+              <p>
+                bbbb
+              </p>
               <% } %>
-    </li>
+              
+ 
     <% } %>
       </div>
       

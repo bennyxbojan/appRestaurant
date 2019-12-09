@@ -4,13 +4,14 @@ var router = express.Router();
 var User = require("../models/user");
 var Order = require("../models/order");
 
+
 function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
   } else {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
-  } 
+  }    
 }
 
 function checkAdmin(req, res, next) {

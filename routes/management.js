@@ -13,7 +13,7 @@ function checkAdmin(req, res, next) {
   } else {
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
-  }
+  } 
 }
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
