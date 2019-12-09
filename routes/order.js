@@ -53,10 +53,10 @@ router.get("/review", checkClient, function(req, res, next) {
 });
 
 router.get("/test", checkClient, function(req,res,next){
-  let filter = { _id: req.query.res
+  let filter = { _id: req.query.restID};
     
     
-    options: { $elemMatch: { table: req.query.tableID } } };
+    //options: { $elemMatch: { table: req.query.tableID } } };
   Restaurant.find(filter, function(err,rest){
      if (err){
        return next(err)
