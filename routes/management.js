@@ -168,10 +168,7 @@ router.get("/delrest", function(req, res, next) {
         if (err) {
           return next(err);
         } else {
-          res.render("manageRest", {
-            name: user.fname,
-            email: user.email
-          });
+          res.redirect('/manage');
         }
       });
     });
