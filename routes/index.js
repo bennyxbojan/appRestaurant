@@ -77,9 +77,9 @@ router.get("/", function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      geocoder.geocode('29 champs elysée paris', function(err, res) {
-        console.log(res);
-      });
+      geocoder.reverse({lat:45.767, lon:4.833}, function(err, res) {
+  console.log(res);
+});
       for (var i = 0; i < rests.length; i++) {
         compare.id = rests[i]._id;
       }
