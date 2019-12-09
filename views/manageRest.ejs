@@ -44,10 +44,11 @@
   <!-----------------------Search bar----------------------------->
   <div class = "search-form">
     <form action = '/manage' method='get'>
-      <input
+    <input
           type="text"
           name="restname"
           placeholder="Search By Restaurant Name"
+          value = <%= query %>
       />
       <span><button type="submit" id="search">Search</button></span>
     </form>

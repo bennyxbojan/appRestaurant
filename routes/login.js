@@ -25,12 +25,12 @@ function checkAdmin(req, res, next) {
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
   }
-}
+} 
 
 // GET route for reading data
 router.get("/", function(req, res, next) {
   res.status(200).render("login");
-});
+}); 
 
 //POST route for updating data
 router.post("/", function(req, res, next) {

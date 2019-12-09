@@ -16,7 +16,7 @@ function checkAdmin(req, res, next) {
     res.redirect("/login");
   }
   
-}
+} 
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(err, user) {
@@ -28,6 +28,7 @@ router.get("/", checkAdmin, function(req, res, next) {
             return next(err);
           } else {
             res.status(200).render("manageRest", {
+              query:'Restaurant',
               restaurants: restaurants,
               name: user.fname,
               email: user.email
@@ -79,8 +80,8 @@ router.post("/newrest", function(req, res, next) {
   // });
   // console.log(alltables);
   console.log(req.body);
-  var data = JSON.parse(req.body);
-  console.log(data);
+  // var data = JSON.parse(req.body);
+  // console.log(data);
   if (
     req.body.name &&
     req.body.city &&
@@ -163,6 +164,7 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         } else {
           console.log(orders);
           res.status(200).render("manageOrder", {
+            query:'OrderNum',
             orders: orders,
             name: user.fname,
             email: user.email

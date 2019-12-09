@@ -35,7 +35,10 @@ body {
 .box{
   width:100%;
   padding: 0px;
-  margin: 0 auto;
+}
+.leftf{
+  margin-left:120px;
+
 }
 .form{
   background-color: ##FAFBF3;
@@ -43,6 +46,7 @@ body {
   box-sizing: border-box;
   float: left;
   width:40%;
+  margin:auto;
 }
 
 .form input[type=text], [type=password],select, textarea {

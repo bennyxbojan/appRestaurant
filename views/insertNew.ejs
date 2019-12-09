@@ -26,7 +26,7 @@
     <!--------- header with logo and user login status-------->
     
     <div class = "head-line">
-      <a class="link-home" href="https:/">
+      <a class="link-home" href="https:/manage">
         <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
       </a>
       
@@ -166,13 +166,13 @@
               img:$(this).find('[name="img"]').val(),
               options: options};
           });
-        console.log(options);
+        // console.log(options);
         console.log(data);
       
         $.ajax({
           url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
           type: 'POST',
-          data: JSON.stringify({Rest: data}),
+          data: data,
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data){alert(data);},
