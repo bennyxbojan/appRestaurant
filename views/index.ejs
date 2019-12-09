@@ -124,6 +124,7 @@
       <div class = "location">
         <img src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2FlocIcon.png?v=1575674673089"/>
         <span id = 'city'><%=city%> </span>
+        <span id = 'geo'></p>
       </div>
       <div class = "promo-section">
         <h3 class = "section-title">Restaurants You May Like</h3>
@@ -146,5 +147,24 @@
     </div>
     
   </body>
+
+<script>
+var x = document.getElementById("geo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "( "+position.coords.latitude + 
+  ", " + position.coords.longitude + ")";
   
+  document.body.onload = function(){
+    getLocation ();
+}
+</script>
 </html>
