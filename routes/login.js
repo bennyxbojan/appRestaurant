@@ -11,9 +11,8 @@ function checkClient(req, res, next) {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
-  }    
-} 
-
+  }
+}
 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {
@@ -25,12 +24,12 @@ function checkAdmin(req, res, next) {
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
   }
-} 
+}
 
 // GET route for reading data
 router.get("/", function(req, res, next) {
   res.status(200).render("login");
-}); 
+});
 
 //POST route for updating data
 router.post("/", function(req, res, next) {
@@ -46,8 +45,8 @@ router.post("/", function(req, res, next) {
       email: req.body.email,
       username: req.body.username,
       password: req.body.password,
-      fname:req.body.fname,
-      lname:req.body.lname,
+      fname: req.body.fname,
+      lname: req.body.lname,
       role: "client"
     };
 
@@ -106,24 +105,20 @@ router.get("/profile", checkClient, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        Order.find({ userID: req.session.userID})
-          .sort({date:-1})
+        Order.find({ userID: req.session.userID })
+          .sort({ date: -1 })
           .populate("restID")
           .populate("restID.options")
           .populate("tableID")
-
-        .exec(function( 
-          error,
-          orders
-        ) {
-          console.log(orders);
-          return res.render("profile", {
-            orders: orders,
-            user: user.fname,
-            email: user.email
-            // '<br><a type="button" href="/logout">Logout</a>'
+          .exec(function(error, orders) {
+            console.log(orders);
+            return res.render("profile", {
+              orders: orders,
+              user: user.fname,
+              email: user.email
+              // '<br><a type="button" href="/logout">Logout</a>'
+            });
           });
-        });
       }
     }
   });

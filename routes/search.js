@@ -65,7 +65,6 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { table: tableid, taken: false } },
          // options: { $elemMatch: { taken: false } }
       });
-
       result.sort('name').populate("options.table").exec(function(err, rest) {
         if (err) {
           return next(err);

@@ -68,7 +68,6 @@ router.get("/newrest", checkAdmin, function(req, res, next) {
 
 //add new restaurants
 router.post("/newrest", function(req, res, next) {
-  var options = req.body.options;
   // console.log(options);
   // var alltables = [];
   // options.forEach(function(one) {
@@ -78,9 +77,10 @@ router.post("/newrest", function(req, res, next) {
   //   });
   // });
   // console.log(alltables);
+  console.log(req.body);
   var data = req.body.Rest["0"];
   // var data = JSON.parse(req.body);
-  // console.log(data);
+   console.log(data);
   if (
     data.name &&
     data.city &&
@@ -103,17 +103,20 @@ router.post("/newrest", function(req, res, next) {
       cuisine: data.cuisine,
       price: data.price,
       opendays: data.opendays,
-      options: options
+      options: data.options
     };
-
+  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
     Restaurant.create(restData, function(error, rest) {
       if (error) {
         return next(error);
       } else {
         req.flash("info", "successfully created");
-        return res.redirect("/manage");
+        return res.render("manageRest",{
+          name: user.fname,
+          email: user.email
+        });
       }
-    });
+    })});
   } else {
     var err = new Error("All fields required.");
     err.status = 400;
@@ -137,14 +140,21 @@ router.put("/editrest", function(req, res, next) {
 //delete resturant
 
 router.get("/delrest", function(req, res, next) {
+  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
   Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
     rest.remove(function(err) {
       if (err) {
         return next(err);
       } else {
-        res.render("manageRest");
-      }
+        res.render("manageRest",{
+          name: user.fname,
+          email: user.email
+        })
+          
+        };
+      })
     });
+  
   });
 });
 
