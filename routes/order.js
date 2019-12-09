@@ -154,7 +154,6 @@ router.post("/", checkClient, function(req, res, next) {
             "options.$.taken": true
           }
         },
-        
         function(err) {
           if (err) {
             return next(err);

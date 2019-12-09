@@ -93,6 +93,7 @@ router.post("/", function(req, res, next) {
   }
 });
 
+
 // Client profile page
 router.get("/profile", checkClient, function(req, res, next) {
   // console.log(req.session.userID);

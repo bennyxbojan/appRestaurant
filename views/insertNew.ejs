@@ -172,7 +172,7 @@
         $.ajax({
           url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
           type: 'POST',
-          data: data,
+          data: JSON.stringify({Rest: data}),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data){alert(data);},

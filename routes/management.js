@@ -77,7 +77,7 @@ router.post("/newrest", function(req, res, next) {
   //   });
   // });
   // console.log(alltables);
-  console.log(req.body);
+  //console.log(req.body);
   var data = req.body.Rest["0"];
   // var data = JSON.parse(req.body);
    console.log(data);
