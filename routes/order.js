@@ -30,7 +30,7 @@ router.get("/review", checkClient, function(req, res, next) {
               if (err) {
                 return next(err);
               } else {
-                // console.log(rest);
+                console.log(rest);
                 // console.log(table);
                 // console.log(user);
                 res.render("review", {
