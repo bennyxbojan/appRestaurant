@@ -69,8 +69,8 @@ body {
   width:100%;
 }
 .item{
-  width:30%;
-  margin:30px;
+  width:260px;
+  margin:20px;
   background-color:#FAFBF3;
   border-radius: 4px;
   box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -99,13 +99,16 @@ body {
     left:70%;
   }
   .side-navi{
-    width:150px
+    width:120px
   }
   .cur-order{
-    margin-left:150px;
+    margin-left:120px;
   }
   .past-order{
-    margin-left:150px;
+    margin-left:120px;
+  }
+  .item{
+    width:250px;
   }
 }
 /*------------iphone---------------*/
@@ -125,6 +128,9 @@ body {
   }
   .past-order{
     margin-left:100px;
+  }
+  .item{
+    width:235px;
   }
   
 }

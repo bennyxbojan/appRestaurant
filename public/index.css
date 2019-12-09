@@ -177,3 +177,23 @@ th, td{
   text-align: center; 
   padding:1em;
 }
+
+/*-------------ipad--------------*/
+@media(min-width: 700px )and(max-width: 1366px){
+  .userLogo {
+    left:60%;
+  }
+  .loged-in{
+    left:58%;
+  }
+}
+/*------------iphone---------------*/
+@media(min-width:375px) and (max-width: 700px){
+  .userLogo {
+    left:60%;
+  }
+  .loged-in{
+    left:58%;
+  }
+  
+}

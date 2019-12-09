@@ -14,7 +14,7 @@ function checkAdmin(req, res, next) {
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
-  } 
+  }
 }
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
@@ -31,10 +31,10 @@ router.get("/", checkAdmin, function(req, res, next) {
       });
     });
   });
-}); 
+});
 
 // enter the create new object page
-router.get("/newrest", checkAdmin, function(req,res,next){
+router.get("/newrest", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
     Restaurant.find({}, function(err, restaurants) {
       if (err) {
@@ -44,12 +44,12 @@ router.get("/newrest", checkAdmin, function(req,res,next){
       res.status(200).render("insertNew");
     });
   });
-}) 
+});
 
 //add new restaurants
 router.post("/newrest", function(req, res, next) {
   var options = req.body.options;
-  // console.log(options); 
+  // console.log(options);
   // var alltables = [];
   // options.forEach(function(one) {
   //   alltables.push({
@@ -64,21 +64,21 @@ router.post("/newrest", function(req, res, next) {
   if (
     req.body.name &&
     req.body.city &&
-    req.body.contact&&
-    req.body.zip&&
-    req.body.address&&
+    req.body.contact &&
+    req.body.zip &&
+    req.body.address &&
     req.body.img &&
     req.body.cuisine &&
     req.body.price &&
     req.body.opendays &&
     req.body.options
-  ) { 
+  ) {
     var restData = {
       name: req.body.name,
-      city: req.body.city, 
+      city: req.body.city,
       zip: req.body.zip,
       contact: req.body.contact,
-      address:req.body.address,
+      address: req.body.address,
       img: req.body.img,
       cuisine: req.body.cuisine,
       price: req.body.price,
@@ -102,13 +102,31 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
-router.put('/editres',function(req,res,next){
+router.put("/editres", function(req, res, next) {
   var update = req.body;
-  
-})
 
+  Restaurant.findByIdAndUpdate(update._id, update, function(err, rest) {
+    if (err) {
+      return next(err);
+    } else {
+      res.render("manageRest");
+    }
+  });
+});
 
 //delete resturant
+
+router.delete("/delrest", function(req, res, next) {
+  Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
+    rest.remove(function(err) {
+      if (err) {
+        return next(err);
+      } else {
+        res.render("manageRest");
+      }
+    });
+  });
+});
 
 //get all orders
 router.get("/orders", checkAdmin, function(req, res, next) {
@@ -120,14 +138,13 @@ router.get("/orders", checkAdmin, function(req, res, next) {
       .exec(function(err, orders) {
         if (err) {
           return next(err);
-        }else{
+        } else {
           console.log(orders);
           res.status(200).render("manageOrder", {
-          orders: orders,
-          name: user.fname,
-          email: user.email
-        
-        });
+            orders: orders,
+            name: user.fname,
+            email: user.email
+          });
         }
       });
   });
