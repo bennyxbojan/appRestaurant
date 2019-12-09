@@ -41,7 +41,7 @@ router.get("/", function(req, res, next) {
         return next(err);
       } else {
         var tableid = table[0]._id;
-        // console.log(table[0]._id);
+         console.log(table[0]._id);
       }
       // var option = {
       //   table: tableid,
@@ -53,18 +53,15 @@ router.get("/", function(req, res, next) {
         opendays: week[weekday],
         city: req.query.city,
         //options: option
-         options: { $elemMatch: { table: tableid } },
-         options: { $elemMatch: { taken: false } }
+         options: { $elemMatch: { table: tableid, taken: false } },
+         // options: { $elemMatch: { taken: false } }
       });
 
       result.populate("options.table").exec(function(err, rest) {
         if (err) {
-          res.status(404).render("error", {
-            message: err,
-            status: 404
-          });
+          return next(err);
         } else {
-          //console.log(rest)
+          console.log(rest)
           res.render("restaurants", {
             rest: rest,
             date: req.query.date,
