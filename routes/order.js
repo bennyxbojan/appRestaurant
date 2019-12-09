@@ -65,6 +65,7 @@ router.get("/test", checkClient, function(req,res,next){
     
     //options: { $elemMatch: { table: req.query.tableID } } };
   Restaurant.find(filter, function(err,rest){
+    
      if (err){
        return next(err)
      }else{
