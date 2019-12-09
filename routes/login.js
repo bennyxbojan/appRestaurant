@@ -12,7 +12,7 @@ function checkClient(req, res, next) {
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
   }
-}
+}  
 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {

@@ -108,8 +108,16 @@ body {
   margin:1%;
 }
 
-.search-form button{
+.search-form img{
   display: inline;
+  width:30px;
+  border:none;
+  background-color:none;
+}
+
+.search-form button{
+   border:none;
+  background-color:none;
 }
 
 .createNew img{

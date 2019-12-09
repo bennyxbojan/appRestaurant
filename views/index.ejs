@@ -129,6 +129,7 @@
         <h3 class = "section-title">Restaurants You May Like</h3>
         <div class="section-items"> 
            <% rests.forEach(item=>{%>
+          <a href = '/search?date=<%=date%>&time=8PM&guest=2&city=Pittsburgh&restname=<%=item.name%>'>
             <div class="item">
               <div class="itemdetail">
                 <img src= <%= item.img%>>
@@ -138,6 +139,7 @@
                 <p>Contact: <%=item.contact%></p>
               </div>
             </div>
+          </a>
           <% }) %>
         </div>
       </div>
