@@ -98,7 +98,9 @@ router.post("/newrest", function(req, res, next) {
     data.options
   ) {
     //find the table id with time+size
-    for (var i = 0; i < )
+    for (var i = 0; i < options.length;i++){
+           var time = data.options[i].time;
+  var size = data.options[i].size;
     Table.find({
       time: time,
       size: size
@@ -110,7 +112,10 @@ router.post("/newrest", function(req, res, next) {
         tables.push({
           table: table[0]._id,
           taken: false
-        });
+        })
+    ;
+      
+      
         console.log(tables);
 
         var restData = {
