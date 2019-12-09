@@ -133,20 +133,6 @@ router.post("/", checkClient, function(req, res, next) {
   //   return next(err)
   // });
 
-      Restaurant.update(
-      { _id: req.query.restID, "options.table": req.query.tableID },
-      {
-        $set: {
-          "options.$.taken": true
-        }
-      },function(err){
-        if(err){
-          return next(err);
-        }else{
-          res.redirect("/login/profile");
-        }
-      }
-    );
   var order = {
     orderNum: getOrderNum(),
     userID: req.session.userID,
@@ -161,6 +147,21 @@ router.post("/", checkClient, function(req, res, next) {
       return next(error);
     } else {
       //should redirect to "Congrats! Successfully!"
+      Restaurant.update(
+        { _id: req.query.restID, "options.table": req.query.tableID },
+        {
+          $set: {
+            "options.$.taken": true
+          }
+        },
+        function(err) {
+          if (err) {
+            return next(err);
+          } else {
+            console.log("update success");
+          }
+        }
+      );
       return res.redirect("/login/profile");
     }
   });
