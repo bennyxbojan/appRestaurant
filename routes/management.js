@@ -161,7 +161,18 @@ router.get('/resoverview/:restID',function(req,res,next){
 })
 
 router.post("/editrest", function(req, res, next) {
-  var update = req.body;
+  console.log(req.body);
+  var opendays;
+  var id = req.body.id.replace(/"/g,"");
+  Restaurant.findById(id,function(err,rest){
+    if(err){
+      next(err)
+    }else{
+      opendays = rest.opendays;
+    }
+  })
+  var update=req.body;
+  
   console.log(update.id);
   Restaurant.findByIdAndUpdate(update.id, update, function(err, rest) {
     if (err) {
