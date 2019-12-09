@@ -16,6 +16,8 @@ var NodeGeocoder = require('node-geocoder');
 
 // console.log(geo.city);
 
+
+
 var options = {
   provider: 'google',
  
@@ -32,6 +34,26 @@ var dd = ("0" + today.getDate()).slice(-2);
 var mm = ("0" + (today.getMonth() + 1)).slice(-2);
 var yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
+
+
+function distance(lat1, lng1, lat2,  lng2) {
+    const earthRadius = 3958.75; // in miles, change to 6371 for kilometer output
+
+    let dLat = Math.toRadians(lat2-lat1);
+    let dLng = Math.toRadians(lng2-lng1);
+
+    let sindLat = Math.sin(dLat / 2);
+    let sindLng = Math.sin(dLng / 2);
+
+    let a = Math.pow(sindLat, 2) + Math.pow(sindLng, 2)
+        * Math.cos(Math.toRadians(lat1)) * Math.cos(Math.toRadians(lat2));
+
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    let dist = earthRadius * c;
+
+    return dist; // output distance, in MILES
+}
+
 
 router.get("/", function(req, res, next) {
   //get client ip
@@ -51,11 +73,17 @@ router.get("/", function(req, res, next) {
   //find the closet rests
   var curr_ll = geo.ll;
   
+  var compare ={};
+  
   Restaurant.find({city: geo.city}, function(err,rests){
     if (err){
       return next(err);
     }else{
-      
+      for (var i = 0; i < rests.length; i++){
+        compare.id = rests[i]._id;
+        rest_lai
+        compare.distance = 
+      }
     }
   })
   
