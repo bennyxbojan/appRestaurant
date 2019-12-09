@@ -36,14 +36,12 @@
     <h2>
       My Orders:
     </h2>
-    <h3>
-      Upcoming Orders:
-    </h3>
+
       <div>
-    <% orders.forEach(item=>{%>
+    
       <div class="item">
         <div class="itemdetail">
-          <%if (<%=item.date%> >= <%=item.today%>) { %>
+          <% orders.forEach(item=>{%>
             <img src= <%= item.restID.img%>>
             <p>Name: <%= item.restID.name%></p>
             <p>Location: <%=item.restID.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
@@ -55,28 +53,9 @@
         </div>
 
       </div>
-      <% } %>
 
     </div>
     
-        <h3>
-      Past Orders:
-    </h3>
-      <div>
-      <div class="item">
-        <div class="itemdetail">
-          <%else { %>
-            <img src= <%= item.restID.img%>>
-            <p>Name: <%= item.restID.name%></p>
-            <p>Location: <%=item.restID.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
-            <p>Contact: <%=item.restID.contact%></p>
-            <p>Order Placed on: <%=item.date%></p>
-            <p>Name On Reservation: <%=item.guestname%></p>
-            <p>A total party of :<%=item.guest%></p>
-
-        </div>
-        <% } %>
-      </div>
       <% }) %>
 
     </div>

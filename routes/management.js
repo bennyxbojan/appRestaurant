@@ -169,7 +169,7 @@ router.post("/editrest", function(req, res, next) {
       next(err);
     } else {
       opendays = rest.opendays;
-
+ 
       var update = {
         _id: id,
         name: req.body.name.replace(/"/g, ""),
