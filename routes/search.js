@@ -51,13 +51,7 @@ router.get("/", function(req, res, next) {
           return next(err);
         } else {
           var tableid = table[0]._id;
-          console.log(table[0]._id);
-
-          // var option = {
-          //   table: tableid,
-          //   taken: false
-          // };
-          // console.log(option);
+          // console.log(table[0]._id);
 
           var result = Restaurant.find({
             opendays: week[weekday],
@@ -74,7 +68,7 @@ router.get("/", function(req, res, next) {
                 return next(err);
               } else {
                 // console.log(rest)
-                console.log(tableid);
+                // console.log(tableid);
                 res.render("restaurants", {
                   rest: rest,
                   tableid: tableid,
@@ -94,7 +88,52 @@ router.get("/", function(req, res, next) {
     }
     //where users give restaurant name for searching
   } else {
-    
+    if (req.query.date && req.query.time && req.query.guest && req.query.city) {
+      var date = new Date(req.query.date);
+      var weekday = date.getDay();
+      var size = getTableSize(req.query.guest);
+      // console.log(size);
+
+      Table.find({ time: req.query.time, size: size }, function(err, table) {
+        if (err) {
+          return next(err);
+        } else {
+          var tableid = table[0]._id;
+          // console.log(table[0]._id);
+
+          var result = Restaurant.find({
+            name: { $regex: req.query.restname, $options: "i" },
+            opendays: week[weekday],
+            city: req.query.city,
+            //options: option
+            options: { $elemMatch: { table: tableid, taken: false } }
+            // options: { $elemMatch: { taken: false } }
+          });
+          result
+            .sort("name")
+            .populate("options.table")
+            .exec(function(err, rest) {
+              if (err) {
+                return next(err);
+              } else {
+                // console.log(rest)
+                res.render("restaurants", {
+                  rest: rest,
+                  tableid: tableid,
+                  date: req.query.date,
+                  time: req.query.time,
+                  guest: req.query.guest,
+                  city: req.query.city
+                });
+              }
+            });
+        }
+      });
+    } else {
+      var err = new Error("All fields required.");
+      err.status = 400;
+      return next(err);
+    }
     
   }
   

@@ -31,112 +31,150 @@
       </a>
       
       <% if (curUser) {%>
-        <%if (curUserRole == "client"){%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
-        <%} else{%>
-          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
-          <%}%>
           <a href="/logout">
-            <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Ffree-exit-logout-icon-2857-thumb.png?v=1575877712357"/>
-          </a>
+            <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2F825104_arrows_512x512.png?v=1575876750895"/>
+            </a>
       <%} else {%>
-        <a class="link-login" href="/login">
-          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Freservation-icon-28.jpg?v=1575877205463"/>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
         </a >
       <%}%>
-    </div> 
+  </div>  
     <!----------------------- forms---------------------->
-    <div class="container">
-  <form id="formRest"></form>
-  <div class="row">
-    <label for="name">Name:</label>
-    <input type="text" class="form-control" name="name" placeholder="Restaurant Name" form="formRest"/>
-  </div>
-  <div class="row">
-    <label for="city">City:</label>
-    <input type="text" class="form-control text-center" name="city" placeholder="Enter the City Restaurant Locate At" form="formRest"/>
-  </div>
-  <div class="row">
-    <label for="zip">Zip code:</label>
-    <input type="text" class="form-control" name="zip" placeholder="Enter Zip Code: #####" form="formRest"/>
-  </div> 
-  <div class="row">
-    <label for="address">Street Address</label>
-    <input type="text" class="form-control" name="address" placeholder="Enter the Street Address" form="formRest"/>
-  </div>
-  <div class="row">
-    <label for="contact">Phone:</label>
-    <input type="text" class="form-control" name="contact" placeholder="Enter the Phone Number: xxx-xxx-xxxx" form="formRest"/>
-  </div> 
-  <div class="row">
-    <label for="cuisine">Cuisine Type:</label>
-    <input type="text" class="form-control" name="cuisine" placeholder="Cuisine Types" form="formRest"/>
-  </div> 
-  <div class="row">
-    <label for="price">Price Level:</label>
-    <select class="form-control text-center" name="price" form="formRest">
-      <option value="1">1: less than 10 </option>
-      <option value="2">2: between 10 to 50</option>
-      <option value="3">3: between 50 to 80</option>
-      <option value="4">4: between 80 to 150 </option>
-      <option value="5">5: more than 150 </option>
-    </select>
-  </div> 
-  <div class="row">
-    <label for="opendays"> Open Days:</label>
-    <select class="form-control text-center" name="opendays" multiple form="formRest">
-      <option value="Monday">Mon</option>
-      <option value="Tuesday">Tue</option>
-      <option value="Wednesday">Wed</option>
-      <option value="Thursday">Thur</option>
-      <option value="Friday">Fri</option>
-      <option value="Saturday">Sat</option>
-      <option value="Sunday">Sun</option>
-    </select>
-  </div>
-  <div class="row">
-    <label for="img">Image URL</label>
-    <input type="text" class="form-control" name="img" form="formRest" placeholder="Enter the URL of image"/>
-  </div>
-  <div class="row">
-    <label for="option"  >Options</label>
-    <div class="col">
-      <button class="btn btn-default add-btn">Add</button></div>
+   <div class="form-title">
+      <h2> Create A New Restaurant </h2>
     </div>
-    <div class="row ifields">
-      <div class="col">
-        <label for="tblsize">Table Size:</label>
-        <select class="form-control text-center" name="size" form="formRest">
-          <option value="small">Small(1-2)</option>
-          <option value="medium">Medium(3-4)</option>
-          <option value="large">Large(5-6)</option>
-          <option value="party">Party(6+)</option>
-        </select>
+    <div class="box">
+      <form id="formRest"></form>
+      <div class="row">
+        <div class = "col-25">
+          <label for="name">Name:</label>
+        </div>
+        <div class="col-75">
+          <input type="text" class="form-control text-center" name="name" placeholder="Restaurant Name" form="formRest"/>
+        </div>
       </div>
-      <div class="col">
-        <label for="tbltime">Reserved Time:</label>
-        <select class="form-control" name="time" form="formRest">
-          <option>11AM</option>
-          <option>12PM</option>
-          <option>1PM</option>
-          <option>2PM</option>
-          <option>3PM</option>
-          <option>4PM</option>
-          <option>5PM</option>
-          <option>6PM</option>
-          <option>7PM</option>
-          <option>8PM</option>
-          <option>9PM</option>
-          <option>10PM</option>
-          <option>11PM</option>
-          <option>12AM</option>
-        </select>
+      <div class="row">
+        <div class = "col-25">
+          <label for="city">City:</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="city" placeholder="Enter the City Restaurant Locate At" form="formRest"/>
+        </div>
       </div>
-    </div>
-    <div class="row iclone"></div>
-    <a class="create">Submit</a>
-  </div>
-  </div>
+      <div class="row">
+        <div class = "col-25">
+          <label for="zip">Zip code:</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="zip" placeholder="Enter Zip Code: #####" form="formRest"/>
+        </div> 
+      </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="address">Street Address</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="address" placeholder="Enter the Street Address" form="formRest"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class = "col-25">
+          <label for="contact">Phone:</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="contact" placeholder="Enter the Phone Number: xxx-xxx-xxxx" form="formRest"/>
+        </div>
+      </div> 
+      <div class="row">
+        <div class = "col-25">
+          <label for="cuisine">Cuisine Type:</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="cuisine" placeholder="Cuisine Types" form="formRest"/>
+        </div>
+      </div> 
+      <div class="row">
+        <div class = "col-25">
+          <label for="price">Price Level:</label>
+        </div>
+        <div class = "col-75">
+          <select class="form-control text-center" name="price" form="formRest">
+            <option value="1">1: less than 10 </option>
+            <option value="2">2: between 10 to 50</option>
+            <option value="3">3: between 50 to 80</option>
+            <option value="4">4: between 80 to 150 </option>
+            <option value="5">5: more than 150 </option>
+          </select>
+        </div>
+        </div> 
+      <div class="row">
+        <div class="col-25">
+          <label for="opendays"> Open Days:</label>
+        </div>
+        <div class = "col-75">
+          <select class="form-control text-center" name="opendays" multiple form="formRest">
+            <option value="Monday">Mon</option>
+            <option value="Tuesday">Tue</option>
+            <option value="Wednesday">Wed</option>
+            <option value="Thursday">Thur</option>
+            <option value="Friday">Fri</option>
+            <option value="Saturday">Sat</option>
+            <option value="Sunday">Sun</option>
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class = "col-25">
+          <label for="img">Image URL</label>
+        </div>
+        <div class = "col-75">
+          <input type="text" class="form-control text-center" name="img" form="formRest" placeholder="Enter the URL of image"/>
+        </div>
+      </div>
+      <div class="row">
+        <div class = "col-25">
+          <label for="option"  >Options</label>
+        </div>
+        <div class="col-75">
+          <button class="btn btn-default add-btn">Add</button></div>
+        </div>
+        <div class="row ifields">
+          <div class="col">
+            <label for="tblsize">Table Size:</label>
+            <select class="form-control text-center" name="size" form="formRest">
+              <option value="small">Small(1-2)</option>
+              <option value="medium">Medium(3-4)</option>
+              <option value="large">Large(5-6)</option>
+              <option value="party">Party(6+)</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="tbltime">Reserved Time:</label>
+            <select class="form-control text-center" name="time" form="formRest">
+              <option>11AM</option>
+              <option>12PM</option>
+              <option>1PM</option>
+              <option>2PM</option>
+              <option>3PM</option>
+              <option>4PM</option>
+              <option>5PM</option>
+              <option>6PM</option>
+              <option>7PM</option>
+              <option>8PM</option>
+              <option>9PM</option>
+              <option>10PM</option>
+              <option>11PM</option>
+              <option>12AM</option>
+            </select>
+          </div>
+        </div>
+        <div class="row iclone"></div>
+        <a class="create" href="">Submit</a>
+      <a class="create" href="/manage">Cancel</a>
+      </div>
+    </div> 
+      
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
     <script>
       $(document).ready(function() {

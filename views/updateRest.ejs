@@ -2,7 +2,6 @@
 <html>
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
-    <link href="/admin.css" rel="stylesheet" type="text/css"/>
     <link href="/createnew.css" rel= "stylesheet" type="text/css"/>
     <link
       rel="stylesheet"
@@ -31,20 +30,15 @@
       </a>
       
       <% if (curUser) {%>
-        <%if (curUserRole == "client"){%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
-        <%} else{%>
-          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
-          <%}%>
           <a href="/logout">
-            <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Ffree-exit-logout-icon-2857-thumb.png?v=1575877712357"/>
-          </a>
+            <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2F825104_arrows_512x512.png?v=1575876750895"/>
+            </a>
       <%} else {%>
-        <a class="link-login" href="/login">
-          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Freservation-icon-28.jpg?v=1575877205463"/>
+        <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
+          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
         </a >
       <%}%>
-    </div> 
+  </div> 
     <!----------------------- forms---------------------->
     <div class="box">
       <form id="formRest" action="/manage/editrest" method="post">
