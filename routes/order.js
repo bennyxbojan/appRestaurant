@@ -58,20 +58,36 @@ router.get("/review", checkClient, function(req, res, next) {
   }
 });
 
+// router.get("/test", checkClient, function(req, res, next) {
+//   //options: { $elemMatch: { table: req.query.tableID } } };
+//   Restaurant.findById(req.query.restID, function(err, rest) {
+//     if (err) {
+//       return next(err);
+//     } else {
+//       console.log(rest.options.length);
+    
+//       console.log(rest.options[0].table == req.query.tableID);
+//       for (let i = 0; i < rest.options.length; i++){
+//         if (rest.options[i].table == req.query.tableID){
+//           rest.options[i].taken = true;
+//         res.send(rest.options[i].taken);
+//         }
+//       }
+//     }
+    
+    
+    
+//   });
+// });
+
+
 router.get("/test", checkClient, function(req, res, next) {
   //options: { $elemMatch: { table: req.query.tableID } } };
-  Restaurant.findById(req.query.restID, function(err, rest) {
+  Restaurant.find({_id: req.query.restID, options: { $elemMatch: { table: req.query.tableID } } }, function(err, rest) {
     if (err) {
       return next(err);
     } else {
-      console.log(rest.options.length);
-    
-      console.log(rest.options[0].table == req.query.tableID);
-      for (let i = 0; i < rest.options.length; i++){
-        if (rest.options[i].table == req.query.tableID){
-        res.send(rest.options[i].taken);
-        }
-      }
+      res.send(rest);
     }
   });
 });
