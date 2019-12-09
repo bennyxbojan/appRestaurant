@@ -75,7 +75,7 @@
               <div class="input-group-col">
                 <label class = "input-group-text">Time</label>
                 <span><select class="form-control" name="time">
-                    <option>11AM</option>
+                    <option selected>11AM</option>
                     <option>12PM</option>
                     <option>1PM</option>
                     <option>2PM</option>
@@ -84,7 +84,7 @@
                     <option>5PM</option>
                     <option>6PM</option>
                     <option>7PM</option>
-                    <option selected>8PM</option>
+                    <option>8PM</option>
                     <option>9PM</option>
                     <option>10PM</option>
                     <option>11PM</option>
@@ -129,7 +129,7 @@
         <h3 class = "section-title">Restaurants You May Like</h3>
         <div class="section-items"> 
            <% rests.forEach(item=>{%>
-          <a href = '/search?date=<%=date%>&time=8PM&guest=2&city=Pittsburgh&restname=<%=item.name%>'>
+          <a href = '/search?date=<%=date%>&time=11AM&guest=2&city=Pittsburgh&restname=<%=item.name%>'>
             <div class="item">
               <div class="itemdetail">
                 <img src= <%= item.img%>>

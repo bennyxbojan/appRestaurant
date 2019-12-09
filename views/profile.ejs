@@ -40,11 +40,13 @@
     <% orders.forEach(item=>{%>
       <div class="item">
         <div class="itemdetail">
+          <%if (item.date >= 0) { %>
           <img src= <%= item.restID.img%>>
           <p>Name: <%= item.restID.name%></p>
           <p>Location: <%=item.restID.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
           <p>Contact: <%=item.restID.contact%></p>
           <p>Order Placed on: <%=item.date%></p>
+
           <p>Name On Reservation: <%=item.guestname%></p>
           <p>A total party of :<%=item.guest%></p>
 
@@ -56,6 +58,10 @@
 
     </div>
   </div>
+  
+  <script>
+    var today = new Date()''
+  </script>
 </body>
 </html> 
 
