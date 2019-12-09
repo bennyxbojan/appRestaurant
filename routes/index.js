@@ -8,6 +8,21 @@ const router = express.Router();
 //default link redirect to index html page
  
 
+var city;
+var error;
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    error = "Geolocation is not supported by this browser.";
+  }
+}
+
+function getCity(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude +
+  "<br>Longitude: " + position.coords.longitude;
+}
+
 var today = new Date(); 
 var dd = ("0" + today.getDate()).slice(-2);
 var mm = ("0" + (today.getMonth() + 1)).slice(-2);
@@ -20,6 +35,7 @@ router.get("/", function(req, res) {
     date:today  
   })
 }); 
+
 
 
 module.exports = router;

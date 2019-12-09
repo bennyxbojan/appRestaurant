@@ -16,13 +16,12 @@
       
       <% if (curUser) {%>
         <%if (curUserRole == "client"){%>
-          <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
-        <%} else{%>
-          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
-          <%}%>
           <a href="/logout">
             <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Ffree-exit-logout-icon-2857-thumb.png?v=1575877712357"/>
           </a>
+        <%} else{%>
+          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
+          <%}%>
       <%} else {%>
         <a class="link-login" href="/login">
           <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Freservation-icon-28.jpg?v=1575877205463"/>

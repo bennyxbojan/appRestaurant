@@ -32,6 +32,9 @@ body {
 
 
 /*========== Forms =============*/
+.container{
+  width:100%;
+}
 .form{
   background-color: ##FAFBF3;
   display:inline-block;
