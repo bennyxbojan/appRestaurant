@@ -73,7 +73,7 @@ router.get("/", function(req, res, next) {
 
   var compare = {};
 
-  Restaurant.find({ city: geo.city }).limit(5). exec(function(err, rests) {
+  Restaurant.find({ city: geo.city }).sort('name').limit(4). exec(function(err, rests) {
     if (err) {
       return next(err);
     } else {
