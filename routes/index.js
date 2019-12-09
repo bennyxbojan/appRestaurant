@@ -1,33 +1,18 @@
 // Route handlers
 const express = require("express");
 const router = express.Router();
+const geoip = require("geoip-lite");
 
 //import data models
 // const Student = require("../models/student");
 // const Class = require("../models/class");
 //default link redirect to index html page
 
-function locationSuccess(position) {
-  var latitude = position.coords.latitude;
-  var longitude = position.coords.longitude;
-  var altitude = position.coords.altitude;
-  var accuracy = position.coords.accuracy;
-  var altitudeAccuracy = position.coords.altitudeAccuracy;
-  var heading = position.coords.height;
-  var speed = position.coords.speed;
-  var timestamp = position.timestamp;
 
-  // work with this information however you'd like!
-}
+// var ip = "207.97.227.239";
+// var geo = geoip.lookup(ip);
 
-function locationError(error) {
-  var code = error.code;
-  var message = error.message;
-
-  // read the code and message and decide how you want to handle this!
-}
-
-navigator.geolocation.getCurrentPosition(locationSuccess, locationError);
+// console.log(geo.city);
 
 var today = new Date();
 var dd = ("0" + today.getDate()).slice(-2);
@@ -36,8 +21,15 @@ var yyyy = today.getFullYear();
 today = yyyy + "-" + mm + "-" + dd;
 
 router.get("/", function(req, res) {
+var ip = (req.headers['x-forwarded-for'] || '').split(',').pop() || 
+         req.connection.remoteAddress || 
+         req.socket.remoteAddress || 
+         req.connection.socket.remoteAddress
+  var geo = geoip.lookup(ip[0])
+  console.log(req.ip);
   res.status(200);
   res.render("index", {
+    city:geo.city,
     date: today
   });
 });
