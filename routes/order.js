@@ -16,6 +16,8 @@ function checkClient(req, res, next) {
   }
 }
 
+
+
 router.get("/review", checkClient, function(req, res, next) {
   if (req.query) {
     Restaurant.findById(req.query.restID, function(err, rest) {
