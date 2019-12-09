@@ -44,7 +44,11 @@ router.get("/", function(req, res, next) {
       var date = new Date(req.query.date);
       var weekday = date.getDay();
       var size = getTableSize(req.query.guest);
-      console.log(size);
+      //console.log(size);
+      
+      console.log(req.query.city);
+      var city = req.query.city.replace(/"/g, "");
+      console.log(city);
 
       Table.find({ time: req.query.time, size: size }, function(err, table) {
         if (err) {
@@ -55,7 +59,7 @@ router.get("/", function(req, res, next) {
 
           var result = Restaurant.find({
             opendays: week[weekday],
-            city: req.query.city,
+            city: city,
             //options: option
             options: { $elemMatch: { table: tableid, taken: false } }
             // options: { $elemMatch: { taken: false } }
@@ -75,8 +79,8 @@ router.get("/", function(req, res, next) {
                   date: req.query.date,
                   time: req.query.time,
                   guest: req.query.guest,
-                  city: req.query.city,
-                  name: name
+                  city: city,
+                  restname:req.query.restname
                 });
               }
             });
@@ -94,6 +98,8 @@ router.get("/", function(req, res, next) {
       var weekday = date.getDay();
       var size = getTableSize(req.query.guest);
       // console.log(size);
+      console.log(req.query.city)
+      var city = req.query.city.replace(/"/g, "");
 
       Table.find({ time: req.query.time, size: size }, function(err, table) {
         if (err) {
@@ -105,7 +111,7 @@ router.get("/", function(req, res, next) {
           var result = Restaurant.find({
             name: { $regex: req.query.restname, $options: "i" },
             opendays: week[weekday],
-            city: req.query.city,
+            city: city,
             //options: option
             options: { $elemMatch: { table: tableid, taken: false } }
             // options: { $elemMatch: { taken: false } }
@@ -124,7 +130,7 @@ router.get("/", function(req, res, next) {
                   date: req.query.date,
                   time: req.query.time,
                   guest: req.query.guest,
-                  city: req.query.city,
+                  city: city,
                   restname:req.query.restname
                 });
               }
