@@ -27,6 +27,15 @@ function getTableSize(guest) {
   return size;
 }
 
+// function validtime (time){
+//   var digit = time.substring(0,time.length-2);
+  
+//   var apm = time.substring(time.length-2,time.length);
+
+// }
+
+// console.log(validtime("1PM"));
+
 
 // POST route for reading data
 router.get("/", function(req, res, next) {
@@ -56,6 +65,8 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { table: tableid, taken: false } },
          // options: { $elemMatch: { taken: false } }
       });
+      
+      var validtables = 
 
       result.populate("options.table").exec(function(err, rest) {
         if (err) {

@@ -25,7 +25,10 @@
     "cors": "^2.8.5",
     "errorhandler": "^1.5.1",
     "connect-flash": "^0.1.1",
-    "js-base64": "^2.5.1"
+    "js-base64": "^2.5.1",
+    "jquery": "^3.4.1",
+    "jquery-serializejson": "^2.9.0",
+    "jquery-ajax": "^2.1.4"
   },
   "engines": {
     "node": "8.x"
