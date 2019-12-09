@@ -147,6 +147,13 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
+
+router.get('/resoverview',function(req,res,next){
+  
+})
+
+
+
 router.put("/editrest", function(req, res, next) {
   var update = req.body;
 
