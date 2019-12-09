@@ -7,7 +7,7 @@ var orderSchema = new Schema({
     type: Number,
     unique: true,
     required: true,
-    default: 10000
+    default:10000
   },
   userID: {
     type: mongoose.Schema.Types.ObjectId,
@@ -40,13 +40,14 @@ var orderSchema = new Schema({
   }
 });
 
-var Order = mongoose.model("Order", orderSchema);
-
 orderSchema.plugin(autoIncrement.plugin, {
-    model: 'Book',
-    field: 'bookId',
-    startAt: 100,
-    incrementBy: 100
+    model: 'Order',
+    field: 'OrderNum',
+    startAt: 10000,
+    incrementBy: 1
 });
+
+
 // Export model
+var Order = mongoose.model('Order', orderSchema);
 module.exports = Order;

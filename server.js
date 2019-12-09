@@ -11,8 +11,7 @@ const cors = require('cors');
 const errorHandler = require('errorhandler');
 const cookieParser = require('cookie-parser');
 const flash = require('connect-flash'); 
-const passport = require('passport'); 
-
+const autoIncrement = require('mongoose-auto-increment');
 
 //start express
 const app = express();
@@ -44,6 +43,13 @@ mongoose.connection.on('disconnected', function (){
   console.log('Mongoose disconnected.');
 });
 
+
+const passport = require('passport'); 
+
+
+var connection = mongoose.createConnection(mongoDB);
+
+autoIncrement.initialize(connection);
 
 //use sessions for tracking logins
 app.use(session({
