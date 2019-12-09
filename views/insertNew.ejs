@@ -151,11 +151,11 @@
               name: $(this).find('[name="name"]').val(),
               city: $(this).find('[name="city"]').val(),
               zip: $(this).find('[name="zip"]').val(),
-              address: $(this).find('[name="street"]').val(),
+              address: $(this).find('[name="address"]').val(),
               contact: $(this).find('[name="contact"]').val(),
               cuisine: $(this).find('[name="cuisine"]').val(),
               price: $(this).find('[name="price"]').val(),
-              opendays: $(this).find('[name="opendays[]"]').val(),
+              opendays: $(this).find('[name="opendays"]').val(),
               img:$(this).find('[name="img"]').val(),
               options: options};
           }).get();
@@ -165,7 +165,7 @@
         $.ajax({
           url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
           type: 'POST',
-          data: data,
+          data: JSON.stringify({Rest: data}),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data){alert(data);},

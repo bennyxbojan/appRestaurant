@@ -59,6 +59,8 @@ router.post("/newrest", function(req, res, next) {
   // });
   // console.log(alltables);
   console.log(req.body);
+  var data = JSON.parse(req.body);
+  console.log(data);
   if (
     req.body.name &&
     req.body.city &&
