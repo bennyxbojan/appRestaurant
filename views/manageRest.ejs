@@ -78,7 +78,7 @@
         <p>Contact: <%=item.contact%>
         <p>Price: <%= item.price%></p>
         <a href = "/manage/editrest"> Edit </a>
-        <span><a href = "/manage/delrest">Delete</a></span>
+        <span><a href = "/manage/delrest?restID="<%= item._id%>>Delete</a></span>
       </div>
     </div>
     <% }) %>

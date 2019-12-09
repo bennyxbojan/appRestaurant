@@ -15,8 +15,7 @@ function checkAdmin(req, res, next) {
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
   }
-  
-} 
+}
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(err, user) {
@@ -28,7 +27,7 @@ router.get("/", checkAdmin, function(req, res, next) {
             return next(err);
           } else {
             res.status(200).render("manageRest", {
-              query:'Restaurant',
+              query: "Restaurant",
               restaurants: restaurants,
               name: user.fname,
               email: user.email
@@ -36,14 +35,14 @@ router.get("/", checkAdmin, function(req, res, next) {
           }
         });
     } else {
-      Restaurant.find({ name: { "$regex": req.query.restname,"$options": "i"}})
+      Restaurant.find({ name: { $regex: req.query.restname, $options: "i" } })
         .sort("name")
         .exec(function(err, restaurants) {
           if (err) {
             return next(err);
           } else {
             res.status(200).render("manageRest", {
-              query:req.query.restname,
+              query: req.query.restname,
               restaurants: restaurants,
               name: user.fname,
               email: user.email
@@ -79,31 +78,31 @@ router.post("/newrest", function(req, res, next) {
   //   });
   // });
   // console.log(alltables);
-  console.log(req.body);
+  var data = req.body.Rest["0"];
   // var data = JSON.parse(req.body);
   // console.log(data);
   if (
-    req.body.name &&
-    req.body.city &&
-    req.body.contact &&
-    req.body.zip &&
-    req.body.address &&
-    req.body.img &&
-    req.body.cuisine &&
-    req.body.price &&
-    req.body.opendays &&
-    req.body.options
+    data.name &&
+    data.city &&
+    data.contact &&
+    data.zip &&
+    data.address &&
+    data.img &&
+    data.cuisine &&
+    data.price &&
+    data.opendays &&
+    data.options
   ) {
     var restData = {
-      name: req.body.name,
-      city: req.body.city,
-      zip: req.body.zip,
-      contact: req.body.contact,
-      address: req.body.address,
-      img: req.body.img,
-      cuisine: req.body.cuisine,
-      price: req.body.price,
-      opendays: req.body.opendays,
+      name: data.name,
+      city: data.city,
+      zip: data.zip,
+      contact: data.contact,
+      address: data.address,
+      img: data.img,
+      cuisine: data.cuisine,
+      price: data.price,
+      opendays: data.opendays,
       options: options
     };
 
@@ -137,7 +136,7 @@ router.put("/editrest", function(req, res, next) {
 
 //delete resturant
 
-router.delete("/delrest", function(req, res, next) {
+router.get("/delrest", function(req, res, next) {
   Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
     rest.remove(function(err) {
       if (err) {
@@ -152,44 +151,44 @@ router.delete("/delrest", function(req, res, next) {
 //get all orders
 router.get("/orders", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    if(!req.query.orderNum){
-    Order.find({})
-      .sort({date:-1})
-      .populate("restID")
-      .populate("tableID")
-      .populate("userID")
-      .exec(function(err, orders) {
-        if (err) {
-          return next(err);
-        } else {
-          console.log(orders);
-          res.status(200).render("manageOrder", {
-            query:'OrderNum',
-            orders: orders,
-            name: user.fname,
-            email: user.email
-          });
-        }
-      });
-    }else{
-      Order.find({orderNum: req.query.orderNum})
-      .sort({date:-1})
-      .populate("restID")
-      .populate("tableID")
-      .populate("userID")
-      .exec(function(err, orders) {
-        if (err) {
-          return next(err);
-        } else {
-          console.log(orders);
-          res.status(200).render("manageOrder", {
-            query:req.query.orderNum,
-            orders: orders,
-            name: user.fname,
-            email: user.email
-          });
-        }
-      });
+    if (!req.query.orderNum) {
+      Order.find({})
+        .sort({ date: -1 })
+        .populate("restID")
+        .populate("tableID")
+        .populate("userID")
+        .exec(function(err, orders) {
+          if (err) {
+            return next(err);
+          } else {
+            console.log(orders);
+            res.status(200).render("manageOrder", {
+              query: "OrderNum",
+              orders: orders,
+              name: user.fname,
+              email: user.email
+            });
+          }
+        });
+    } else {
+      Order.find({ orderNum: req.query.orderNum })
+        .sort({ date: -1 })
+        .populate("restID")
+        .populate("tableID")
+        .populate("userID")
+        .exec(function(err, orders) {
+          if (err) {
+            return next(err);
+          } else {
+            console.log(orders);
+            res.status(200).render("manageOrder", {
+              query: req.query.orderNum,
+              orders: orders,
+              name: user.fname,
+              email: user.email
+            });
+          }
+        });
     }
   });
 });
