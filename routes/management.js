@@ -10,7 +10,7 @@ function checkAdmin(req, res, next) {
     if (req.session.role == "admin") {
       next(); //If session exists, proceed to page
     }
-  } else { 
+  } else {
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
@@ -18,22 +18,35 @@ function checkAdmin(req, res, next) {
 }
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
-  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    if (!req.query){
-      Restaurant.find({}).sort('name').exec(function(err, restaurants) {
-        if (err) {
-          err.status = 404;
-          return next(err);
-        }
-        res.status(200).render("manageRest", {
-          restaurants: restaurants,
-          name: user.fname,
-          email: user.email
-        
-      });
-    });
-    }else{
-      
+  User.findOne({ _id: req.session.userID }).exec(function(err, user) {
+    if (!req.query.restname) {
+      Restaurant.find({})
+        .sort("name")
+        .exec(function(err, restaurants) {
+          if (err) {
+            return next(err);
+          } else {
+            res.status(200).render("manageRest", {
+              restaurants: restaurants,
+              name: user.fname,
+              email: user.email
+            });
+          }
+        });
+    } else {
+      Restaurant.find({ name: req.query.restname })
+        .sort("name")
+        .exec(function(err, restaurants) {
+          if (err) {
+            return next(err);
+          } else {
+            res.status(200).render("manageRest", {
+              restaurants: restaurants,
+              name: user.fname,
+              email: user.email
+            });
+          }
+        });
     }
   });
 });
@@ -118,7 +131,6 @@ router.put("/editrest", function(req, res, next) {
     }
   });
 });
-
 
 //delete resturant
 

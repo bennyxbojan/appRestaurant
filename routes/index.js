@@ -66,7 +66,7 @@ router.get("/", function(req, res, next) {
 
   //get client address based on ip
   var geo = geoip.lookup(client);
-  console.log(geo);
+  //console.log(geo);
 
   //find the closet rests
   var curr_ll = geo.ll;
@@ -78,6 +78,7 @@ router.get("/", function(req, res, next) {
       return next(err);
     } else {
       res.render("index", {
+        
         city: geo.city,
         date: today,
         rests:rests

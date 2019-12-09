@@ -128,9 +128,18 @@
       <div class = "promo-section">
         <h3 class = "section-title">Popular Restaurants At Your Area</h3>
         <div class="section-items">
-          <p>
-            <
-          </p>
+          
+           <% rests.forEach(item=>{%>
+            <div class="item">
+              <div class="itemdetail">
+                <img src= <%= item.img%>>
+                <p>Name: <%= item.name%></p>
+                <p>Cuisine: <%= item.cuisine%></p>
+                <p>Location: <%=item.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
+                <p>Contact: <%=item.contact%></p>
+              </div>
+            </div>
+          <% }) %>
         </div>
       </div>
     </div>

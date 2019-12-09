@@ -14,7 +14,7 @@ function checkClient(req, res, next) {
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
   }
-}
+} 
 
 function getOrderNum() {
   return Math.round(Math.random() * 10000000);
