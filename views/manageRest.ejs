@@ -80,7 +80,7 @@
         <p>Location: <%=item.address%>, <%=item.city%>, <%=item.zip%></p>
         <p>Contact: <%=item.contact%>
         <p>Price: <%= item.price%></p>
-        <a href = "/manage/editoverview?restID=<%= item._id%>"> Edit </a>
+        <a href = "/manage/resoverview/<%= item._id%>"> Edit </a>
         <span><a href = "/manage/delrest?restID=<%= item._id%>">Delete</a></span>
       </div>
     </div>

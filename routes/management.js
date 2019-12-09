@@ -148,14 +148,15 @@ router.post("/newrest", function(req, res, next) {
 
 //update resturant
 
-router.get('/resoverview',function(req,res,next){
-  console.log(req.query.restID);
-  Restaurant.findById(req.query.restID, function(err,rest){
+router.get('/resoverview/:restID',function(req,res,next){
+  console.log(req.params.restID);
+  Restaurant.findById(req.params.restID, function(err,rest){
     if (err){
       return next(err)
     }else{
       res.render('updateRest', {
-        rest:rest
+        rest:rest,
+        add:rest.address
 })
     }
   })

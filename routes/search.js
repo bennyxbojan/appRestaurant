@@ -11,7 +11,7 @@ const week = [
   "Thursday",
   "Friday",
   "Saturday"
-]; 
+];  
 
 function getTableSize(guest) {
   var size;
