@@ -26,6 +26,8 @@ function checkAdmin(req, res, next) {
   }
 }
 
+var today = new Date();
+
 // GET route for reading data
 router.get("/", function(req, res, next) {
   res.status(200).render("login");
@@ -114,6 +116,7 @@ router.get("/profile", checkClient, function(req, res, next) {
           .exec(function(error, orders) {
             console.log(orders);
             return res.render("profile", {
+              today:today,
               orders: orders,
               user: user.fname,
               email: user.email

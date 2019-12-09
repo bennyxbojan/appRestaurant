@@ -82,11 +82,15 @@ body {
   background-color:#34332D; 
   color:white;
   border:none;
-  width:3%
+  width:4%
 }
 .input-group-col span {
   display: table-cell;
   width:60%
+}
+
+.input-group-col #rest{
+  width:18%
 }
 .input-group-col button{
   background-color: #34332D; 
