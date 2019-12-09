@@ -19,7 +19,23 @@
   <h1> Hi <%=user%></h1>
   <h2> Email: <%=email%> </h2>
   <h2>
-    Orders: <%= orders%>
+    Orders:
+    
+    <div>
+  <% orders.forEach(item=>{%>
+    <div class="item">
+      <div class="itemdetail">
+        <img src= <%= item.restID.img%>>
+        <p>Name: <%= item.restID.name%></p>
+        <p>
+        
+        
+      </div>
+      
+    </div>
+    <% }) %>
+  
+  </div>
   </h2>
 </body>
 </html> 

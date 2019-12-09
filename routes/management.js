@@ -44,7 +44,7 @@ router.get("/newrest", checkAdmin, function(req,res,next){
       res.status(200).render("insertNew");
     });
   });
-})
+}) 
 
 //add new restaurants
 router.post("/newrest", function(req, res, next) {

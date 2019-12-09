@@ -111,7 +111,7 @@ router.get("/profile", checkClient, function(req, res, next) {
           .populate("restID.options")
           .populate("tableID")
 
-        .exec(function(
+        .exec(function( 
           error,
           orders
         ) {
