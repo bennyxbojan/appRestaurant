@@ -4,8 +4,6 @@ var router = express.Router();
 var User = require("../models/user");
 var Order = require("../models/order");
 
-
-
 function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page

@@ -149,8 +149,9 @@ router.delete("/delrest", function(req, res, next) {
 //get all orders
 router.get("/orders", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    if()
+    if(!req.query.orderNum){
     Order.find({})
+      .sort({date:-1})
       .populate("restID")
       .populate("tableID")
       .populate("userID")
@@ -166,6 +167,25 @@ router.get("/orders", checkAdmin, function(req, res, next) {
           });
         }
       });
+    }else{
+      Order.find({orderNum: req.query.orderNum})
+      .sort({date:-1})
+      .populate("restID")
+      .populate("tableID")
+      .populate("userID")
+      .exec(function(err, orders) {
+        if (err) {
+          return next(err);
+        } else {
+          console.log(orders);
+          res.status(200).render("manageOrder", {
+            orders: orders,
+            name: user.fname,
+            email: user.email
+          });
+        }
+      });
+    }
   });
 });
 

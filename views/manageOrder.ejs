@@ -67,17 +67,22 @@
    
   </div>
 
-  <div class="item-admin">
+  <div class="item-admin"> 
+    <table>
+      <th>Orde ID</th>
+      <th>Order Number</th>
+      <th>User</th>
+      <th>Restaurant</th>
     <% orders.forEach(item=>{%>
-    <div class="item">
-      <img src = "https://img-aws.ehowcdn.com/700x/cdn.onlyinyourstate.com/wp-content/uploads/2019/01/1-12-700x541.jpg">
-      <div class="itemdetail">
-        <p>ID: <%= item._id%></p>
-        <p>User: <%= item.userID%></p>
-        <p>Restaurant: <%= item.restID%></p>
-      </div>
+      <tr>
+       <td><%= item._id%></td>
+      <td><%= item.orderNum%></td>
+      <td><%= item.userID._id%>\n<%= item.userID.fname%>\n<%= item.userID.lname%></td>
+      <td><%= item.restID._id%><%= item.restID.name%><%= item.restID.city%></td>
+         </tr>
     </div>
     <% }) %>
+      </table>
   </div>
 
 

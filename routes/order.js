@@ -15,7 +15,7 @@ function checkClient(req, res, next) {
     res.redirect("/login");
   }
 } 
-
+ 
 function getOrderNum() {
   return Math.round(Math.random() * 10000000);
 }
@@ -105,7 +105,7 @@ router.get("/review", checkClient, function(req, res, next) {
 //     //     }
 
 //     //   });
-
+ 
 //     var ok="okay";
 //     Restaurant.update(
 //       { _id: req.query.restID, "options.table": req.query.tableID },
