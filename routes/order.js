@@ -16,6 +16,11 @@ function checkClient(req, res, next) {
   }
 }
 
+function getOrderNum(){
+  return Math.round(Math.random() * 10000000)
+};
+
+//console.log(getOrderNum());
 
 
 router.get("/review", checkClient, function(req, res, next) {
@@ -81,6 +86,7 @@ router.post("/", checkClient, function(req, res, next) {
 
   console.log(req.body.restID)
   var order = {
+    orderNum:getOrderNum(),
     userID: req.session.userID,
     restID: req.body.restID,
     date: req.body.date,
