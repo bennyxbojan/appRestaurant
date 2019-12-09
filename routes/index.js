@@ -6,7 +6,6 @@ const Orders = require("../models/order");
 const Restaurant = require("../models/restaurant");
 var NodeGeocoder = require("node-geocoder");
 
-
 //import data models
 // const Student = require("../models/student");
 // const Class = require("../models/class");
