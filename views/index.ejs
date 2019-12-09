@@ -40,7 +40,7 @@
       <% if (curUser) {%>
         <%if (curUserRole == "client"){%>
           <a class="loged-in" href="/login/profile">Hi,<%= curUserName%></a> 
-        <%} else{%>
+        <%} else{%> 
           <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
           <%}%>
           <a href="/logout">
