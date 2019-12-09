@@ -27,9 +27,6 @@ function getTableSize(guest) {
   return size;
 }
 
-function getSize(array){
-  
-}
 
 // POST route for reading data
 router.get("/", function(req, res, next) {
@@ -37,6 +34,7 @@ router.get("/", function(req, res, next) {
     var date = new Date(req.query.date);
     var weekday = date.getDay();
     var size = getTableSize(req.query.guest);
+    console.log(size);
 
     Table.find({ time: req.query.time, size: size }, function(err, table) {
       if (err) {

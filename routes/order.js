@@ -77,6 +77,7 @@ router.post("/", checkClient, function(req, res, next) {
   //   return next(err)
   // });
 
+  console.log(req.body.restID)
   var order = {
     userID: req.session.userID,
     restID: req.body.restID,
