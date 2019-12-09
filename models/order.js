@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
+const autoIncrement = require('mongoose-auto-increment');
 
 var orderSchema = new Schema({
   orderNum: {
@@ -41,17 +42,11 @@ var orderSchema = new Schema({
 
 var Order = mongoose.model("Order", orderSchema);
 
-orderSchema.pre("save", function(next) {
-  var doc = this;
-  Order.findByIdAndUpdate(
-    { _id: "entityId" },
-    { $inc: { orderNum: 1 } },
-    function(error, order) {
-      if (error) return next(error);
-      doc.testvalue = order.orderNum;
-      next();
-    }
-  );
+orderSchema.plugin(autoIncrement.plugin, {
+    model: 'Book',
+    field: 'bookId',
+    startAt: 100,
+    incrementBy: 100
 });
 // Export model
 module.exports = Order;

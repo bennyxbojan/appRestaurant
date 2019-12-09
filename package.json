@@ -3,7 +3,7 @@
   "//2": "https://docs.npmjs.com/files/package.json",
   "//3": "updating this file will download and update your packages",
   "name": "2560-final",
-  "version":"0.0.1",
+  "version": "0.0.1",
   "description": "A simple Node app built on Express, instantly up and running.",
   "main": "server.js",
   "scripts": {
@@ -28,7 +28,8 @@
     "js-base64": "^2.5.1",
     "jquery": "^3.4.1",
     "jquery-serializejson": "^2.9.0",
-    "jquery-ajax": "^2.1.4"
+    "jquery-ajax": "^2.1.4",
+    "mongoose-auto-increment": "^5.0.1"
   },
   "engines": {
     "node": "8.x"

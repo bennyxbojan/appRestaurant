@@ -15,6 +15,7 @@ dependencies:
   jquery-serializejson: 2.9.0
   js-base64: 2.5.1
   mongoose: 5.7.14
+  mongoose-auto-increment: 5.0.1
   nodemon: 2.0.1
   passport: 0.4.0
   passport-local: 1.0.0
@@ -539,6 +540,10 @@ packages:
       node: '>= 0.10.0'
     resolution:
       integrity: sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==
+  /extend/3.0.2:
+    dev: false
+    resolution:
+      integrity: sha512-fjquC59cD7CyW6urNXK0FBufkZcoiGG80wTuPujX590cB5Ttln20E2UB4S/WARVqhXffZl2LNgS+gQdPIIim/g==
   /fill-range/7.0.1:
     dependencies:
       to-regex-range: 5.0.1
@@ -1067,6 +1072,14 @@ packages:
       saslprep: 1.0.3
     resolution:
       integrity: sha512-6NAv5gTFdwRyVfCz+O+KDszvjpyxmZw+VlmqmqKR2GmpkeKrKFRv/ZslgTtZba2dc9JYixIf99T5Gih7TIWv7Q==
+  /mongoose-auto-increment/5.0.1:
+    dependencies:
+      extend: 3.0.2
+    dev: false
+    peerDependencies:
+      mongoose: ^4.1.12
+    resolution:
+      integrity: sha1-gn4FHZzDcdq+i/8acEQx00HLed8=
   /mongoose-legacy-pluralize/1.0.2:
     dev: false
     peerDependencies:
@@ -1861,6 +1874,7 @@ specifiers:
   jquery-serializejson: ^2.9.0
   js-base64: ^2.5.1
   mongoose: ^5.7.13
+  mongoose-auto-increment: ^5.0.1
   nodemon: ^2.0.1
   passport: ^0.4.0
   passport-local: ^1.0.0
