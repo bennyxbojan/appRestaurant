@@ -148,7 +148,7 @@ router.post("/", checkClient, function(req, res, next) {
     } else {
       //should redirect to "Congrats! Successfully!"
       Restaurant.update(
-        { _id: req.query.restID, "options.table": req.query.tableID },
+        { _id: req.body.restID, "options.table": req.body.tableID },
         {
           $set: {
             "options.$.taken": true
