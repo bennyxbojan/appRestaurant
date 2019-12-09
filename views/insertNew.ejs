@@ -55,7 +55,7 @@
   </div> 
   <div class="row">
     <label for="address">Street Address</label>
-    <input type="text" class="form-control" name="street" placeholder="Enter the Street Address" form="formRest"/>
+    <input type="text" class="form-control" name="address" placeholder="Enter the Street Address" form="formRest"/>
   </div>
   <div class="row">
     <label for="contact">Phone:</label>
@@ -77,9 +77,10 @@
   </div> 
   <div class="row">
     <label for="opendays"> Open Days:</label>
-    <select class="form-control text-center" name="opendays[]" multiple form="formRest">
+    <select class="form-control text-center" name="opendays" multiple form="formRest">
       <option value="Monday">Mon</option>
       <option value="Tuesday">Tue</option>
+      <option value="Wednesday">Wed</option>
       <option value="Thursday">Thur</option>
       <option value="Friday">Fri</option>
       <option value="Saturday">Sat</option>
@@ -164,7 +165,7 @@
         $.ajax({
           url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
           type: 'POST',
-          data: JSON.stringify({ Restaurants: data }),
+          data: data,
           contentType: "application/json; charset=utf-8",
           dataType: "json",
           success: function(data){alert(data);},

@@ -9,38 +9,55 @@
 <body>
   <!--------- header with logo and user login status-------->
   <div class = "head-line">
-    <a class="link-home" href="https://final-pro-yay76-feq6.glitch.me/">
-      <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
-    </a> 
-    <a class="link-login" href="https://final-pro-yay76-feq6.glitch.me/login">
-      <img class="userLogo" src = "https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
-    </a >
-  </div> 
-  <h1> Hi <%=user%></h1>
-  <h2> Email: <%=email%> </h2>
-  <h2>
-    Orders:
-    
-    <div>
-  <% orders.forEach(item=>{%>
-    <div class="item">
-      <div class="itemdetail">
-        <img src= <%= item.restID.img%>>
-        <p>Name: <%= item.restID.name%></p>
-        <p>Location: <%=item.restID.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
-        <p>Contact: <%=item.restID.contact%></p>
-        <p>Order Placed on: <%=item.date%></p>
-        <p>Name On Reservation: <%=item.guestname%></p>
-        <p>A total party of :<%=item.guest%></p>
-        
-        
-      </div>
+      <a class="link-home" href="/">
+        <img class="logo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fdining_icon-01.png?v=1575671513396"/>
+      </a>
       
-    </div>
-    <% }) %>
+      <% if (curUser) {%>
+        <%if (curUserRole == "client"){%>
+          <a href="/logout">
+            <img class="userLogo" src="https://cdn2.iconfinder.com/data/icons/picons-essentials/57/logout-512.png"/>
+          </a> 
+        <%} else{%>
+          <a class="loged-in" href="/manage">Hi,<%= curUserName%></a>
+          <%}%>
   
+      <%} else {%>
+        <a class="link-login" href="/login">
+          <img class="userLogo" src="https://cdn.glitch.com/54ccc57e-2201-4986-a083-7d154d5c4e6a%2Fperson-male.png?v=1575684362494"/>
+        </a >
+      <%}%>
+    </div>
+  <!--------------  User's Portal   -------------------->
+  <div class="side-navi">
+    <h1> Hi <%=user%></h1>
+    <h2> Email: <%=email%> </h2>
   </div>
-  </h2>
+  <div class="cur-order">
+    <h2>
+      Orders:
+
+      <div>
+    <% orders.forEach(item=>{%>
+      <div class="item">
+        <div class="itemdetail">
+          <img src= <%= item.restID.img%>>
+          <p>Name: <%= item.restID.name%></p>
+          <p>Location: <%=item.restID.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
+          <p>Contact: <%=item.restID.contact%></p>
+          <p>Order Placed on: <%=item.date%></p>
+          <p>Name On Reservation: <%=item.guestname%></p>
+          <p>A total party of :<%=item.guest%></p>
+
+
+        </div>
+
+      </div>
+      <% }) %>
+
+    </div>
+    </h2>
+  </div>
 </body>
 </html> 
 

@@ -77,7 +77,7 @@ router.get("/", function(req, res, next) {
             tableid:tableid,
             date: req.query.date,
             time: req.query.time,
-            guest: req.query.guest,
+            guest: req.query.guest, 
             city: req.query.city
           });
         }

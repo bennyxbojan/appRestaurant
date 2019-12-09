@@ -58,10 +58,12 @@ router.post("/newrest", function(req, res, next) {
   //   });
   // });
   // console.log(alltables);
+  console.log(req.body);
   if (
     req.body.name &&
     req.body.city &&
     req.body.contact&&
+    req.body.zip&&
     req.body.address&&
     req.body.img &&
     req.body.cuisine &&
