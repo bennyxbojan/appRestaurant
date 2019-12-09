@@ -52,20 +52,23 @@ body {
 .banner-text {
   text-align: center;
   position: relative;
-  top:60%;
+  top:40%;
   left: 50%;
+  height:50%;
   transform: translate(-50%, -50%);
 }
 .banner-text h1{color: white;}
 /*==================Navigation ===============*/
 .navi{
-  position:relative;
-  top:25%;
-  left:35%;
+  position:sticky;
+  top:50%;
+  width: fit-content;
+  margin:auto;
 }
 .navi a {
   display: inline-block;
   color: #ddd;
+  width: 180px;
   background-color: black;
   text-align: center;
   padding: 14px;
