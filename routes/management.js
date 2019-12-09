@@ -3,6 +3,7 @@ var router = express.Router();
 var Restaurant = require("../models/restaurant");
 var User = require("../models/user");
 var Order = require("../models/order");
+var Table = require("../models/table");
 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {
@@ -79,8 +80,25 @@ router.post("/newrest", function(req, res, next) {
   // console.log(alltables);
   //console.log(req.body);
   var data = req.body.Rest["0"];
-  // var data = JSON.parse(req.body);
-   console.log(data);
+  var time = data.options[0].time;
+  var size = data.options[0].size;
+
+  var tables = []
+  
+  Table.find({
+    time: time,
+    size:size
+  }).exec(function(err,table){
+    if(err){
+      return err;
+    }else{
+      console.log(table)
+      tables.push({
+        table:table._id,
+        taken:false
+      })
+    }
+  }}
   if (
     data.name &&
     data.city &&
