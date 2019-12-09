@@ -32,6 +32,10 @@ body {
 
 
 /*========== Forms =============*/
+.form{
+  background-color: ##FAFBF3;
+  display:inline-block;
+}
 
 .form input[type=text], [type=password],select, textarea {
   width: 100%;

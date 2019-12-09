@@ -108,7 +108,8 @@ router.get("/profile", checkClient, function(req, res, next) {
         err.status = 400;
         return next(err);
       } else {
-        Order.find({ userID: req.session.userID })
+        Order.find({ userID: req.session.userID})
+          .sort({date:-1})
           .populate("restID")
           .populate("restID.options")
           .populate("tableID")
