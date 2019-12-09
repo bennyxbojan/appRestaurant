@@ -101,6 +101,9 @@ body {
   height: 50%;
   display: inline-block;
 }
+.promo a{
+  color:black;
+}
 .location{
   height:20%;
 }
