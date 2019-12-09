@@ -80,8 +80,7 @@ router.post("/newrest", function(req, res, next) {
   // console.log(alltables);
   //console.log(req.body);
   var data = req.body.Rest["0"];
-  var time = data.options[0].time;
-  var size = data.options[0].size;
+
 
   var tables = [];
 
@@ -99,6 +98,7 @@ router.post("/newrest", function(req, res, next) {
     data.options
   ) {
     //find the table id with time+size
+    for (var i = 0; i < )
     Table.find({
       time: time,
       size: size
@@ -130,7 +130,6 @@ router.post("/newrest", function(req, res, next) {
             if (error) {
               return next(error);
             } else {
-              req.flash("info", "successfully created");
               return res.redirect("/manage");
             }
           });
