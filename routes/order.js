@@ -16,12 +16,11 @@ function checkClient(req, res, next) {
   }
 }
 
-function getOrderNum(){
-  return Math.round(Math.random() * 10000000)
-};
+function getOrderNum() {
+  return Math.round(Math.random() * 10000000);
+}
 
 //console.log(getOrderNum());
-
 
 router.get("/review", checkClient, function(req, res, next) {
   if (req.query) {
@@ -59,26 +58,21 @@ router.get("/review", checkClient, function(req, res, next) {
   }
 });
 
-router.get("/test", checkClient, function(req,res,next){
-  let filter = { _id: req.query.restID};
+router.get("/test", checkClient, function(req, res, next) {
+  //options: { $elemMatch: { table: req.query.tableID } } };
+  Restaurant.findById(req.query.restID, function(err, rest) {
+    if (err) {
+      return next(err);
+    } else {
+      console.log(rest.options.length);
     
-    
-    //options: { $elemMatch: { table: req.query.tableID } } };
-  Restaurant.findById(req.query.restID, function(err,rest){
-    
-     if (err){
-       return next(err)
-     }else{
-       console.log(rest.options.length);
-       for (var i = 0; i < rest.options.length; i++){
-         if (rest.options.table == req.query.tableID){
-           res.send(rest.options[i]);
-         }
-       }
-     }
-        })
-
-})
+      res.send(rest.options[0].table == req.query.tableID);
+      for (let i = 0; i < rest.options.length; i++){
+        res.send(rest.options[i].table);
+      }
+    }
+  });
+});
 
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
@@ -87,11 +81,11 @@ router.post("/", checkClient, function(req, res, next) {
 
   // Restaurant.findOneAndUpdate(filter, update, function(err){
   //   return next(err)
-  // }); 
+  // });
 
-  console.log(req.body.restID)
+  console.log(req.body.restID);
   var order = {
-    orderNum:getOrderNum(),
+    orderNum: getOrderNum(),
     userID: req.session.userID,
     restID: req.body.restID,
     date: req.body.date,
