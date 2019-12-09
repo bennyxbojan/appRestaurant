@@ -102,6 +102,11 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
+router.put('/editres',function(req,res,next){
+  var update = req.body;
+  
+})
+
 
 //delete resturant
 
