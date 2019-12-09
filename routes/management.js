@@ -105,19 +105,21 @@ router.post("/newrest", function(req, res, next) {
 router.get("/orders", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
     Order.find({})
-      .populate("userID")
       .populate("restID")
-      .populate("restID.options.table")
+      .populate("tableID")
+      .populate("userID")
       .exec(function(err, orders) {
         if (err) {
-          err.status = 404;
           return next(err);
-        }
-        res.status(200).render("manageOrder", {
+        }else{
+          console.log(orders);
+          res.status(200).render("manageOrder", {
           orders: orders,
           name: user.fname,
           email: user.email
+        
         });
+        }
       });
   });
 });
