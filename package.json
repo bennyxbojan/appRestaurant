@@ -30,7 +30,8 @@
     "jquery-serializejson": "^2.9.0",
     "jquery-ajax": "^2.1.4",
     "mongoose-auto-increment": "^5.0.1",
-    "geoip-lite": "^1.3.8"
+    "geoip-lite": "^1.3.8",
+    "node-geocoder": "^3.25.0"
   },
   "engines": {
     "node": "8.x"

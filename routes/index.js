@@ -4,6 +4,7 @@ const router = express.Router();
 const geoip = require("geoip-lite");
 const Orders = require("../models/order");
 const Restaurant = require("../models/restaurant");
+var NodeGeocoder = require('node-geocoder');
 
 //import data models
 // const Student = require("../models/student");
@@ -34,10 +35,10 @@ router.get("/", function(req, res) {
   
   //get client address based on ip
   var geo = geoip.lookup(client);
-  // console.log(geo);
+  console.log(geo);
   
   //find the most popular rests
-  Orders.find({}).group('restID')
+  var curr_ll = geo.ll;
   
   
   
@@ -51,3 +52,4 @@ router.get("/", function(req, res) {
 
 
 module.exports = router;
+ 
