@@ -81,18 +81,27 @@ router.get("/review", checkClient, function(req, res, next) {
 // });
 
 
+
 router.get("/test", checkClient, function(req, res, next) {
   //options: { $elemMatch: { table: req.query.tableID } } };
-  Restaurant.findById(req.query.restID).lean().exec( function(err, rest) {
+  Restaurant.findById(req.query.restID, function(err, rest) {
     if (err) {
       return next(err);
     } else {
-      var test = (JSON.stringify(rest));
-      res.send(test.options[0].taken);
+      console.log(rest.options.length);
+    
+      console.log(rest.options[0].table == req.query.tableID);
+      for (let i = 0; i < rest.options.length; i++){
+        if (rest.options[i].table == req.query.tableID){
+          rest.options[i].taken = true;
+        res.send(rest.options[i].taken);
+        }
+      }
     }
+    
+    
   });
 });
-
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
   let filter = { options: { $elemMatch: { table: req.body.tableID } } };
