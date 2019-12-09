@@ -81,7 +81,6 @@ router.post("/newrest", function(req, res, next) {
   //console.log(req.body);
   var data = req.body.Rest["0"];
 
-
   var tables = [];
 
   //if all fields
@@ -98,49 +97,48 @@ router.post("/newrest", function(req, res, next) {
     data.options
   ) {
     //find the table id with time+size
-    for (var i = 0; i < options.length;i++){
-           var time = data.options[i].time;
-  var size = data.options[i].size;
-    Table.find({
-      time: time,
-      size: size
-    }).exec(function(err, table) {
-      if (err) {
-        return err;
-      } else {
-        console.log(table);
-        tables.push({
-          table: table[0]._id,
-          taken: false
-        })
-    ;
-      
-      
-        console.log(tables);
-
-        var restData = {
-          name: data.name,
-          city: data.city,
-          zip: data.zip,
-          contact: data.contact,
-          address: data.address,
-          img: data.img,
-          cuisine: data.cuisine,
-          price: data.price,
-          opendays: data.opendays,
-          options: tables
-        };
-        User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-          Restaurant.create(restData, function(error, rest) {
-            if (error) {
-              return next(error);
-            } else {
-              return res.redirect("/manage");
-            }
+    for (var i = 0; i < data.options.length; i++) {
+      var time = data.options[i].time;
+      var size = data.options[i].size;
+      Table.find({
+        time: time,
+        size: size
+      }).exec(function(err, table) {
+        if (err) {
+          return err;
+        } else {
+          console.log(table);
+          tables.push({
+            table: table[0]._id,
+            taken: false
           });
-        });
-      }
-    });
+
+          console.log(tables);
+
+          var restData = {
+            name: data.name,
+            city: data.city,
+            zip: data.zip,
+            contact: data.contact,
+            address: data.address,
+            img: data.img,
+            cuisine: data.cuisine,
+            price: data.price,
+            opendays: data.opendays,
+            options: tables
+          };
+          User.findOne({ _id: req.session.userID }).exec(function(error, user) {
+            Restaurant.create(restData, function(error, rest) {
+              if (error) {
+                return next(error);
+              } else {
+                return res.redirect("/manage");
+              }
+            });
+          });
+        }
+      });
+    }
   } else {
     var err = new Error("All fields required.");
     err.status = 400;
