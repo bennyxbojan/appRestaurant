@@ -37,7 +37,7 @@ router.get("/", function(req, res) {
   // console.log(geo);
   
   //find the most popular rests
-  Orders.find({}).limit(4).sort({})
+  Orders.find({}).group('restID')
   
   
   
