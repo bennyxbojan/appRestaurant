@@ -147,38 +147,49 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
-router.get('/resoverview/:restID',function(req,res,next){
-  Restaurant.findById(req.params.restID, function(err,rest){
-    if (err){
-      return next(err)
-    }else{
-      res.render('updateRest', {
-        rest:rest,
-        add:rest.address
-})
+router.get("/resoverview/:restID", function(req, res, next) {
+  Restaurant.findById(req.params.restID, function(err, rest) {
+    if (err) {
+      return next(err);
+    } else {
+      res.render("updateRest", {
+        rest: rest,
+        add: rest.address
+      });
     }
-  })
-})
+  });
+});
 
 router.post("/editrest", function(req, res, next) {
   console.log(req.body);
   var opendays;
-  var id = req.body.id.replace(/"/g,"");
-  Restaurant.findById(id,function(err,rest){
-    if(err){
-      next(err)
-    }else{
-      opendays = rest.opendays;
-    }
-  })
-  var update=req.body;
-  
-  console.log(update.id);
-  Restaurant.findByIdAndUpdate(update.id, update, function(err, rest) {
+  var id = req.body.id.replace(/"/g, "");
+  Restaurant.findById(id, function(err, rest) {
     if (err) {
-      return next(err);
+      next(err);
     } else {
-      res.redirect("/manage");
+      opendays = rest.opendays;
+
+      var update = {
+        _id: id,
+        name: req.body.name.replace(/"/g, ""),
+        city: req.body.city.replace(/"/g, ""),
+        zip: Number(req.body.zip),
+        address: req.body.address.replace(/"/g, ""),
+        contact: req.body.contact,
+        cuisine: req.body.cuisine.replace(/"/g, ""),
+        price: Number(req.body.price),
+        img: req.body.img,
+        opendays: opendays
+      };
+
+      Restaurant.findByIdAndUpdate(update._id, update, function(err, rest) {
+        if (err) {
+          return next(err);
+        } else {
+          res.redirect("/manage");
+        }
+      });
     }
   });
 });
@@ -192,7 +203,7 @@ router.get("/delrest", function(req, res, next) {
         if (err) {
           return next(err);
         } else {
-          res.redirect('/manage');
+          res.redirect("/manage");
         }
       });
     });
