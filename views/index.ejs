@@ -126,16 +126,15 @@
         <span id = 'city'><%=city%> </span>
       </div>
       <div class = "promo-section">
-        <h3 class = "section-title">Popular Restaurants At Your Area</h3>
-        <div class="section-items">
-          
+        <h3 class = "section-title">Restaurants You May Like</h3>
+        <div class="section-items"> 
            <% rests.forEach(item=>{%>
             <div class="item">
               <div class="itemdetail">
                 <img src= <%= item.img%>>
-                <p>Name: <%= item.name%></p>
+                <p><b><%= item.name%></b></p>
                 <p>Cuisine: <%= item.cuisine%></p>
-                <p>Location: <%=item.address%>, <%=item.restID.city%>, <%=item.restID.zip%></p>
+                <p>Location: <%=item.address%>, <%=item.city%>, <%=item.zip%></p>
                 <p>Contact: <%=item.contact%></p>
               </div>
             </div>

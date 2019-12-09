@@ -34,7 +34,7 @@ router.get("/", checkAdmin, function(req, res, next) {
           }
         });
     } else {
-      Restaurant.find({ name: req.query.restname })
+      Restaurant.find({ name: { "$regex": req.query.restname,"$options": "i"}})
         .sort("name")
         .exec(function(err, restaurants) {
           if (err) {
@@ -149,6 +149,7 @@ router.delete("/delrest", function(req, res, next) {
 //get all orders
 router.get("/orders", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
+    if()
     Order.find({})
       .populate("restID")
       .populate("tableID")

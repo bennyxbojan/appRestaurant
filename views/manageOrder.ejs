@@ -47,14 +47,17 @@
     </div>
   </div>
   <div class = "search-form">
-    <form style={{ display: "flex" }}>
+    <form action ='/manage/orders' method='get'>
       <input
           type="text"
-          name="idolname"
-          onChange={this.handleSearch}
+          name="orderNum"
           style={{ flex: "10", padding: "5px", border: "1px solid line" }}
-          placeholder="Find your Idol now!"
+          placeholder="Find your Order Number"
       />
+      <button
+        type="submit"
+        id="search"
+      >Search</button>
     </form>
   </div>
   
@@ -72,8 +75,6 @@
         <p>ID: <%= item._id%></p>
         <p>User: <%= item.userID%></p>
         <p>Restaurant: <%= item.restID%></p>
-        <a> Edit </a>
-        <span><a>Delete</a></span>
       </div>
     </div>
     <% }) %>

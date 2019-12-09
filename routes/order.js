@@ -5,7 +5,7 @@ var User = require("../models/user");
 var Order = require("../models/order");
 var Table = require("../models/table");
 var Restaurant = require("../models/restaurant");
-
+ 
 function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
