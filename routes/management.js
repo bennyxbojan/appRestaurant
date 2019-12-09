@@ -147,9 +147,7 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
-
 router.get('/resoverview/:restID',function(req,res,next){
-  console.log(req.params.restID);
   Restaurant.findById(req.params.restID, function(err,rest){
     if (err){
       return next(err)
@@ -162,15 +160,14 @@ router.get('/resoverview/:restID',function(req,res,next){
   })
 })
 
-
-router.put("/editrest", function(req, res, next) {
+router.post("/editrest", function(req, res, next) {
   var update = req.body;
-
-  Restaurant.findByIdAndUpdate(update._id, update, function(err, rest) {
+  console.log(update.id);
+  Restaurant.findByIdAndUpdate(update.id, update, function(err, rest) {
     if (err) {
       return next(err);
     } else {
-      res.render("updateRest");
+      res.redirect("/manage");
     }
   });
 });

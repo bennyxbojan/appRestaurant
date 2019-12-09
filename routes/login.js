@@ -3,7 +3,7 @@ var router = express.Router();
 // const auth = require('./auth');
 var User = require("../models/user");
 var Order = require("../models/order");
- 
+
 function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
