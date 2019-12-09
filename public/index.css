@@ -203,6 +203,30 @@ th, td{
   padding:1em;
 }
 
+.confir input[type=text], [type=password],select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.confir label {
+  padding: 12px 12px 12px 0;
+}
+
+.confir input[type=submit] {
+  background-color: #EDC141;
+  color: white;
+  margin:2px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+
 /*-------------ipad--------------*/
 @media(min-width: 700px )and(max-width: 1366px){
   .userLogo {
