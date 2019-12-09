@@ -154,7 +154,7 @@ router.put("/editrest", function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      res.render("manageRest");
+      res.render("updateRest");
     }
   });
 });

@@ -46,97 +46,54 @@
       <%}%>
     </div> 
     <!----------------------- forms---------------------->
-    <div class="container">
-      <form id="formRest"></form>
-      <div class="row">
-        <label for="name">Name:</label>
-        <input type="text" value=<%=%> class="form-control" name="name" form="formRest"/>
-      </div>
-      <div class="row">
-        <label for="city">City:</label>
-        <input type="text" value=<%=%> class="form-control text-center" name="city" form="formRest"/>
-      </div>
-      <div class="row">
-        <label for="zip">Zip code:</label>
-        <input type="text" value=<%=%> class="form-control" name="zip" form="formRest"/>
-      </div> 
-      <div class="row">
-        <label for="address">Street Address</label>
-        <input type="text" value=<%=%> class="form-control" name="address" form="formRest"/>
-      </div>
-      <div class="row">
-        <label for="contact">Phone:</label>
-        <input type="text" value=<%=%> class="form-control" name="contact" form="formRest"/>
-      </div> 
-      <div class="row">
-        <label for="cuisine">Cuisine Type:</label>
-        <input type="text" value=<%=%> class="form-control" name="cuisine" form="formRest"/>
-      </div> 
-      <div class="row">
-        <label for="price">Price Level:</label>
-        <input type="text" value=<%=%> class="form-control text-center" name="price" form="formRest"/>
-      </div> 
-      <div class="row">
-        <label for="opendays"> Open Days:</label>
-        <input type="text" value=<%=%> class="form-control text-center" name="opendays" form="formRest"/>
-      </div>
-      <div class="row">
-        <label for="img">Image URL</label>
-        <input type="text" value=<%=%> class="form-control" name="img" form="formRest"/>
-      </div>
-      <div class="row">
-        <label for="option" >Options</label>
-        <input type="text" value=<%=%> class="form-control" name="options" form="formRest"/>
-        <a class="create">Update</a>
-        <a href="/manage">Cancel</a>
-      </div>
-      </div>
-        <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-        <script>
-          $(document).ready(function() {
-          $('.add-btn').click(function() {
-          var cl = $('.ifields').first().clone(true);
-          $('.iclone').append(cl);});
-          });
-      
-        $(".create").click(function(){
-           var options = $('.row.ifields').map(function(){
-              return {
-                time: $(this).find('[name="time"]').val(),
-                size: $(this).find('[name="size"]').val()
-              };
-            }).get();
-
-            var data = $('.container').map(function() {
-              return {
-                name: $(this).find('[name="name"]').val(),
-                city: $(this).find('[name="city"]').val(),
-                zip: $(this).find('[name="zip"]').val(),
-                address: $(this).find('[name="address"]').val(),
-                contact: $(this).find('[name="contact"]').val(),
-                cuisine: $(this).find('[name="cuisine"]').val(),
-                price: $(this).find('[name="price"]').val(),
-                opendays: $(this).find('[name="opendays"]').val(),
-                img:$(this).find('[name="img"]').val(),
-                options: options};
-            });
-          // console.log(options);
-          console.log(data);
-
-          $.ajax({
-            url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
-            type: 'POST',
-            data: JSON.stringify({Rest: data}),
-            contentType: "application/json; charset=utf-8",
-            dataType: "json",
-            success: function(data){alert(data);window.location.assign("https://final-pro-yay76-feq6.glitch.me/manage");},
-            failure: function(errMsg) {
-                alert(errMsg);
-            }
-          });
-        });     
-     
-    </script>
+    <div class="box">
+      <form id="formRest" action="/editrest" method="post">
+        <div class="row">
+          <label for="name">Name:</label>
+          <input type="text" value=<%=%> class="form-control" name="name" form="formRest"/>
+        </div>
+        <div class="row">
+          <label for="city">City:</label>
+          <input type="text" value=<%=%> class="form-control text-center" name="city" form="formRest"/>
+        </div>
+        <div class="row">
+          <label for="zip">Zip code:</label>
+          <input type="text" value=<%=%> class="form-control" name="zip" form="formRest"/>
+        </div> 
+        <div class="row">
+          <label for="address">Street Address</label>
+          <input type="text" value=<%=%> class="form-control" name="address" form="formRest"/>
+        </div>
+        <div class="row">
+          <label for="contact">Phone:</label>
+          <input type="text" value=<%=%> class="form-control" name="contact" form="formRest"/>
+        </div> 
+        <div class="row">
+          <label for="cuisine">Cuisine Type:</label>
+          <input type="text" value=<%=%> class="form-control" name="cuisine" form="formRest"/>
+        </div> 
+        <div class="row">
+          <label for="price">Price Level:</label>
+          <input type="text" value=<%=%> class="form-control text-center" name="price" form="formRest"/>
+        </div> 
+        <div class="row">
+          <label for="opendays"> Open Days:</label>
+          <input type="text" value=<%=%> class="form-control text-center" name="opendays" form="formRest"/>
+        </div>
+        <div class="row">
+          <label for="img">Image URL</label>
+          <input type="text" value=<%=%> class="form-control" name="img" form="formRest"/>
+        </div>
+        <div class="row">
+          <label for="option" >Options</label>
+          <input type="text" value=<%=%> class="form-control" name="options" form="formRest"/>
+        </div>
+        <div class="row">
+          <input type = "submit" value = "Update"/>
+          <a href="/manage">Cancel</a>
+        </div>
+      </form>
+    </div>
   
   </body>  
 </html>
