@@ -149,9 +149,17 @@ router.post("/newrest", function(req, res, next) {
 //update resturant
 
 router.get('/resoverview',function(req,res,next){
-  
+  console.log(req.query.restID);
+  Restaurant.findById(req.query.restID, function(err,rest){
+    if (err){
+      return next(err)
+    }else{
+      res.render('updateRest', {
+        rest:rest
 })
-
+    }
+  })
+})
 
 
 router.put("/editrest", function(req, res, next) {
