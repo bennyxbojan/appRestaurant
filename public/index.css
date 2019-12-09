@@ -244,6 +244,8 @@ th, td{
   float: right;
 }
 
+
+
 /*-------------ipad--------------*/
 @media(min-width: 700px )and(max-width: 1366px){
   .userLogo {

@@ -98,9 +98,12 @@ body {
   position:relative;
   left:25%;
 }
+
 .search-form button{
-  margin-left:45%;
+  position:relative;
+  left:25%;
 }
+
 .createNew img{
   width:30px;
   position:relative;
@@ -138,4 +141,14 @@ body {
 }
 .itemdetail {
    padding: 2px 16px;
+}
+
+.orderview{
+  width: 80%;
+  margin: auto;
+  padding: 1em;
+}
+
+.orderview td{
+  border-bottom: 1px solid gray;
 }

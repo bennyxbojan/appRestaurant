@@ -13,7 +13,7 @@ function checkClient(req, res, next) {
     res.redirect("/login");
   }    
 } 
-
+ 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {
     console.log(req.session.role);

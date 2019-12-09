@@ -68,17 +68,19 @@
   </div>
 
   <div class="item-admin"> 
-    <table>
+    <table class=orderview>
       <th>Orde ID</th>
       <th>Order Number</th>
+      <th>Date Placed</th>
       <th>User</th>
       <th>Restaurant</th>
     <% orders.forEach(item=>{%>
       <tr>
        <td><%= item._id%></td>
       <td><%= item.orderNum%></td>
-      <td><%= item.userID._id%>\n<%= item.userID.fname%>\n<%= item.userID.lname%></td>
-      <td><%= item.restID._id%><%= item.restID.name%><%= item.restID.city%></td>
+        <td><%= item.date%></td>
+      <td><%= item.userID._id%><br><%= item.userID.fname%>&nbsp<%= item.userID.lname%></td>
+      <td><%= item.restID._id%><br><%= item.restID.name%>, &nbsp<%= item.restID.city%></td>
          </tr>
     </div>
     <% }) %>
