@@ -43,18 +43,17 @@
   </div>
   <!-----------------------Search bar----------------------------->
   <div class = "search-form">
-    <form>
+    <form action = '/manage' method='get'>
       <input
           type="text"
-          name="idolname"
-          onChange={this.handleSearch}
+          name="restname"
           placeholder="Search By Restaurant Name"
       />
+      <input type='submit' value='Search' />
     </form>
     <a class="createNew" href="/manage/newrest">
       <img src="https://cdn3.iconfinder.com/data/icons/restaurant-3-3-1/300/tool-add-food-meal-drink-512.png"/>
     </a>
-    <a class="sort" href="#test"> Sort By Price Level </a>
   </div>
   <!-----------------------Operation buttons----------------------------->
 <!--   <div class="operTools">

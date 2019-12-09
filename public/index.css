@@ -40,7 +40,7 @@ body {
 .banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.5), 
     rgba(0, 0, 0, 0.5)), 
-    url("https://gifimage.net/wp-content/uploads/2018/11/restaurant-anime-gif-1.gif");
+    url("https://i.pinimg.com/originals/dd/08/94/dd0894adc941cc9f1061419f41c43a72.gif");
 
   /* Set a specific height */
   height: 50%;
@@ -202,6 +202,23 @@ th, td{
   text-align: center; 
   padding:1em;
 }
+.box{
+  width: 80%;
+  padding: 0px;
+  margin: 0 auto;
+}
+.review{
+  width: 30%;
+  display: block;
+  box-sizing: border-box;
+  float: left;
+}
+.confir{
+  width: 70%;
+  display: block;
+  box-sizing: border-box;
+  float: left;
+}
 
 .confir input[type=text], [type=password],select, textarea {
   width: 100%;
@@ -225,7 +242,6 @@ th, td{
   cursor: pointer;
   float: right;
 }
-
 
 /*-------------ipad--------------*/
 @media(min-width: 700px )and(max-width: 1366px){

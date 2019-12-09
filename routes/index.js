@@ -16,15 +16,15 @@ var NodeGeocoder = require("node-geocoder");
 
 // console.log(geo.city);
 
-var options = {
-  provider: "google",
-  // Optional depending on the providers
-  httpAdapter: "https", // Default
-  apiKey: "AIzaSyAjwAu2_yVgLLXB7qGnHBnujwWo5F_VuAo", // for Mapquest, OpenCage, Google Premier
-  formatter: null // 'gpx', 'string', ...
-};
+// var options = {
+//   provider: "google",
+//   // Optional depending on the providers
+//   httpAdapter: "https", // Default
+//   apiKey: "AIzaSyAjwAu2_yVgLLXB7qGnHBnujwWo5F_VuAo", // for Mapquest, OpenCage, Google Premier
+//   formatter: null // 'gpx', 'string', ...
+// };
 
-var geocoder = NodeGeocoder(options);
+// var geocoder = NodeGeocoder(options);
 
 var today = new Date();
 var dd = ("0" + today.getDate()).slice(-2);
@@ -73,19 +73,14 @@ router.get("/", function(req, res, next) {
 
   var compare = {};
 
-  Restaurant.find({ city: geo.city }, function(err, rests) {
+  Restaurant.find({ city: geo.city }).limit(5). exec(function(err, rests) {
     if (err) {
       return next(err);
     } else {
-      geocoder.geocode("29 champs elysée paris").then(function(res) {
-        console.log(res);
-      });
-      for (var i = 0; i < rests.length; i++) {
-        compare.id = rests[i]._id;
-      }
       res.render("index", {
         city: geo.city,
-        date: today
+        date: today,
+        rests:rests
       });
     }
   });

@@ -19,17 +19,22 @@ function checkAdmin(req, res, next) {
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    Restaurant.find({}).sort('name').exec(function(err, restaurants) {
-      if (err) {
-        err.status = 404;
-        return next(err);
-      }
-      res.status(200).render("manageRest", {
-        restaurants: restaurants,
-        name: user.fname,
-        email: user.email
+    if (!req.query){
+      Restaurant.find({}).sort('name').exec(function(err, restaurants) {
+        if (err) {
+          err.status = 404;
+          return next(err);
+        }
+        res.status(200).render("manageRest", {
+          restaurants: restaurants,
+          name: user.fname,
+          email: user.email
+        
       });
     });
+    }else{
+      
+    }
   });
 });
 
