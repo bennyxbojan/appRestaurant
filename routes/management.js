@@ -19,7 +19,7 @@ function checkAdmin(req, res, next) {
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
-    Restaurant.find({}, function(err, restaurants) {
+    Restaurant.find({}).sort('name').exec(function(err, restaurants) {
       if (err) {
         err.status = 404;
         return next(err);
@@ -102,7 +102,7 @@ router.post("/newrest", function(req, res, next) {
 });
 
 //update resturant
-router.put("/editres", function(req, res, next) {
+router.put("/editrest", function(req, res, next) {
   var update = req.body;
 
   Restaurant.findByIdAndUpdate(update._id, update, function(err, rest) {
@@ -113,6 +113,7 @@ router.put("/editres", function(req, res, next) {
     }
   });
 });
+
 
 //delete resturant
 

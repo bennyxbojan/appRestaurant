@@ -37,7 +37,7 @@ function getTableSize(guest) {
 // console.log(validtime("1PM"));
 
 
-// POST route for reading data
+// GET route for reading data
 router.get("/", function(req, res, next) {
   if (req.query.date && req.query.time && req.query.guest && req.query.city) {
     var date = new Date(req.query.date);
@@ -66,7 +66,7 @@ router.get("/", function(req, res, next) {
          // options: { $elemMatch: { taken: false } }
       });
 
-      result.populate("options.table").exec(function(err, rest) {
+      result.sort('name').populate("options.table").exec(function(err, rest) {
         if (err) {
           return next(err);
         } else {
