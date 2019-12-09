@@ -11,6 +11,7 @@ function checkClient(req, res, next) {
   } else {
     var err = new Error("You must be logged into see this page");
     next(err); //Error, trying to access unauthorized page!
+    res.redirect("/login");
   }    
 }
 
