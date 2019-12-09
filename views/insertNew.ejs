@@ -87,6 +87,10 @@
     </select>
   </div>
   <div class="row">
+    <label for="img">Image URL</label>
+    <input type="text" class="form-control" name="img" form="formRest" placeholder="Enter the URL of image"/>
+  </div>
+  <div class="row">
     <label for="option"  >Options</label>
     <div class="col">
       <button class="btn btn-default add-btn">Add</button></div>
@@ -151,6 +155,7 @@
               cuisine: $(this).find('[name="cuisine"]').val(),
               price: $(this).find('[name="price"]').val(),
               opendays: $(this).find('[name="opendays[]"]').val(),
+              img:$(this).find('[name="img"]').val(),
               options: options};
           }).get();
         console.log(options);
