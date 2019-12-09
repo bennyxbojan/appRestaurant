@@ -135,7 +135,7 @@ router.post("/newrest", function(req, res, next) {
         if (error) {
           return next(error);
         } else {
-          return res.redirect("/manage");
+          res.redirect("/manage");
         }
       });
     });
