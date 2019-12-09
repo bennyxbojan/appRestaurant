@@ -85,3 +85,14 @@ body {
 .row.ifields{
   width:90%;
 }
+
+.box a{
+  background-color: #EDC141;
+  color: white;
+  margin:2px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}

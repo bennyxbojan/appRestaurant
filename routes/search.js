@@ -75,7 +75,8 @@ router.get("/", function(req, res, next) {
                   date: req.query.date,
                   time: req.query.time,
                   guest: req.query.guest,
-                  city: req.query.city
+                  city: req.query.city,
+                  name: name
                 });
               }
             });
@@ -123,7 +124,8 @@ router.get("/", function(req, res, next) {
                   date: req.query.date,
                   time: req.query.time,
                   guest: req.query.guest,
-                  city: req.query.city
+                  city: req.query.city,
+                  restname:req.query.restname
                 });
               }
             });

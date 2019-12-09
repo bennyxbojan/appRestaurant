@@ -57,7 +57,7 @@ router.post("/", function(req, res, next) {
         req.session.userID = user._id;
         req.session.role = user.role;
         req.session.username = user.fname;
-        return res.redirect("/login/profile");
+        return res.redirect("/");
       }
     });
   } else if (req.body.logusername && req.body.logpassword) {
@@ -75,7 +75,7 @@ router.post("/", function(req, res, next) {
           req.session.role = user.role;
           req.session.username = user.fname;
           // console.log(req.session.userID);
-          return res.redirect("/login/profile");
+          return res.redirect("/");
         } else if (user.role == "admin") {
           req.session.userID = user._id;
           req.session.role = user.role;
