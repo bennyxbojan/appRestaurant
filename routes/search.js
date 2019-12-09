@@ -51,7 +51,7 @@ router.get("/", function(req, res, next) {
       } else {
         var tableid = table[0]._id;
          console.log(table[0]._id);
-      }
+      
       // var option = {
       //   table: tableid,
       //   taken: false
@@ -65,16 +65,16 @@ router.get("/", function(req, res, next) {
          options: { $elemMatch: { table: tableid, taken: false } },
          // options: { $elemMatch: { taken: false } }
       });
-      
-      var validtables = 
 
       result.populate("options.table").exec(function(err, rest) {
         if (err) {
           return next(err);
         } else {
-          console.log(rest)
+          // console.log(rest)
+          console.log(tableid);
           res.render("restaurants", {
             rest: rest,
+            tableid:tableid,
             date: req.query.date,
             time: req.query.time,
             guest: req.query.guest,
@@ -82,6 +82,7 @@ router.get("/", function(req, res, next) {
           });
         }
       });
+      };
     });
   } else {
     var err = new Error("All fields required.");

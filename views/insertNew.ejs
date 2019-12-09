@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link href="/admin.css" rel="stylesheet" type="text/css"/>
+    <link href="/createnew.css" rel= "stylesheet" type="text/css"/>
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -131,26 +132,6 @@
       var cl = $('.ifields').first().clone(true);
       $('.iclone').append(cl);});
       });
-
-//       var options = $('.row.ifields').map(function(){
-//         return {
-//           time: $(this).find('[name="time"]').val(),
-//           size: $(this).find('[name="size"]').val()
-//         };
-//       }).get();
-      
-//       var data = $('.container').map(function() {
-//         return {
-//           name: $(this).find('[name="name"]').val(),
-//           city: $(this).find('[name="city"]').val(),
-//           zip: $(this).find('[name="zip"]').val(),
-//           address: $(this).find('[name="street"]').val(),
-//           contact: $(this).find('[name="contact"]').val(),
-//           cuisine: $(this).find('[name="cuisinet"]').val(),
-//           price: $(this).find('[name="price"]').val(),
-//           opendays: $(this).find('[name="opens"]').val(),
-//           options: options};
-//       }).get();
       
       $(".create").click(function(){
          var options = $('.row.ifields').map(function(){
@@ -176,7 +157,7 @@
         console.log(data);
       
         $.ajax({
-          url: 'https://finalprotest.glitch.me/manage/newrest',
+          url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
           type: 'POST',
           data: JSON.stringify({ Restaurants: data }),
           contentType: "application/json; charset=utf-8",
