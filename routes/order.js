@@ -83,11 +83,12 @@ router.get("/review", checkClient, function(req, res, next) {
 
 router.get("/test", checkClient, function(req, res, next) {
   //options: { $elemMatch: { table: req.query.tableID } } };
-  Restaurant.find({_id: req.query.restID, options: { $elemMatch: { table: req.query.tableID } } }, function(err, rest) {
+  Restaurant.findById(req.query.restID).lean().exec( function(err, rest) {
     if (err) {
       return next(err);
     } else {
-      res.send(rest);
+      var test = (JSON.stringify(rest));
+      res.send(test.options[0].taken);
     }
   });
 });
