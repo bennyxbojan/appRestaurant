@@ -10,7 +10,6 @@
       integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
       crossorigin="anonymous"
     />
-    
     <script
       src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
       integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
@@ -41,38 +40,45 @@
         </a >
       <%}%>
     </div> 
-    
-   <h1>
-     Almost done!
-    </h1>
-    <h2>
-      Please review your order.
-    </h2>
-
-    <div class="item">
-      <img src = <%= rest.img%>>
-      <div class="itemdetail">
-        <p>Name: <%= rest.name%></p>
-        <p>Open Days: <%= rest.opendays%></p>
-        <p>Location: <%=rest.address%>, <%=rest.city%>, <%=rest.zip%></p>
-        <p>
-          Contact:<%=rest.contact%>
-        </p>
-        <p>Price: <%= rest.price%></p>
-      </div>
+   <div class="statement"> 
+     <h1>
+       Almost done!
+      </h1>
+      <h2>
+        Please review your order.
+      </h2>
     </div>
-  
-    <div class="confir">
-          <form id="order" action="/neworder" method="post">
-            <label><span>Name on Reservation:</span></label><input type="text" name="guestname" value=<%= user.lname%> required/> 
-            <label><span>Guest Number:</span></label><input type="text" name="guest" value=<%= guest%> readonly/> 
-            <label><span>Date:</span></label><input type="text" name="date" value=<%= date%>  readonly/>
-            <label><span>Time:</span></label><input type="text" name="email" value= <%= table.time%> readonly/>
-            <input type="text" name="userID" value= <%= user._id%> hidden/>
-            <input type="text" name="restID" value= <%= rest._id%> hidden/>
-            <input type="text" name="tableID" value= <%= table._id%> hidden/>
-            <p><input type="submit" value="Make Reservation" /></p>
-          </form>
+    <div class="box">
+      <div class="review">
+        <div class="item">
+          <img src = <%= rest.img%>>
+          <div class="itemdetail">
+            <p>Name: <%= rest.name%></p>
+            <p>Open Days: <%= rest.opendays%></p>
+            <p>Location: <%=rest.address%>, <%=rest.city%>, <%=rest.zip%></p>
+            <p>
+              Contact:<%=rest.contact%>
+            </p>
+            <p>Price: <%= rest.price%></p>
+          </div>
+        </div>
+      </div>
+      <div class="confir">
+        <form id="order" action="/neworder" method="post">
+          <label>Name on Reservation:</label>
+          <input type="text" name="guestname" value=<%= user.lname%> required/> 
+          <label>Guest Number:</label>
+          <input type="text" name="guest" value=<%= guest%> readonly/> 
+          <label>Date:</label>
+          <input type="text" name="date" value=<%= date%>  readonly/>
+          <label>Time:</label>
+          <input type="text" name="email" value= <%= table.time%> readonly/>
+          <input type="text" name="userID" value= <%= user._id%> hidden/>
+          <input type="text" name="restID" value= <%= rest._id%> hidden/>
+          <input type="text" name="tableID" value= <%= table._id%> hidden/>
+          <p><input type="submit" value="Make Reservation" /></p>
+        </form>
+      </div>
     </div>
   
 
