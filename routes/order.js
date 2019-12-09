@@ -66,9 +66,11 @@ router.get("/test", checkClient, function(req, res, next) {
     } else {
       console.log(rest.options.length);
     
-      res.send(rest.options[0].table == req.query.tableID);
+      console.log(rest.options[0].table == req.query.tableID);
       for (let i = 0; i < rest.options.length; i++){
-        res.send(rest.options[i].table);
+        if (rest.options[i].table == req.query.tableID){
+        res.send(rest.options[i].taken);
+        }
       }
     }
   });
