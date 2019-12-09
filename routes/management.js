@@ -10,7 +10,7 @@ function checkAdmin(req, res, next) {
     if (req.session.role == "admin") {
       next(); //If session exists, proceed to page
     }
-  } else {
+  } else { 
     var err = new Error("You don't have access to this page");
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
