@@ -77,18 +77,17 @@ router.get("/", function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      geocoder.reverse({lat:45.767, lon:4.833}, function(err, res) {
-  console.log(res);
-});
+      geocoder.geocode("29 champs elysée paris").then(function(res) {
+        console.log(res);
+      });
       for (var i = 0; i < rests.length; i++) {
         compare.id = rests[i]._id;
       }
+      res.render("index", {
+        city: geo.city,
+        date: today
+      });
     }
-  });
-
-  res.render("index", {
-    city: geo.city,
-    date: today
   });
 });
 
