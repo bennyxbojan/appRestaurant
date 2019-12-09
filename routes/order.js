@@ -65,7 +65,7 @@ router.get("/review", checkClient, function(req, res, next) {
 //       return next(err);
 //     } else {
 //       console.log(rest.options.length);
-    
+
 //       console.log(rest.options[0].table == req.query.tableID);
 //       for (let i = 0; i < rest.options.length; i++){
 //         if (rest.options[i].table == req.query.tableID){
@@ -74,13 +74,9 @@ router.get("/review", checkClient, function(req, res, next) {
 //         }
 //       }
 //     }
-    
-    
-    
+
 //   });
 // });
-
-
 
 router.get("/test", checkClient, function(req, res, next) {
   //options: { $elemMatch: { table: req.query.tableID } } };
@@ -90,27 +86,44 @@ router.get("/test", checkClient, function(req, res, next) {
       return next(err);
     } else {
       // console.log(rest.options.length);
-    
+
       //console.log(rest.options[0].table == req.query.tableID);
-      for (let i = 0; i < rest.options.length; i++){
-        if (rest.options[i].table == req.query.tableID){
+      for (let i = 0; i < rest.options.length; i++) {
+        if (rest.options[i].table == req.query.tableID) {
           index = i;
           console.log(rest.options[index].taken);
         }
       }
-      
     }
-    Restaurant.findByIdAndUpdate(req.query.restID, {$set: {'options[index].taken': true}}),function(err,rest){
-      if(err){
-        return next(err)
-      }else{
-        console.log(rest);
-        res.send(rest)
+    //     Restaurant.findByIdAndUpdate(req.query.restID, {$set: {'options[index].taken': true}}),function(err,rest){
+    //       if(err){
+    //         return next(err)
+    //       }else{
+    //         console.log(rest);
+    //         res.send(rest)
+    //       }
+    //     }
+
+    //   });
+
+    var ok="okay";
+    Restaurant.update(
+      { _id: req.query.restID, "options.table": req.query.tableID },
+      {
+        $set: {
+          "options.$.taken": true
+        }
+      },function(err){
+        if(err){
+          return next(err);
+        }else{
+          res.send(ok);
+        }
       }
-    }
-    
+    );
   });
 });
+
 //submit a new order
 router.post("/", checkClient, function(req, res, next) {
   let filter = { options: { $elemMatch: { table: req.body.tableID } } };
