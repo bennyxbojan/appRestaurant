@@ -64,13 +64,17 @@ router.get("/test", checkClient, function(req,res,next){
     
     
     //options: { $elemMatch: { table: req.query.tableID } } };
-  Restaurant.find(filter, function(err,rest){
+  Restaurant.findById(req.query.restID, function(err,rest){
     
      if (err){
        return next(err)
      }else{
-       console.log(rest);
-       res.send(rest);
+       console.log(rest.options.length);
+       for (var i = 0; i < rest.options.length; i++){
+         if (rest.options.table == req.query.tableID){
+           res.send(rest.options[i]);
+         }
+       }
      }
         })
 
