@@ -15,6 +15,7 @@ function checkAdmin(req, res, next) {
     next(err); //Error, trying to access unauthorized page!
     res.redirect("/login");
   }
+  
 }
 //get all restaurants
 router.get("/", checkAdmin, function(req, res, next) {
