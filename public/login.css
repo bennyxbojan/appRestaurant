@@ -32,12 +32,17 @@ body {
 
 
 /*========== Forms =============*/
-.container{
+.box{
   width:100%;
+  padding: 0px;
+  margin: 0 auto;
 }
 .form{
   background-color: ##FAFBF3;
-  display:inline-block;
+  display: inline-block;
+  box-sizing: border-box;
+  float: left;
+  width:40%;
 }
 
 .form input[type=text], [type=password],select, textarea {

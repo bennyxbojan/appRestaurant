@@ -42,6 +42,7 @@ router.get("/", checkAdmin, function(req, res, next) {
             return next(err);
           } else {
             res.status(200).render("manageRest", {
+              query:req.query.restname,
               restaurants: restaurants,
               name: user.fname,
               email: user.email
@@ -180,6 +181,7 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         } else {
           console.log(orders);
           res.status(200).render("manageOrder", {
+            query:req.query.orderNum,
             orders: orders,
             name: user.fname,
             email: user.email
