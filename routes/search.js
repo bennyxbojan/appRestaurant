@@ -13,6 +13,10 @@ const week = [
   "Saturday"
 ];
 
+function timeconverter(time){
+  if time.substring(time.length-3,time.length-0)
+}
+
 function getTableSize(guest) {
   var size;
   if (guest > 0 && guest <= 2) {
