@@ -256,10 +256,10 @@ th, td{
 /*-------------ipad--------------*/
 @media(min-width: 700px )and(max-width: 1366px){
   .userLogo {
-    left:73%;
+    left:72%;
   }
   .loged-in{
-    left:70%;
+    left:68%;
   }
   .side-navi{
     width:120px
@@ -275,6 +275,12 @@ th, td{
   }
   .banner-text{
     top:30%;
+  }
+  .banner-form{
+    margin-top:10px;
+  }
+  .form-row.col{
+    width:100%
   }
 }
 
