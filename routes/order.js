@@ -5,19 +5,19 @@ var User = require("../models/user");
 var Order = require("../models/order");
 var Table = require("../models/table");
 var Restaurant = require("../models/restaurant");
- 
+
 function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
   } else {
     res.render("error", {
-      status:401,
-      message:"You don't have access to this page",
-      redirect: '/login'
-    })
+      status: 401,
+      message: "You don't have access to this page",
+      redirect: "/login"
+    });
   }
 }
- 
+
 function getOrderNum() {
   return Math.round(Math.random() * 10000000);
 }
@@ -29,17 +29,26 @@ router.get("/review", checkClient, function(req, res, next) {
     Restaurant.findById(req.query.restID, function(err, rest) {
       if (err) {
         res.status(err.errors.code).render("error", {
-              status: err.errors.code,
-              message: err.message,
-              redirect:'/manage'
+          status: err.errors.code,
+          message: err.message,
+          redirect: "/search"
+        });
       } else {
         User.findById(req.session.userID, function(err, user) {
           if (err) {
-            return next(err);
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect: "/search"
+            });
           } else {
             Table.findById(req.query.tableID, function(err, table) {
               if (err) {
-                return next(err);
+                res.status(err.errors.code).render("error", {
+                  status: err.errors.code,
+                  message: err.message,
+                  redirect: "/search"
+                });
               } else {
                 console.log(rest);
                 // console.log(table);
@@ -59,7 +68,11 @@ router.get("/review", checkClient, function(req, res, next) {
     });
   } else {
     var err = new Error("Something's wrong! Please try again");
-    next(err); //Error, trying to access unauthorized page!
+    res.render("error", {
+      status: 400,
+      message: err,
+      redirect: "/search"
+    });
   }
 });
 
@@ -110,7 +123,7 @@ router.get("/review", checkClient, function(req, res, next) {
 //     //     }
 
 //     //   });
- 
+
 //     var ok="okay";
 //     Restaurant.update(
 //       { _id: req.query.restID, "options.table": req.query.tableID },
@@ -147,21 +160,29 @@ router.post("/", checkClient, function(req, res, next) {
     guestname: req.body.guestname,
     table: req.body.tableID
   };
-  Order.create(order, function(error, order) {
-    if (error) {
-      return next(error);
+  Order.create(order, function(err, order) {
+    if (err) {
+      res.status(err.errors.code).render("error", {
+        status: err.errors.code,
+        message: err.message,
+        redirect: "/manage"
+      });
     } else {
       //should redirect to "Congrats! Successfully!"
       Restaurant.update(
         { _id: req.body.restID, "options.table": req.body.tableID },
-        { 
+        {
           $set: {
             "options.$.taken": true
           }
         },
         function(err) {
           if (err) {
-            return next(err);
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect: "/manage"
+            });
           } else {
             console.log("update success");
           }

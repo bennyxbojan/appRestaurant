@@ -45,14 +45,18 @@ router.get("/", function(req, res, next) {
       var weekday = date.getDay();
       var size = getTableSize(req.query.guest);
       //console.log(size);
-      
+
       console.log(req.query.city);
       var city = req.query.city.replace(/"/g, "");
       console.log(city);
 
       Table.find({ time: req.query.time, size: size }, function(err, table) {
         if (err) {
-          return next(err);
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/"
+          });
         } else {
           var tableid = table[0]._id;
           // console.log(table[0]._id);
@@ -69,7 +73,11 @@ router.get("/", function(req, res, next) {
             .populate("options.table")
             .exec(function(err, rest) {
               if (err) {
-                return next(err);
+                res.status(err.errors.code).render("error", {
+                  status: err.errors.code,
+                  message: err.message,
+                  redirect: "/search"
+                });
               } else {
                 // console.log(rest)
                 // console.log(tableid);
@@ -80,16 +88,20 @@ router.get("/", function(req, res, next) {
                   time: req.query.time,
                   guest: req.query.guest,
                   city: city,
-                  restname:req.query.restname
+                  restname: req.query.restname
                 });
               }
-            }); 
+            });
         }
       });
     } else {
       var err = new Error("All fields required.");
       err.status = 400;
-      return next(err);
+      res.render("error", {
+        status: 400,
+        message: err,
+        redirect: "/"
+      });
     }
     //where users give restaurant name for searching
   } else {
@@ -98,12 +110,16 @@ router.get("/", function(req, res, next) {
       var weekday = date.getDay();
       var size = getTableSize(req.query.guest);
       // console.log(size);
-      console.log(req.query.city)
+      console.log(req.query.city);
       var city = req.query.city.replace(/"/g, "");
 
       Table.find({ time: req.query.time, size: size }, function(err, table) {
         if (err) {
-          return next(err);
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/"
+          });
         } else {
           var tableid = table[0]._id;
           // console.log(table[0]._id);
@@ -121,7 +137,11 @@ router.get("/", function(req, res, next) {
             .populate("options.table")
             .exec(function(err, rest) {
               if (err) {
-                return next(err);
+                res.status(err.errors.code).render("error", {
+                  status: err.errors.code,
+                  message: err.message,
+                  redirect: "/search"
+                });
               } else {
                 // console.log(rest)
                 res.render("restaurants", {
@@ -131,7 +151,7 @@ router.get("/", function(req, res, next) {
                   time: req.query.time,
                   guest: req.query.guest,
                   city: city,
-                  restname:req.query.restname
+                  restname: req.query.restname
                 });
               }
             });
@@ -140,13 +160,13 @@ router.get("/", function(req, res, next) {
     } else {
       var err = new Error("All fields required.");
       err.status = 400;
-      return next(err);
+      res.render("error", {
+        status: 400,
+        message: err,
+        redirect: "/"
+      });
     }
-    
   }
-  
-    
-  
 });
 
 module.exports = router;
