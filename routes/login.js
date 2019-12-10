@@ -8,8 +8,11 @@ function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
   } else {
-    req.session.error = "You don't have access to this page";
-    res.redirect('/login');
+    res.render("error", {
+      status:401,
+      message:"You don't have access to this page",
+      redirect: '/login'
+    })
   }
 }
 
@@ -20,8 +23,11 @@ function checkAdmin(req, res, next) {
       next(); //If session exists, proceed to page
     }
   } else {
-    req.session.error = "You don't have access to this page";
-    res.redirect('/login');
+    res.render("error", {
+      status:401,
+      message:"You don't have access to this page",
+      redirect: '/login'
+    });
   }
 }
 
@@ -53,7 +59,13 @@ router.post("/", function(req, res, next) {
 
     User.create(userData, function(error, user) {
       if (error) {
-        return next(error);
+        {
+          res.render("error",{
+            status:400,
+            message:error,
+            redirect:'/login'
+          })
+        }
       } else {
         req.session.userID = user._id;
         req.session.role = user.role;
@@ -69,7 +81,11 @@ router.post("/", function(req, res, next) {
       if (error || !user) {
         var err = new Error("Wrong username or password.");
         err.status = 401;
-        return next(err);
+        res.render("error",{
+          status:401,
+          message:err,
+          redirect:'/login'
+        })
       } else {
         if (user.role == "client") {
           req.session.userID = user._id;
@@ -90,8 +106,11 @@ router.post("/", function(req, res, next) {
   } else {
     var err = new Error("All fields required.");
     err.status = 400;
-    return next(err);
-    
+    res.render("error",{
+      status:400,
+      message:err,
+      redirect:'/login'
+    })
   }
 });
 
@@ -101,12 +120,20 @@ router.get("/profile", checkClient, function(req, res, next) {
   // console.log(req.session.userID);
   User.findById(req.session.userID).exec(function(error, user) {
     if (error) {
-      return next(error);
+      res.render("error",{
+        status:404,
+        message:err,
+        redirect:'/login'
+      })
     } else {
       if (user === null) {
         var err = new Error("Not authorized! Go back!");
         err.status = 400;
-        return next(err);
+        res.render("error",{
+          status: 400,
+          message:err,
+          redirect:'/login'
+        });
       } else {
         Order.find({ userID: req.session.userID })
           .sort({ date: -1 })

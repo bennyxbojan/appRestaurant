@@ -75,10 +75,13 @@ router.get("/", function(req, res, next) {
 
   Restaurant.find({ city: geo.city }).sort('name').limit(4). exec(function(err, rests) {
     if (err) {
-      return next(err);
-    } else {
+        res.status(err.errors.code).render("error", {
+          status: err.errors.code,
+          error: err.message
+        });
+      }
+    else {
       res.render("index", {
-        
         city: geo.city,
         date: today,
         rests:rests

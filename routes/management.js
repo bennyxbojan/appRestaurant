@@ -12,9 +12,11 @@ function checkAdmin(req, res, next) {
       next(); //If session exists, proceed to page
     }
   } else {
-    var err = new Error("You don't have access to this page");
-    next(err); //Error, trying to access unauthorized page!
-    res.redirect("/login");
+    res.render("error", {
+      status:401,
+      message:"You don't have access to this page",
+      redirect: '/login'
+    });
   }
 }
 //get all restaurants
@@ -25,8 +27,13 @@ router.get("/", checkAdmin, function(req, res, next) {
         .sort("name")
         .exec(function(err, restaurants) {
           if (err) {
-            return next(err);
-          } else {
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect:'/login'
+            });
+          }
+          else {
             res.status(200).render("manageRest", {
               query: "Restaurant",
               restaurants: restaurants,
