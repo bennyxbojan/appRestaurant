@@ -14,8 +14,16 @@ const week = [
 ];
 
 function timeconverter(time){
-  if time.substring(time.length-3,time.length-0)
+  if( time.substring(time.length-2,time.length-0) == "PM"){
+    if(Number(time.substring(0,time.length-2))== 12){
+      return 0
+    }else{
+    return Number(time.substring(0,time.length-2))+12}
+  }else{
+  return time}
 }
+
+console.log(timeconverter("12PM"))
 
 function getTableSize(guest) {
   var size;
