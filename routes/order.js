@@ -28,7 +28,10 @@ router.get("/review", checkClient, function(req, res, next) {
   if (req.query) {
     Restaurant.findById(req.query.restID, function(err, rest) {
       if (err) {
-        return next(err);
+        res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect:'/manage'
       } else {
         User.findById(req.session.userID, function(err, user) {
           if (err) {

@@ -7,15 +7,15 @@ var Table = require("../models/table");
 
 function checkAdmin(req, res, next) {
   if (req.session.userID) {
-    console.log(req.session.role);
-    if (req.session.role == "admin") {
+    // console.log(req.session.role);
+    if (req.session.role === "admin") {
       next(); //If session exists, proceed to page
     }
   } else {
     res.render("error", {
-      status:401,
-      message:"You don't have access to this page",
-      redirect: '/login'
+      status: 401,
+      message: "You don't have access to this page",
+      redirect: "/login"
     });
   }
 }
@@ -30,10 +30,9 @@ router.get("/", checkAdmin, function(req, res, next) {
             res.status(err.errors.code).render("error", {
               status: err.errors.code,
               message: err.message,
-              redirect:'/login'
+              redirect: "/login"
             });
-          }
-          else {
+          } else {
             res.status(200).render("manageRest", {
               query: "Restaurant",
               restaurants: restaurants,
@@ -47,7 +46,11 @@ router.get("/", checkAdmin, function(req, res, next) {
         .sort("name")
         .exec(function(err, restaurants) {
           if (err) {
-            return next(err);
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect: "/login"
+            });
           } else {
             res.status(200).render("manageRest", {
               query: req.query.restname,
@@ -66,8 +69,11 @@ router.get("/newrest", checkAdmin, function(req, res, next) {
   User.findOne({ _id: req.session.userID }).exec(function(error, user) {
     Restaurant.find({}, function(err, restaurants) {
       if (err) {
-        err.status = 404;
-        return next(err);
+        res.status(err.errors.code).render("error", {
+          status: err.errors.code,
+          message: err.message,
+          redirect: "/manage"
+        });
       }
       res.status(200).render("insertNew");
     });
@@ -112,7 +118,11 @@ router.post("/newrest", function(req, res, next) {
         size: size
       }).exec(function(err, table) {
         if (err) {
-          return err;
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/manage"
+          });
         } else {
           console.log(table);
           tables.push({
@@ -140,7 +150,11 @@ router.post("/newrest", function(req, res, next) {
     User.findOne({ _id: req.session.userID }).exec(function(error, user) {
       Restaurant.create(restData, function(error, rest) {
         if (error) {
-          return next(error);
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/manage"
+          });
         } else {
           res.redirect("/manage");
         }
@@ -149,7 +163,11 @@ router.post("/newrest", function(req, res, next) {
   } else {
     var err = new Error("All fields required.");
     err.status = 400;
-    return next(err);
+    res.render("error", {
+      status: 400,
+      message: err,
+      redirect: "/manage"
+    });
   }
 });
 
@@ -157,7 +175,11 @@ router.post("/newrest", function(req, res, next) {
 router.get("/resoverview/:restID", function(req, res, next) {
   Restaurant.findById(req.params.restID, function(err, rest) {
     if (err) {
-      return next(err);
+      res.status(err.errors.code).render("error", {
+        status: err.errors.code,
+        message: err.message,
+        redirect: "/resoverview"
+      });
     } else {
       res.render("updateRest", {
         rest: rest,
@@ -173,10 +195,14 @@ router.post("/editrest", function(req, res, next) {
   var id = req.body.id.replace(/"/g, "");
   Restaurant.findById(id, function(err, rest) {
     if (err) {
-      next(err);
+      res.status(err.errors.code).render("error", {
+        status: err.errors.code,
+        message: err.message,
+        redirect: "/manage"
+      });
     } else {
       opendays = rest.opendays;
- 
+
       var update = {
         _id: id,
         name: req.body.name.replace(/"/g, ""),
@@ -192,7 +218,11 @@ router.post("/editrest", function(req, res, next) {
 
       Restaurant.findByIdAndUpdate(update._id, update, function(err, rest) {
         if (err) {
-          return next(err);
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/manage"
+          });
         } else {
           res.redirect("/manage");
         }
@@ -208,7 +238,11 @@ router.get("/delrest", function(req, res, next) {
     Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
       rest.remove(function(err) {
         if (err) {
-          return next(err);
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/manage"
+          });
         } else {
           res.redirect("/manage");
         }
@@ -228,7 +262,11 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         .populate("userID")
         .exec(function(err, orders) {
           if (err) {
-            return next(err);
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect: "/manage"
+            });
           } else {
             console.log(orders);
             res.status(200).render("manageOrder", {
@@ -247,7 +285,11 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         .populate("userID")
         .exec(function(err, orders) {
           if (err) {
-            return next(err);
+            res.status(err.errors.code).render("error", {
+              status: err.errors.code,
+              message: err.message,
+              redirect: "/manage"
+            });
           } else {
             console.log(orders);
             res.status(200).render("manageOrder", {
