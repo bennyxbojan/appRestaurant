@@ -8,9 +8,8 @@ function checkClient(req, res, next) {
   if (req.session.userID) {
     next(); //If session exists, proceed to page
   } else {
-    var err = new Error("You must be logged into see this page");
-    next(err); //Error, trying to access unauthorized page!
-    res.redirect("/login");
+    req.session.error = "You don't have access to this page";
+    res.redirect('/login');
   }
 }
 
@@ -21,8 +20,8 @@ function checkAdmin(req, res, next) {
       next(); //If session exists, proceed to page
     }
   } else {
-    var err = new Error("You don't have access to this page");
-    next(err); //Error, trying to access unauthorized page!
+    req.session.error = "You don't have access to this page";
+    res.redirect('/login');
   }
 }
 
