@@ -1,20 +1,19 @@
-Express.js Starter Template
-=================
-Remix this project to get started with Express.js for Project 3. 
+##Accounts
 
-* GET dictionary/:word - retrieves the definition of a given word
-* POST dictionary/ - creates a new definition in the dictionary (this should be faked out)
-* DELETE dictionary/:word - deletes the word in the dictionary, if it exists (this is also faked out)
+#Client
 
-server.js - this is where your project is initialized and your Node app starts. 
+username: client
+password: 1234
 
-Views
-=====
-* .ejs
-* sup.ejs
+username: test
+password: 1234
+
+username: Kaz
+password: 2222
 
 
-Public 
-======
-* client.js
-* style.css
+#Admin
+
+username: feq6
+password: 'Abc#123456'
+

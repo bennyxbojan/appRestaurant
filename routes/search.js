@@ -58,11 +58,11 @@ router.get("/", function(req, res, next) {
       var size = getTableSize(req.query.guest);
       //console.log(size);
 
-      console.log(req.query.city);
+      // console.log(req.query.city);
       var city = req.query.city.replace(/"/g, "");
       console.log(city);
 
-      Table.find({ time: req.query.time, size: size }, function(err, table) {
+      Table.find({ time:{$gte: timeconverter(req.query.time)}, size: size }, function(err, table) {
         if (err) {
           res.status(err.errors.code).render("error", {
             status: err.errors.code,
@@ -122,10 +122,10 @@ router.get("/", function(req, res, next) {
       var weekday = date.getDay();
       var size = getTableSize(req.query.guest);
       // console.log(size);
-      console.log(req.query.city);
+      // console.log(req.query.city);
       var city = req.query.city.replace(/"/g, "");
 
-      Table.find({ time: req.query.time, size: size }, function(err, table) {
+      Table.find({ time:{$gte: timeconverter(req.query.time)}, size: size }, function(err, table) {
         if (err) {
           res.status(err.errors.code).render("error", {
             status: err.errors.code,
