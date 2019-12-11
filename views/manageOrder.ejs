@@ -69,6 +69,7 @@
       <th>Date Placed</th>
       <th>User</th>
       <th>Restaurant</th>
+      <th>Delete</th>
     <% orders.forEach(item=>{%>
       <tr>
        <td><%= item._id%></td>
@@ -76,6 +77,7 @@
         <td><%= item.date%></td>
       <td><%= item.userID._id%><br><%= item.userID.fname%>&nbsp<%= item.userID.lname%></td>
       <td><%= item.restID._id%><br><%= item.restID.name%>, &nbsp<%= item.restID.city%></td>
+        <td><a href = "/manage/delorder?orderID=<%= item._id%>">Delete</a></td>
          </tr>
     </div>
     <% }) %>

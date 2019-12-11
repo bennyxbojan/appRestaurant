@@ -232,9 +232,7 @@ router.post("/editrest", function(req, res, next) {
 });
 
 //delete resturant
-
 router.get("/delrest", function(req, res, next) {
-  User.findOne({ _id: req.session.userID }).exec(function(error, user) {
     Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
       rest.remove(function(err) {
         if (err) {
@@ -302,6 +300,23 @@ router.get("/orders", checkAdmin, function(req, res, next) {
         });
     }
   });
+});
+
+//delete an order
+router.get("/delorder/", function(req, res, next) {
+    Order.findOneAndRemove({ _id: req.query.orderID }, function(err, order) {
+      order.remove(function(err) {
+        if (err) {
+          res.status(err.errors.code).render("error", {
+            status: err.errors.code,
+            message: err.message,
+            redirect: "/manage/orders"
+          });
+        } else {
+          res.redirect("/manage/orders");
+        }
+      });
+    });
 });
 
 module.exports = router;
