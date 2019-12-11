@@ -233,18 +233,17 @@ router.post("/editrest", function(req, res, next) {
 
 //delete resturant
 router.get("/delrest", function(req, res, next) {
-    Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
-      rest.remove(function(err) {
-        if (err) {
-          res.status(err.errors.code).render("error", {
-            status: err.errors.code,
-            message: err.message,
-            redirect: "/manage"
-          });
-        } else {
-          res.redirect("/manage");
-        }
-      });
+  Restaurant.findOneAndRemove({ _id: req.query.restID }, function(err, rest) {
+    rest.remove(function(err) {
+      if (err) {
+        res.status(err.errors.code).render("error", {
+          status: err.errors.code,
+          message: err.message,
+          redirect: "/manage"
+        });
+      } else {
+        res.redirect("/manage");
+      }
     });
   });
 });
@@ -303,20 +302,20 @@ router.get("/orders", checkAdmin, function(req, res, next) {
 });
 
 //delete an order
-router.get("/delorder/", function(req, res, next) {
-    Order.findOneAndRemove({ _id: req.query.orderID }, function(err, order) {
-      order.remove(function(err) {
-        if (err) {
-          res.status(err.errors.code).render("error", {
-            status: err.errors.code,
-            message: err.message,
-            redirect: "/manage/orders"
-          });
-        } else {
-          res.redirect("/manage/orders");
-        }
-      });
+router.get("/delorder", function(req, res, next) {
+  Order.findOneAndRemove({ _id: req.query.orderID }, function(err, order) {
+    order.remove(function(err) {
+      if (err) {
+        res.status(err.errors.code).render("error", {
+          status: err.errors.code,
+          message: err.message,
+          redirect: "/manage/orders"
+        });
+      } else {
+        res.redirect("/manage/orders");
+      }
     });
+  });
 });
 
 module.exports = router;
