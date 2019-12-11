@@ -6,15 +6,8 @@ const Orders = require("../models/order");
 const Restaurant = require("../models/restaurant");
 var NodeGeocoder = require("node-geocoder");
 
-//import data models
-// const Student = require("../models/student");
-// const Class = require("../models/class");
+
 //default link redirect to index html page
-
-// var ip = "207.97.227.239";
-// var geo = geoip.lookup(ip);
-
-// console.log(geo.city);
 
 // var options = {
 //   provider: "google",
