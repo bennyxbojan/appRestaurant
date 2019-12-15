@@ -204,8 +204,8 @@
               img:$(this).find('[name="img"]').val(),
               options: options};
           });
-        console.log(options);
-        //console.log(data);
+        //console.log(options);
+        console.log(data);
       
         $.ajax({
           url: 'https://final-pro-yay76-feq6.glitch.me/manage/newrest',
@@ -213,7 +213,7 @@
           data: JSON.stringify({Rest: data}),
           contentType: "application/json; charset=utf-8",
           dataType: "json",
-          success: function(data){alert(data);window.location.assign("https://final-pro-yay76-feq6.glitch.me/manage");},
+          success: function(data){alert(data)},
           failure: function(errMsg) {
               alert(errMsg);
           }
