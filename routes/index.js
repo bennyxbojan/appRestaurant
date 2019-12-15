@@ -39,8 +39,10 @@ router.get("/", function(req, res, next) {
   //get client address based on ip
   var geo = geoip.lookup(client);
   //console.log(geo);
+  
+  var geocity = geo.city
 
-  Restaurant.find({ city: geo.city }).sort('name').limit(4). exec(function(err, rests) {
+  Restaurant.find({ city: geocity }).sort('name').limit(4). exec(function(err, rests) {
     if (err) {
         res.status(err.errors.code).render("error", {
           status: err.errors.code,
@@ -49,7 +51,7 @@ router.get("/", function(req, res, next) {
       }
     else {
       res.render("index", {
-        city: geo.city,
+        city: geocity,
         date: today,
         rests:rests
       });
